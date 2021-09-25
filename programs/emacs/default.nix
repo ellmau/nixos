@@ -7,8 +7,8 @@ let
     mkdir -p $out/share/emacs/site-lisp
     cp ${defaultEl} $out/share/emacs/site-lisp/default.el
   '';
-
-  emacsPackage = (pkgs.emacsPackagesGen pkgs.emacsUnstable).emacsWithPackages
+  
+  emacsPackage = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages
     (epkgs:
       #let
       #  lpkgs = import ./packages.nix {
@@ -23,7 +23,7 @@ let
       #])
       [(with epkgs.elpaPackages; [
         auctex
-	org
+	      org
         flymake
       ])]
       ++ (with epkgs.melpaStablePackages; [ ]) ++ (with epkgs.melpaPackages; [
@@ -46,7 +46,7 @@ let
         flycheck
         free-keys
         highlight-indentation
-	ivy
+	      ivy
         json-mode
         less-css-mode
         lsp-mode
@@ -55,14 +55,14 @@ let
         nix-mode
         nixpkgs-fmt
         org-bullets
-        org-pdftools
-        org-roam
+        #org-roam
+	      #org-roam-server
         pasp-mode
         pdf-tools
         projectile
         projectile-ripgrep
         rustic
-	spacemacs-theme
+	      spacemacs-theme
         sparql-mode
         use-package
         yaml-mode
@@ -74,6 +74,9 @@ in
     defaultEditor = true;
     package = emacsPackage;
   };
+  #nixpkgs.overlays = [ (self: super: { emacsOrig = super.emacs; }) (import (builtins.fetchTarball {
+  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #})) ];
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {

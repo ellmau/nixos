@@ -2,7 +2,11 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(load-theme 'spacemacs-dark t)
+(use-package spacemacs-theme
+  :ensure t
+  :config (load-theme 'spacemacs-dark t))
+
+;(load-theme 'spacemacs-dark t)
 
 ;; Tab-width
 (setq tab-width 2)
@@ -30,7 +34,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (bind-key "C-c l" 'org-toggle-link-display) ;shows org links in plain text
-
 (require 'org-roam)
 (require 'org-roam-protocol)
 (require 'ox-md)
@@ -225,8 +228,8 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
- '(package-selected-packages
-   '(projectile-ripgrep projectile yaml-mode ox-pandoc use-package treemacs-all-the-icons treemacs-magit ivy org-roam-server org-roam ob-rust magit zenburn-theme treemacs spacemacs-theme rustic monokai-theme moe-theme lsp-ui gruvbox-theme company-lsp bind-key)))
+; '(package-selected-packages
+;   '(projectile-ripgrep projectile yaml-mode ox-pandoc use-package treemacs-all-the-icons treemacs-magit ivy org-roam-server org-roam ob-rust magit zenburn-theme treemacs spacemacs-theme rustic monokai-theme moe-theme lsp-ui gruvbox-theme company-lsp bind-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

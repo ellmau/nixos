@@ -99,12 +99,19 @@
      okular
      texlive.combined.scheme-full
      rustup
+     rust-analyzer
      usbutils
      starship
   ];
    
   #services.emacs.enable = true;
   #services.emacs.defaultEditor = true;
+
+  #nixpkgs.overlays = [
+  #  (import (builtins.fetchTarball {
+  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #  }))
+  #];
 
   environment.shells = [ pkgs.zsh ];
   environment.pathsToLink = [ "/share/zsh" ];
