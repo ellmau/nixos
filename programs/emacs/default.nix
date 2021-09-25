@@ -21,7 +21,11 @@ let
       #  gnupg
       #  nixpkgs-fmt
       #])
-      [(with epkgs.elpaPackages; [ auctex org flymake ])]
+      [(with epkgs.elpaPackages; [
+        auctex
+	org
+        flymake
+      ])]
       ++ (with epkgs.melpaStablePackages; [ ]) ++ (with epkgs.melpaPackages; [
         academic-phrases
         add-hooks
@@ -63,12 +67,6 @@ let
         use-package
         yaml-mode
       ]));
-      #]) ++ (with lpkgs; [
-      #  defaultencrypt
-      #  ligatures
-      #  javacc-mode
-      #  org-roam-ui
-      #] ++ lpkgs.packagesForBinaries));
 in
 {
   services.emacs = {
