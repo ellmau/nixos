@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./programs/emacs
+      ./programs/aspell.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -53,10 +54,16 @@
     enable = true;
     extraPackages = with pkgs; [
       rofi # launcher
-      polybar # bar
+      polybarFull # bar
       i3lock # lock screen
+      xss-lock
     ];
   };
+
+  services.gnome.gnome-keyring.enable = true;
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true; 
   
 
   # Configure keymap in X11
@@ -89,7 +96,7 @@
    environment.systemPackages = with pkgs; [
      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      #emacs
-     aspell
+     #aspell
      emacs-all-the-icons-fonts	
      wget
      firefox
@@ -101,17 +108,12 @@
      rustup
      rust-analyzer
      usbutils
-     starship
+     gcc
+     clang
   ];
    
   #services.emacs.enable = true;
   #services.emacs.defaultEditor = true;
-
-  #nixpkgs.overlays = [
-  #  (import (builtins.fetchTarball {
-  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  #  }))
-  #];
 
   environment.shells = [ pkgs.zsh ];
   environment.pathsToLink = [ "/share/zsh" ];
