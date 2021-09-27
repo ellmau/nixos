@@ -62,6 +62,11 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  services.dbus = {
+    enable = true;
+    packages = with pkgs; [ gnome3.dconf ];
+  };
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true; 
   
