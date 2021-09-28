@@ -21,7 +21,8 @@
       shellAliases = {
         cp = "cp -i";
         ls = "exa --icons";
-        ll = "exa --long --icons --grid --binary --group";
+        ll = "exa --long --icons --binary --group";
+        llg = "exa --long --icons --grid --binary --group";
         lal = "ll --all";
         lla = "ll --all";
       };

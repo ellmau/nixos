@@ -67,6 +67,8 @@
     packages = with pkgs; [ gnome3.dconf ];
   };
 
+  programs.dconf.enable = true;
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true; 
   
@@ -115,6 +117,8 @@
      usbutils
      gcc
      clang
+     keepassxc
+     gnome.libsecret
   ];
    
   #services.emacs.enable = true;
