@@ -232,6 +232,9 @@ bindsym $mod+BackSpace mode "$mode_system"
 # keyboard layout toggle
 bindsym Mod1+space exec --no-startup-id .config/i3/keyboard_layout_toggle.sh
 
+# autostart keepassxc
+exec --no-startup-id .config/i3/keepassxc.sh
+
 # application specific stuff
 for_window[class="KeePassXC"] floating enable
 #assign [class="KeePassXC"] $ws5
