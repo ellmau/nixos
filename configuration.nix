@@ -119,7 +119,8 @@
      clang
      keepassxc
      gnome.libsecret
-  ];
+   ];
+
    
   #services.emacs.enable = true;
   #services.emacs.defaultEditor = true;

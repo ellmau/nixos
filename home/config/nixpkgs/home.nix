@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports =
     [
@@ -10,7 +10,17 @@
   home.packages = [
     pkgs.htop
     pkgs.pavucontrol
+    
+    pkgs.jitsi-meet-electron
+    pkgs.skypeforlinux
+    pkgs.zoom-us
   ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "zoom"
+    "skypeforlinux"
+  ];
+  
 
   services = {
     udiskie = {
