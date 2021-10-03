@@ -1,8 +1,12 @@
 (require 'package)
-(setq package-enable-at-startup nil)
-(package-initialize)
+;;(setq package-enable-at-startup nil)
+;;(package-initialize)
 
 (load-theme 'spacemacs-dark t)
+;; (load-theme 'wombat t)
+;;(use-package solarized-theme
+;;  :init
+;;  (load-theme 'solarized-selenized-black t))
 
 ;; Tab-width
 (setq tab-width 2)
@@ -29,43 +33,72 @@
 ;; ;;;;;;;;;;;;;;;       org-mode        ;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(bind-key "C-c l" 'org-toggle-link-display) ;shows org links in plain text
-(require 'org-roam)
-(require 'org-roam-protocol)
-(require 'ox-md)
-(setq org-roam-directory "~/org-notes")
-(setq org-roam-dailies-directory "~/org-notes/daily")
-(add-hook 'after-init-hook 'org-roam-mode) ;init org-roam at startup
-(bind-key [f8] 'org-roam-jump-to-index) ;jump to org roam index
-(bind-key "C-c n f" 'org-roam-find-file) ; find a note
-(bind-key "C-c n c" 'org-roam-capture) ; create a note
-(bind-key "C-c n i" 'org-roam-insert) ;insert a link
-(bind-key "C-c n l" 'org-roam-insert) ;insert a link
-(bind-key "C-c n b" 'org-roam) ;shows backlink window
-(bind-key "C-c n t" 'org-roam-tag-add) ;adds an org roam tag
-(bind-key "C-c n d" 'org-roam-dailies-capture-date) ;adds notes to daily event cards
+;; (bind-key "C-c l" 'org-toggle-link-display) ;shows org links in plain text
+;; (require 'org-roam)
+;; ;;(require 'org-roam-protocol)
+;; ;;(require 'ox-md)
+;; (setq org-roam-directory "~/org-notes")
+;; (setq org-roam-dailies-directory "~/org-notes/daily")
+;; ;(add-hook 'after-init-hook 'org-roam-mode) ;init org-roam at startup
+;; (bind-key [f8] 'org-roam-jump-to-index) ;jump to org roam index
+;; (bind-key "C-c n f" 'org-roam-node-file) ; find a note
+;; (bind-key "C-c n c" 'org-roam-capture) ; create a note
+;; (bind-key "C-c n i" 'org-roam-node-insert) ;insert a link
+;; (bind-key "C-c n l" 'org-roam-node-insert) ;insert a link
+;; (bind-key "C-c n b" 'org-roam-buffer-toggle) ;shows backlink window
+;; (bind-key "C-c n t" 'org-roam-tag-add) ;adds an org roam tag
+;; (bind-key "C-c n d" 'org-roam-dailies-capture-date) ;adds notes to daily event cards
 
+;; ;;(setq org-roam-completion-system 'ivy)
 
-(setq org-roam-completion-system 'ivy)
+;; (setq org-roam-capture-templates
+;;       '(("d" "default" plain (function org-roam--capture-get-point)
+;;  	 "%?"
+;;  	 :file-name "%<%Y%m%d%H%M%S>-${slug}"
+;;  	 :head "#+title: ${title}\n#+roam_tags: %^{org-roam-tags}\n"
+;;  	 :unnarrowed t)))
 
-(setq org-roam-capture-templates
-			'(("d" "default" plain (function org-roam--capture-get-point)
-				 "%?"
-				 :file-name "%<%Y%m%d%H%M%S>-${slug}"
-				 :head "#+title: ${title}\n#+roam_tags: %^{org-roam-tags}\n"
-				 :unnarrowed t)))
+;; (setq org-roam-server-host "127.0.0.1"
+;;       org-roam-server-port 8080
+;;       org-roam-server-authenticate nil
+;;       org-roam-server-export-inline-images t
+;;       org-roam-server-serve-files nil
+;;       org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+;;       org-roam-server-network-poll t
+;;       org-roam-server-network-arrows nil
+;;       org-roam-server-network-label-truncate t
+;;       org-roam-server-network-label-truncate-length 60
+;;       org-roam-server-network-label-wrap-length 20)
 
-(setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20)
+(use-package org-bullets
+  :defer t
+  :commands org-bullets-mode
+  :hook (org-mode . org-bullets-mode))
+(use-package org-roam
+  :custom
+  (org-roam-directory (file-truename "~/org-notes"))
+  :bind
+  (("C-c n l" . org-roam-buffer-toggle)
+   ("C-c n f" . org-roam-node-find)
+   ("C-c n g" . org-roam-graph)
+   ("C-c n i" . org-roam-node-insert)
+   ("C-c n c" . org-roam-capture)
+   ("C-c n j" . org-roam-dailies-capture-today)
+   ("C-c n d" . org-roam-dailies-capture-date))
+  
+  :init
+  (setq org-roam-v2-ack t)
+  (require 'org-roam-protocol)
+  :config
+  (org-roam-db-autosync-mode))
+;; (use-package org-roam-ui
+;;   :after org-roam
+;;   :custom
+;;   (org-roam-ui-sync-theme t)
+;;   (org-roam-ui-follow)
+;;   (org-roam-ui-update-on-save t)
+;;   (org-roam-ui-open-on-start t))
+(define-key org-roam-mode-map [mouse-1] #'org-roam-visit-thing)
 
 ;; tally-list
 (defun coffee-tally-add (n)
@@ -74,6 +107,22 @@
    nil "COFFEETALLY"
    (format "%s" (+ n (string-to-number
                       (or (org-entry-get nil "COFFEETALLY") "0"))))))
+
+(cl-defmethod org-roam-node-directories ((node org-roam-node))
+  (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
+      (format "(%s)" (car (f-split dirs)))
+    ""))
+
+(cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+  (let* ((count (caar (org-roam-db-query
+                       [:select (funcall count source)
+                                :from links
+                                :where (= dest $s1)
+                                :and (= type "id")]
+                       (org-roam-node-id node)))))
+    (format "[%d]" count)))
+(setq org-roam-node-display-template "${directories:10} ${tags:10} ${title:100} ${backlinkscount:6}")
+
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,9 +142,14 @@
 
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(inhibit-startup-screen t)
- '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/"))
- )
+ '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
+ '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/")))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;
@@ -104,7 +158,7 @@
 (add-hook 'LateX-mode-hook 'turn-on-reftex)
 ;; auctex
 (load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+;(load "preview-latex.el" nil t t)
 (setq TeX-toggle-debug-warnings t)
 (setq TeX-toggle-debug-bad-boxes t)
 (setq TeX-PDF-mode t)
@@ -176,7 +230,7 @@
    '(".projectile" ".hg" "_darcs" ".fslckout" "_FOSSIL_" ".bzr" ".git")))
 (use-package projectile-ripgrep
   :bind (:map projectile-command-map
-              ("s s" . 'projectile-ripgrep))
+	      ("s s" . 'projectile-ripgrep))
   :after projectile)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -189,13 +243,8 @@
 
 ;; company mode
 (add-hook 'rustic-mode-hook 'company-mode)
+(add-hook 'rustic-mode-hook 'flymake-mode)
 
-
-;; lsp mode
-
-(setq lsp-rust-analyzer-server-display-inlay-hints t)
-(setq lsp-rust-analyzer-cargo-watch-command "clippy")
-(setq lsp-keymap-prefix "C-l")
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;       beacon         ;;;;;;;;;;;;;;;;;
@@ -217,38 +266,32 @@
   (beacon-size 16))
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
-; '(package-selected-packages
-;   '(projectile-ripgrep projectile yaml-mode ox-pandoc use-package treemacs-all-the-icons treemacs-magit ivy org-roam-server org-roam ob-rust magit zenburn-theme treemacs spacemacs-theme rustic monokai-theme moe-theme lsp-ui gruvbox-theme company-lsp bind-key)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 (use-package highlight-indentation
   :diminish highlight-indentation-mode
   :commands highlight-indentation-mode
   :defer t
-  :hook ((text-mode prog-mode) . highlight-indentation-mode))
+  :hook ((text-mode prog-mode) . highlight-indentation-mode)
+  :init
+  (progn
+    (defun set-hl-indent-color ()
+      (set-face-background 'highlight-indentation-face "#e3e3d3")
+      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+  ))
+
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark/all-like-this)))
 
-
-;; direnv
-(use-package direnv
+;; yas
+(use-package yasnippet
+  :defer t
+  :diminish yas-minor-mode
   :config
-  (direnv-mode t))
+  (yas-global-mode t))
 
 ;; dap
 (use-package dap-mode
@@ -302,6 +345,7 @@
            ;; ruby-mode
            rust-mode
            ;; sql-mode
+	   rustic
            typescript-mode
            vue-mode
            ;; xml-mode
@@ -314,12 +358,16 @@
                         (lsp-mode t)))))
   :diminish eldoc-mode
   :custom
-  (lsp-keymap-prefix "C-c")
+  ;(lsp-keymap-prefix "C-c")
   (lsp-eldoc-render-all t)
   (lsp-file-watch-threshold 5000)
   (lsp-ui-doc-border "#586e75")
   (lsp-ui-doc-header t)
-  (lsp-ui-doc-include-signature t))
+  (lsp-ui-doc-include-signature t)
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-rust-analyzer-inlay-hints-mode t)
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-keymap-prefix "C-l"))
   ;:custom-face
   ;(lsp-ui-sideline-code-action ((t (:foreground "#b58900"))))
   ;(lsp-ui-sideline-current-symbol ((t (:foreground "#d33682" :box (:line-width -1 :color "#d33682") :weight ultra-bold :height 0.99)))))
@@ -330,3 +378,9 @@
   :commands
   (academic-phrases
    academic-phrases-by-section))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
