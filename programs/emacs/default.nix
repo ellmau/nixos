@@ -7,14 +7,13 @@ let
   #  mkdir -p $out/share/emacs/site-lisp
   #  cp ${defaultEl} $out/share/emacs/site-lisp/default.el
   #'';
-  
   emacsPackage = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages
     (epkgs:
-      #let
-      #  lpkgs = import ./packages.nix {
-      #    inherit config lib pkgs epkgs;
-      #  };
-      #in
+      let
+        lpkgs = import ./packages.nix {
+          inherit config lib pkgs epkgs;
+        };
+      in
       #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
       #  aspell
       #  emacs-all-the-icons-fonts
@@ -73,7 +72,7 @@ let
         use-package
         yaml-mode
         yasnippet
-      ]));
+      ] ++ (with lpkgs; [org-roam-ui])));
 in
 {
   services.emacs = {
