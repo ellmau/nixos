@@ -3,10 +3,10 @@
 let
   defaultEl = ./default.el;
 
-  # defaultConfig = pkgs.runCommand "default.el" { } ''
-  #  mkdir -p $out/share/emacs/site-lisp
-  #  cp ${defaultEl} $out/share/emacs/site-lisp/default.el
-  #'';
+  defaultConfig = pkgs.runCommand "default.el" { } ''
+     mkdir -p $out/share/emacs/site-lisp
+     cp ${defaultEl} $out/share/emacs/site-lisp/default.el
+  '';
   emacsPackage = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages
     (epkgs:
       let
@@ -20,13 +20,14 @@ let
       #  gnupg
       #  nixpkgs-fmt
       #])
-      #[(defaultConfig)] ++
+      [(defaultConfig)] ++
       [(with epkgs.elpaPackages; [
         auctex
 	      org
         flymake
       ])]
       ++ (with epkgs.melpaStablePackages; [ ]) ++ (with epkgs.melpaPackages; [
+        ac-helm
         academic-phrases
         add-hooks
         alert
@@ -47,7 +48,14 @@ let
         flycheck
         free-keys
         highlight-indentation
-	      ivy
+        helm
+        helm-bbdb
+        helm-company
+        helm-flx
+        helm-descbinds
+        helm-lsp
+        helm-projectile
+        helm-rg
         json-mode
         less-css-mode
         lsp-mode

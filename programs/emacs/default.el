@@ -21,12 +21,69 @@
 (add-hook 'LaTeX-mode-hook '(lambda () (flyspell-mode 1)))
 
 ;; ido
-(ido-mode 1)
-(setq ido-enable-flex-matching t); flexible matching
-(define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil) ;do not suggest name when save as
+;(ido-mode 1)
+;(setq ido-enable-flex-matching t); flexible matching
+;(define-key (cdr ido-minor-mode-map-entry) [remap write-file] nil) ;do not suggest name when save as
 ;; make ido show suggestions one per line and not in one line
 ;; (make-local-variable 'ido-decorations)
 ;; (setf (nth 2 ido-decorations) "\n")
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;         helm         ;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; helm
+(use-package helm
+  :after (helm-flx helm-descbinds helm-projectile)
+  :bind-keymap (("C-c h" . helm-command-prefix))
+  :bind (("M-x" . helm-M-x)
+         ("M-y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("C-h SPC" . helm-all-mark-rings)
+         ;; :map helm-command-prefix
+         ;; ("g" . helm-google-suggest)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action)
+         ("C-i" . helm-execute-persistent-action)
+         ("C-z" . helm-select-action)
+         :map minibuffer-local-map
+         ("C-c C-l" . helm-minibuffer-history))
+  :diminish helm-mode
+  :custom
+  (helm-adaptive-mode t nil (helm-adaptive))
+  (helm-buffers-fuzzy-matching t)
+  (helm-ff-file-name-history-use-recentf t)
+  (helm-ff-search-library-in-sexp t)
+  (helm-ff-skip-boring-files t)
+  (helm-locate-fuzzy-match t)
+  (helm-mode t)
+  (helm-move-to-line-cycle-in-source t)
+  (helm-net-prefer-curl t)
+  (helm-recentf-fuzzy-match t)
+  (helm-scroll-amount 8)
+  (helm-split-window-in-side-p t)
+  (helm-boring-file-regexp-list
+   '("\\.hi$" "\\.o$" "~$" "\\.bin$" "\\.lbin$" "\\.so$" "\\.a$" "\\.ln$" "\\.blg$" "\\.bbl$" "\\.elc$" "\\.lof$" "\\.glo$" "\\.idx$" "\\.lot$" "\\.svn$" "\\.hg$" "\\.git$" "\\.bzr$" "CVS$" "_darcs$" "_MTN$" "\\.fmt$" "\\.tfm$" "\\.class$" "\\.fas$" "\\.lib$" "\\.mem$" "\\.x86f$" "\\.sparcf$" "\\.dfsl$" "\\.pfsl$" "\\.d64fsl$" "\\.p64fsl$" "\\.lx64fsl$" "\\.lx32fsl$" "\\.dx64fsl$" "\\.dx32fsl$" "\\.fx64fsl$" "\\.fx32fsl$" "\\.sx64fsl$" "\\.sx32fsl$" "\\.wx64fsl$" "\\.wx32fsl$" "\\.fasl$" "\\.ufsl$" "\\.fsl$" "\\.dxl$" "\\.lo$" "\\.la$" "\\.gmo$" "\\.mo$" "\\.toc$" "\\.aux$" "\\.cp$" "\\.fn$" "\\.ky$" "\\.pg$" "\\.tp$" "\\.vr$" "\\.cps$" "\\.fns$" "\\.kys$" "\\.pgs$" "\\.tps$" "\\.vrs$" "\\.pyc$" "\\.pyo$" "\\.synctex\\.gz$"))
+  :custom-face
+  (helm-selection ((t (:inherit region :foreground "#2aa198"))))
+  (helm-source-header ((t (:foreground "#eee8d5" :background "#073642"))))
+  :config
+  (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+  (helm-flx-mode t)
+  (helm-descbinds-mode t))
+(use-package helm-rg
+  :defer t
+  :bind (:map projectile-mode-map
+              ("<remap> <projectile-rg>" . helm-projectile-rg))
+  :after (helm projectile))
+(use-package helm-config
+  :ensure helm)
+(use-package helm-flx)
+(use-package helm-bbdb)
+(use-package helm-descbinds)
+(use-package helm-projectile)
+(use-package helm-company)
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
