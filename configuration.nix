@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./machine/current/hardware-configuration.nix
+      ./machine/current/default.nix
       ./programs/emacs
       ./programs/aspell.nix
     ];
@@ -17,7 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nucturne"; # Define your hostname.
+  # networking.hostName = "nucturne"; # Define your hostname. - done in machine/current/default.nix
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   #networking.networkmanager.unmanaged = [ "enp0s20f0u4u1u3" ];
