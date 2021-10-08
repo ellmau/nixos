@@ -27,7 +27,8 @@ set $mod Mod4
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+set $i3lockwall i3lock --nofork -i ~/.background-image -f -e
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $i3lockwall
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -207,9 +208,6 @@ bindsym $mod+r mode "resize"
 #}
 #exec_always --no-startup-id polybar
 exec_always --no-startup-id systemctl --user start polybar.service
-
-# lockscreen
-set $i3lockwall i3lock -f -t --nofork #-i ~/Pictures/matrix-manjaro.png --nofork
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (CTRL+e) logout, (CTRL+r) reboot, (CTRL+s) shutdown

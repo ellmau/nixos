@@ -44,6 +44,33 @@
               background = foreground_col;
             };
           };
+          "bar/aux" = {
+            font = [
+              "Hasklig:style=Regular"
+              "all-the-icons:style=Regular"
+              "Webdings:style=Regular"
+              "Noto Emoji:scale=10"
+              "Unifont:style=Regular"
+              "Material Icons:size=12;0"
+              "Weather Icons:size=12;0"
+              "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
+            ];
+            modules = {
+              left = "i3";
+              center = "";
+              right = " xbacklight xkeyboard eth wlan battery date powermenu volume ";
+            };
+
+            background = background_col;
+            foreground = foreground_col;
+
+            monitor = ''
+          ''${env:MONITOR:}
+        '';
+            width = "100%";
+            module-margin = 1;
+          };
+          
           "module/volume" = {
             type = "internal/pulseaudio";
             format.volume = "<ramp-volume> <label-volume>";
@@ -142,7 +169,7 @@
             format-connected = " <label-connected>";
             format-connected-prefix-foreground = foreground_altcol;
             label-connected = "%local_ip%";
-                    
+            
             format-disconnected = "";
             format-disconnected-background = "#5479b7";
             #;format-disconnected = <label-disconnected>
@@ -257,9 +284,12 @@
           };
         };
     script = ''
-    for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-            MONITOR=$m polybar --reload main &
-          done;
+    for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+      MONITOR=$m polybar --reload main &
+    done;
+    for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep -v '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+      MONITOR=$m polybar --reload aux &
+    done;
     '';
   };
 }

@@ -148,13 +148,13 @@
   (require 'org-roam-protocol)
   :config
   (org-roam-db-autosync-mode))
-;; (use-package org-roam-ui
-;;   :after org-roam
-;;   :custom
-;;   (org-roam-ui-sync-theme t)
-;;   (org-roam-ui-follow)
-;;   (org-roam-ui-update-on-save t)
-;;   (org-roam-ui-open-on-start t))
+ (use-package org-roam-ui
+   :after org-roam
+   :custom
+   (org-roam-ui-sync-theme t)
+   (org-roam-ui-follow)
+   (org-roam-ui-update-on-save t)
+   (org-roam-ui-open-on-start t))
 (define-key org-roam-mode-map [mouse-1] #'org-roam-visit-thing)
 
 ;; tally-list
