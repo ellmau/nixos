@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./machine/current/hardware-configuration.nix
       ./programs/emacs
       ./programs/aspell.nix
     ];
