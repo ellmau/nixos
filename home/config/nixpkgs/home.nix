@@ -7,6 +7,8 @@
       ./zsh.nix
       ./nextcloud.nix
       ./autorandr.nix
+      ./git.nix
+      ./gpg.nix
     ];
   home.packages = [
     pkgs.htop
