@@ -13,6 +13,8 @@
   home.packages = [
     pkgs.htop
     pkgs.pavucontrol
+
+    pkgs.jabref
     
     pkgs.jitsi-meet-electron
     pkgs.skypeforlinux
