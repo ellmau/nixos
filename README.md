@@ -13,3 +13,6 @@
 * generate home-instance
 * add unlock-secret to secret-store (secret-tool store --label='keepassxc' keepass unlock)
 * add certs and keyfiles
+
+## Hardware specifics
+	https://github.com/NixOS/nixos-hardware

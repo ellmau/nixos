@@ -234,8 +234,8 @@ bindsym Mod1+space exec --no-startup-id .config/i3/keyboard_layout_toggle.sh
 exec --no-startup-id .config/i3/keepassxc.sh
 
 # autostart other stuff
-exec --no-startup-id i3-msg 'workspace 4: comms; exec signal-desktop'
-exec --no-startup-id i3-msg 'workspace 4: comms; exec element-desktop'
+#exec --no-startup-id i3-msg 'workspace 4: comms; exec signal-desktop'
+#exec --no-startup-id i3-msg 'workspace 4: comms; exec element-desktop'
 
 # application specific stuff
 for_window[class="KeePassXC"] floating enable

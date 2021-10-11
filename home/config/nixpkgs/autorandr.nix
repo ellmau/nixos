@@ -42,13 +42,15 @@
             crtc = 0;
             position = "3840x0";
             mode = "3840x2160";
-            dpi = 288;
+            #dpi = 288;
+            dpi = 96;
           };
           DP-2 = {
             enable = true;
             primary = true;
             mode = "3840x2160";
-            dpi = 144;
+            #dpi = 144;
+            dpi = 96;
             position = "0x0";
           };
         };

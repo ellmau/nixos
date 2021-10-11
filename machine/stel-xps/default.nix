@@ -1,5 +1,8 @@
 { config, pkgs, ...}:
 {
+  imports = [
+    ./dell-specific.nix
+  ];
   networking.hostName = "stel-xps"; # define the hostname
 
   environment.systemPackages = with pkgs; [
