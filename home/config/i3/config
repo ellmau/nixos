@@ -123,7 +123,7 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 :gen"
+set $ws1 "1: gen"
 set $ws2 "2: web"
 set $ws3 "3: misc"
 set $ws4 "4: comms"
@@ -232,6 +232,10 @@ bindsym Mod1+space exec --no-startup-id .config/i3/keyboard_layout_toggle.sh
 
 # autostart keepassxc
 exec --no-startup-id .config/i3/keepassxc.sh
+
+# autostart other stuff
+exec --no-startup-id i3-msg 'workspace 4: comms; exec signal-desktop'
+exec --no-startup-id i3-msg 'workspace 4: comms; exec element-desktop'
 
 # application specific stuff
 for_window[class="KeePassXC"] floating enable

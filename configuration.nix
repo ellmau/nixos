@@ -110,7 +110,7 @@
      firefox
      alacritty
      git
-     thunderbird
+     thunderbird-91
      okular
      texlive.combined.scheme-full
      rustup
@@ -120,6 +120,8 @@
      clang
      keepassxc
      gnome.libsecret
+     arandr
+     rnix-lsp
    ];
 
    
