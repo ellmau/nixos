@@ -27,7 +27,6 @@
     "zoom"
     "skypeforlinux"
   ];
-  
 
   services = {
     udiskie = {
