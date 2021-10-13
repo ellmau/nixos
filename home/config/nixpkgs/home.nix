@@ -15,6 +15,8 @@
     pkgs.pavucontrol
 
     pkgs.jabref
+    pkgs.libreoffice-fresh
+    
     
     pkgs.jitsi-meet-electron
     pkgs.skypeforlinux
