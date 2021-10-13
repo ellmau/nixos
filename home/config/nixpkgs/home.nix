@@ -47,6 +47,15 @@
     enable = true;
   };
 
+  xsession = {
+    numlock.enable = true;
+    profileExtra = ''
+      if [ $(hostname) = 'stel-xps' ]; then
+        autorandr -c
+      fi
+    '';
+  };
+
   home.file.".background-image".source = ./common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
   
   
