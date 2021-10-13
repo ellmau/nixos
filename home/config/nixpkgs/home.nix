@@ -51,7 +51,6 @@
     numlock.enable = true;
     profileExtra = ''
       if [ $(hostname) = 'stel-xps' ]; then
-        autorandr -c
         brightnessctl s 50%
       fi
     '';

@@ -58,7 +58,13 @@
       polybarFull # bar
       i3lock # lock screen
       xss-lock
+      autorandr
     ];
+    extraSessionCommands = ''
+      if [ $(hostname) = 'stel-xps' ]; then
+        ${pkgs.autorandr}/bin/autorandr -c
+      fi
+    '';
   };
 
   services.gnome.gnome-keyring.enable = true;
