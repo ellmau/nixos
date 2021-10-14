@@ -20,7 +20,7 @@
     '';
       shellAliases = {
         cp = "cp -i";
-        ls = "exa --icons";
+        ls = "exa --icons --git";
         ll = "exa --long --icons --binary --group";
         llg = "exa --long --icons --grid --binary --group";
         lal = "ll --all";
