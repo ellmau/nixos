@@ -2,11 +2,15 @@
 ;;(setq package-enable-at-startup nil)
 ;;(package-initialize)
 
-(load-theme 'spacemacs-dark t)
+;; (load-theme 'spacemacs-dark t)
 ;; (load-theme 'wombat t)
-;;(use-package solarized-theme
-;;  :init
-;;  (load-theme 'solarized-selenized-black t))
+(use-package solarized-theme
+  :init
+  (load-theme 'solarized-selenized-light t))
+
+;; (use-package vscode-dark-plus-theme
+;;  :config
+;;  (load-theme 'vscode-dark-plus t))
 
 ;; Tab-width
 (setq tab-width 2)
@@ -205,8 +209,16 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(inhibit-startup-screen t)
+ '(show-paren-mode t)
+ '(show-paren-style 'mixed)
  '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
- '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/")))
+ '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/"))
+ '(size-indication-mode)
+ '(line-number-mode t)
+ '(epg-gpg-program (executable-find "gpg2"))
+ '(epg-gpgsm-program (executable-find "gpgsm"))
+ '(user-full-name "Stefan Ellmauthaler")
+ '(user-mail-address "stefan.ellmauthaler@tu-dresden.de"))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;

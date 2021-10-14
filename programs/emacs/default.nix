@@ -78,8 +78,10 @@ let
         sparql-mode
         sudo-edit
         use-package
+        #vscode-dark-plus-theme
         yaml-mode
         yasnippet
+        #zenburn-theme
       ] ++ (with lpkgs; [org-roam-ui])));
 in
 {
