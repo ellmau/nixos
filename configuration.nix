@@ -122,7 +122,7 @@
      rustup
      rust-analyzer
      usbutils
-     gcc
+     #gcc
      clang
      keepassxc
      gnome.libsecret

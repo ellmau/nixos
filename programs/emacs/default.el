@@ -383,6 +383,18 @@
   :custom
   (flyspell-mode-line-string nil))
 
+;; pasp
+(use-package pasp-mode)
+
+;; sparql
+(use-package sparql-mode)
+
+;; json
+(use-package json-mode
+  :defer t
+  :mode "\\.json\\'"
+  :hook (json-mode-hook . yas-minor-mode))
+
 ;; lsp
 (use-package lsp-mode
   :after flycheck
@@ -452,4 +464,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+  '(default ((t (:slant normal :weight normal :height 144 :width normal :foundry "unknown" :family "Hasklug Nerd Font"))))
  )

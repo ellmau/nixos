@@ -7,7 +7,7 @@
       ./git.nix
       ./gpg.nix
       ./i3.nix
-      ./nextcloud.nixg
+      ./nextcloud.nix
       ./polybar.nix
       ./zsh.nix
     ];
