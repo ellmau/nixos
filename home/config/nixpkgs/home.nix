@@ -2,14 +2,14 @@
 {
   imports =
     [
-      ./polybar.nix
-      ./dunst.nix
-      ./zsh.nix
-      ./i3.nix
-      ./nextcloud.nix
       ./autorandr.nix
+      ./dunst.nix
       ./git.nix
       ./gpg.nix
+      ./i3.nix
+      ./nextcloud.nixg
+      ./polybar.nix
+      ./zsh.nix
     ];
   home.packages = [
     pkgs.htop
