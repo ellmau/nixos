@@ -5,6 +5,7 @@
       ./polybar.nix
       ./dunst.nix
       ./zsh.nix
+      ./i3.nix
       ./nextcloud.nix
       ./autorandr.nix
       ./git.nix
@@ -16,7 +17,11 @@
 
     pkgs.jabref
     pkgs.libreoffice-fresh
-    
+
+    pkgs.nixfmt
+    pkgs.nixpkgs-fmt
+
+    pkgs.neofetch
     
     pkgs.jitsi-meet-electron
     pkgs.skypeforlinux
