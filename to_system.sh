@@ -9,3 +9,4 @@ cp -r machine/stel-xps /etc/nixos/machine/.
 cp -r machine/nucturne /etc/nixos/machine/.
 
 cp -r ./home/config/* /home/ellmau/.config/.
+chown -R ellmau:users /home/ellmau/.config/.

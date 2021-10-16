@@ -61,9 +61,7 @@
       autorandr
     ];
     extraSessionCommands = ''
-      if [ $(hostname) = 'stel-xps' ]; then
-        ${pkgs.autorandr}/bin/autorandr -c
-      fi
+      ${pkgs.autorandr}/bin/autorandr -c
     '';
   };
 
