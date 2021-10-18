@@ -311,9 +311,20 @@
 ;(push 'rustic-clippy flycheck-checkers)
 
 ;; company mode
-(add-hook 'rustic-mode-hook 'company-mode)
-(add-hook 'rustic-mode-hook 'flymake-mode)
-
+;(add-hook 'rustic-mode-hook 'company-mode)
+;(add-hook 'rustic-mode-hook 'flymake-mode)
+(use-package rustic
+  :after lsp
+  :config
+  (add-to-list 'flycheck-checkers 'rustic-clippy)
+  (flycheck-add-next-checker 'lsp 'rustic-clippy)
+  :custom
+  (rustic-format-trigger 'on-save)
+  (rustic-flycheck-clippy-params "--message-format=json")
+  :hook
+  (rustic-mode . company-mode)
+  (rustic-mode . flymake-mode)
+  )
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;       beacon         ;;;;;;;;;;;;;;;;;
