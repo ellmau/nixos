@@ -211,6 +211,7 @@
  '(inhibit-startup-screen t)
  '(show-paren-mode t)
  '(show-paren-style 'mixed)
+ '(blink-matching-paren 'infoline)
  '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
  '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/"))
  '(size-indication-mode)
@@ -311,19 +312,21 @@
 ;(push 'rustic-clippy flycheck-checkers)
 
 ;; company mode
-;(add-hook 'rustic-mode-hook 'company-mode)
-;(add-hook 'rustic-mode-hook 'flymake-mode)
+;;(add-hook 'rustic-mode-hook 'company-mode)
+;;(add-hook 'rustic-mode-hook 'flymake-mode)
+
 (use-package rustic
-  :after lsp
+  :after lsp-mode
   :config
   (add-to-list 'flycheck-checkers 'rustic-clippy)
-  (flycheck-add-next-checker 'lsp 'rustic-clippy)
+  (lsp-diagnostics-flycheck-enable)
+  ;;(flycheck-add-next-checker 'lsp 'rustic-clippy)
   :custom
   (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
   :hook
   (rustic-mode . company-mode)
-  (rustic-mode . flymake-mode)
+  ;;(rustic-mode . flymake-mode)
   )
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -408,6 +411,7 @@
 
 ;; lsp
 (use-package lsp-mode
+  :demand t
   :after flycheck
   :commands lsp
   :preface
@@ -417,31 +421,31 @@
            cmake-mode
            c++-mode
            css-mode
-           ;; dockerfile-mode
+           dockerfile-mode
            js2-mode
            f90-mode
            html-mode
            haskell-mode
            java-mode
            json-mode
-           ;; lua-mode
-           ;; markdown-mode
+           lua-mode
+           markdown-mode
            nix-mode
            ;; ocaml-mode
            ;; pascal-mode
            ;; perl-mode
            ;; php-mode
-           ;; prolog-mode
+           prolog-mode
            python-mode
            ;; ess-mode
            ;; ruby-mode
            rust-mode
-           ;; sql-mode
+           sql-mode
 	   rustic
            typescript-mode
            vue-mode
            ;; xml-mode
-           ;; yaml-mode
+           yaml-mode
            web-mode
            ) . lsp)
          (lsp-mode . flycheck-mode)
@@ -453,6 +457,7 @@
   ;(lsp-keymap-prefix "C-c")
   (lsp-eldoc-render-all t)
   (lsp-file-watch-threshold 5000)
+  (lsp-ui-doc-enable nil)
   (lsp-ui-doc-border "#586e75")
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
@@ -463,6 +468,9 @@
   ;:custom-face
   ;(lsp-ui-sideline-code-action ((t (:foreground "#b58900"))))
   ;(lsp-ui-sideline-current-symbol ((t (:foreground "#d33682" :box (:line-width -1 :color "#d33682") :weight ultra-bold :height 0.99)))))
+(use-package lsp-diagnostics
+  :after lsp-mode
+  :commands lsp-diagnostics-flycheck-enable)
 
 ;; misc
 (use-package academic-phrases
