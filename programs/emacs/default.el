@@ -326,6 +326,7 @@
   (rustic-flycheck-clippy-params "--message-format=json")
   :hook
   (rustic-mode . company-mode)
+  (rustic . rust-analyzer-hint-mode)
   ;;(rustic-mode . flymake-mode)
   )
 
@@ -455,7 +456,7 @@
   :diminish eldoc-mode
   :custom
   ;(lsp-keymap-prefix "C-c")
-  (lsp-eldoc-render-all t)
+  (lsp-eldoc-render-all nil)
   (lsp-file-watch-threshold 5000)
   (lsp-ui-doc-enable nil)
   (lsp-ui-doc-border "#586e75")
@@ -471,6 +472,8 @@
 (use-package lsp-diagnostics
   :after lsp-mode
   :commands lsp-diagnostics-flycheck-enable)
+
+(use-package lsp-ui)
 
 ;; misc
 (use-package academic-phrases

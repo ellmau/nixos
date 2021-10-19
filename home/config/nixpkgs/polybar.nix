@@ -27,7 +27,7 @@
             modules = {
               left = "i3";
               center = "";
-              right = " xbacklight xkeyboard eth wlan battery date powermenu volume ";
+              right = " xbacklight xkeyboard eth wlan battery date powermenu dunst volume ";
             };
 
             background = background_col;
@@ -281,6 +281,13 @@
             bar-empty = "─";
             bar-empty-font = "2";
             bar-empty-foreground = foreground_altcol;
+          };
+
+          "module/dunst" = {
+            type = "custom/script";
+            exec = "PATH=${pkgs.dbus}/bin/:$PATH ${pkgs.dunst}/bin/dunstctl is-paused | ${pkgs.gnugrep}/bin/grep -q true && echo   || echo  ";
+            interval = 10;
+            click-left = "PATH=${pkgs.dbus}/bin/:$PATH ${pkgs.dunst}/bin/dunstctl set-paused toggle";
           };
         };
     script = ''
