@@ -5,12 +5,32 @@
     package = pkgs.polybarFull;
     settings =
       let
-        background_col = "#120030";
-        foreground_col = "#9e66ff";
+        # solarized theme colours ~ https://en.wikipedia.org/wiki/Solarized
+
+        #content tones
+        Base01 = "#586e75";
+        Base00 = "#657b83";
+        Base0 = "#839496";
+        Base1 = "#93a1a1";
+        Base2 = "#eee8d5";
+        # accent tones
+        Base3 = "#fdf6e3";
+        Yellow = "#b58900";
+        Orange = "#cb4b16";
+        Red = "#dc322f";
+        Magenta = "#d33682";
+        Violet = "#6c71c4";
+        Blue = "#268bd2";
+        Cyan = "#2aa198";
+        Green = "#859900";
+
+        # old bg/fg stuff
+        foreground_col = "#eee8d5";
+        background_col = "#6c71c4";
         foreground_altcol = "#66deff";
         primary_col = "#ffb52a";
         secondary_col = "#e60053";
-        alert_col = "#bd2c40";
+        alert_col = "#dc322f";
       in
         {
           "bar/main" = {
@@ -37,7 +57,10 @@
           ''${env:MONITOR:}
         '';
             width = "100%";
+            padding = 1;
+            radius = 14;
             module-margin = 1;
+            line-size = 2;
             tray = {
               position = "right";
               padding = 2;
@@ -97,13 +120,14 @@
             #;label-focused-background = ${colors.background-alt}
             #;label-focused-background = #9f78e1
             label-focused-background = foreground_col;
-            label-focused-underline= primary_col;
-            label-focused-foreground = "#cccccc";
+            label-focused-underline= foreground_col;
+            label-focused-foreground = background_col;
             label-focused-padding = "2";
 
             #; unfocused = Inactive workspace on any monitor
             label-unfocused = "%name%";
             label-unfocused-padding = "2";
+            label-unfocused-underline = foreground_col;
 
             #; visible = Active workspace on unfocused monitor
             label-visible = "%index%";
@@ -114,6 +138,7 @@
             #; urgent = Workspace with urgency hint set
             label-urgent = "%name%";
             label-urgent-background = alert_col;
+            label-urgent-foreground = primary_col;
             label-urgent-padding = "2";
             
             #; Separator in between workspaces
