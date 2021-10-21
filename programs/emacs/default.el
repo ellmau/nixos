@@ -326,7 +326,7 @@
   (rustic-flycheck-clippy-params "--message-format=json")
   :hook
   (rustic-mode . company-mode)
-  (rustic . rust-analyzer-hint-mode)
+  (rustic . lsp-rust-analyzer-inlay-hints-mode)
   ;;(rustic-mode . flymake-mode)
   )
 

@@ -12,9 +12,10 @@
         Base00 = "#657b83";
         Base0 = "#839496";
         Base1 = "#93a1a1";
+        # background tones
         Base2 = "#eee8d5";
-        # accent tones
         Base3 = "#fdf6e3";
+        # accent tones
         Yellow = "#b58900";
         Orange = "#cb4b16";
         Red = "#dc322f";
@@ -24,28 +25,39 @@
         Cyan = "#2aa198";
         Green = "#859900";
 
+        foreground_col = Base3;
+        background_col = Base01;
+
         # old bg/fg stuff
-        foreground_col = "#eee8d5";
-        background_col = "#6c71c4";
+        #foreground_col = "#eee8d5";
+        #background_col = "#6c71c4";
         foreground_altcol = "#66deff";
         primary_col = "#ffb52a";
         secondary_col = "#e60053";
         alert_col = "#dc322f";
+
+        dpi = ''
+          ''${env:DPI:0}
+          '';
+
+        #polyheight = 60;
+        
+        fonts = [
+          "Hasklig:style=Regular"
+          "all-the-icons:style=Regular"
+          "Webdings:style=Regular"
+          "Noto Emoji:scale=10"
+          "Unifont:style=Regular"
+          "Material Icons:size=12;0"
+          "Weather Icons:size=12;0"
+          "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
+        ];
       in
         {
           "bar/main" = {
-            font = [
-              "Hasklig:style=Regular"
-              "all-the-icons:style=Regular"
-              "Webdings:style=Regular"
-              "Noto Emoji:scale=10"
-              "Unifont:style=Regular"
-              "Material Icons:size=12;0"
-              "Weather Icons:size=12;0"
-              "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
-            ];
+            font = fonts;
             modules = {
-              left = "i3";
+              left = "i3 xwindow";
               center = "";
               right = " xbacklight xkeyboard eth wlan battery date powermenu dunst volume ";
             };
@@ -57,27 +69,24 @@
           ''${env:MONITOR:}
         '';
             width = "100%";
-            padding = 1;
+            #height = polyheight;
+            padding = 0;
+            padding-right = 2;
             radius = 14;
             module-margin = 1;
             line-size = 2;
+            
+            dpi-x = dpi;
+            dpi-y = dpi;
+            
             tray = {
               position = "right";
               padding = 2;
-              background = foreground_col;
+              background = Base2;
             };
           };
           "bar/aux" = {
-            font = [
-              "Hasklig:style=Regular"
-              "all-the-icons:style=Regular"
-              "Webdings:style=Regular"
-              "Noto Emoji:scale=10"
-              "Unifont:style=Regular"
-              "Material Icons:size=12;0"
-              "Weather Icons:size=12;0"
-              "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
-            ];
+            font = fonts;
             modules = {
               left = "i3";
               center = "";
@@ -91,7 +100,13 @@
           ''${env:MONITOR:}
         '';
             width = "100%";
+            #height = polyheight;
+            radius = 14;
             module-margin = 1;
+            line-size = 2;
+
+            dpi-x = dpi;
+            dpi-y = dpi;
           };
           
           "module/volume" = {
@@ -101,6 +116,8 @@
             label.muted.foreground = "#666";
             ramp.volume = ["🔈" "🔉" "🔊"];
             click.right = "${pkgs.pavucontrol}/bin/pavucontrol &";
+            # format-volume-underline = Base2;
+            # format-muted-underline = Base2;
           };
           "module/i3" = { 
             type = "internal/i3";
@@ -130,9 +147,9 @@
             label-unfocused-underline = foreground_col;
 
             #; visible = Active workspace on unfocused monitor
-            label-visible = "%index%";
-            label-visible-background = "#6c419a";
-            label-visible-underline = primary_col;
+            label-visible = "%name%";
+            label-visible-background = Violet;
+            label-visible-underline = Yellow;
             label-visible-padding = 2;
 
             #; urgent = Workspace with urgency hint set
@@ -313,6 +330,17 @@
             exec = "PATH=${pkgs.dbus}/bin/:$PATH ${pkgs.dunst}/bin/dunstctl is-paused | ${pkgs.gnugrep}/bin/grep -q true && echo   || echo  ";
             interval = 10;
             click-left = "PATH=${pkgs.dbus}/bin/:$PATH ${pkgs.dunst}/bin/dunstctl set-paused toggle";
+          };
+
+          "module/xwindow" = {
+            type = "internal/xwindow";
+
+            format = "<label>";
+            format-background = Cyan;
+            format-foreground = foreground_col;
+            format-padding = 2;
+            label-maxlen = 50;
+            label = "%title%";
           };
         };
     script = ''
