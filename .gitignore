@@ -46,3 +46,6 @@ flycheck_*.el
 
 # network security
 /network-security.data
+
+# current link
+/machine/current
