@@ -30,11 +30,6 @@
     pkgs.signal-desktop
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "zoom"
-    "skypeforlinux"
-  ];
-
   services = {
     udiskie = {
       enable = true;
@@ -63,7 +58,7 @@
     '';
   };
 
-  home.file.".background-image".source = ./common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+  home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
   
   programs.home-manager = {
     enable = true;

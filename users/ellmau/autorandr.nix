@@ -27,7 +27,7 @@
             enable = true;
             primary = true;
             mode = "3840x2160";
-            dpi = 288;
+            dpi = 192;
           };
         };
       };

@@ -11,6 +11,7 @@
       ./machine/current/default.nix
       ./programs/emacs
       ./programs/aspell.nix
+      ./users
     ];
 
   # Use the systemd-boot EFI boot loader.
