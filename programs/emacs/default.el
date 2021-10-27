@@ -6,7 +6,8 @@
 ;; (load-theme 'wombat t)
 (use-package solarized-theme
   :init
-  (load-theme 'solarized-selenized-light t))
+  (load-theme 'solarized-selenized-light t)
+  )
 
 ;; (use-package vscode-dark-plus-theme
 ;;  :config
@@ -318,9 +319,10 @@
 (use-package rustic
   :after lsp-mode
   :config
-  (add-to-list 'flycheck-checkers 'rustic-clippy)
+;;  (add-to-list 'flycheck-checkers 'rustic-clippy)
   (lsp-diagnostics-flycheck-enable)
-  ;;(flycheck-add-next-checker 'lsp 'rustic-clippy)
+  (push 'rustic-clippy flycheck-checkers)
+;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
   :custom
   (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
