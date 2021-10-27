@@ -17,9 +17,9 @@
 (setq tab-width 2)
 
 ;; prolog
-(setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("\\.lp$" . prolog-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("\\.rls$" . prolog-mode)) auto-mode-alist))
+;(setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)) auto-mode-alist))
+;(setq auto-mode-alist (append '(("\\.lp$" . prolog-mode)) auto-mode-alist))
+;(setq auto-mode-alist (append '(("\\.rls$" . prolog-mode)) auto-mode-alist))
 
 ;; spellchecking
 (setq ispell-dictionary "british")
@@ -401,7 +401,11 @@
   (flyspell-mode-line-string nil))
 
 ;; pasp
-(use-package pasp-mode)
+(use-package pasp-mode
+  :mode
+  ("\\.asp\\'" . pasp-mode)
+  ("\\.lp\\'" . pasp-mode)
+  ("\\.rls\\'" . pasp-mode))
 
 ;; sparql
 (use-package sparql-mode)
