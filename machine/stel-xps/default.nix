@@ -2,6 +2,7 @@
 {
   imports = [
     "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/dell/xps/13-7390"
+    ./printer.nix
   ];
   networking.hostName = "stel-xps"; # define the hostname
 
