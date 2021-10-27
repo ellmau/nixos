@@ -77,6 +77,8 @@
     packages = with pkgs; [ gnome3.dconf ];
   };
 
+  services.lorri.enable = true;
+
   programs.dconf.enable = true;
 
   hardware.bluetooth.enable = true;

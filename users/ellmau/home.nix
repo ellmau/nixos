@@ -49,6 +49,11 @@
     enable = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   xsession = {
     numlock.enable = true;
     profileExtra = ''
