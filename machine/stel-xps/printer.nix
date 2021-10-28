@@ -24,6 +24,22 @@
       };
     }
     {
+      name = "A4";
+      location = "APB/3014";
+      description = "HP Laserjet 9040";
+      deviceUri = "socket://a4.tcs.inf.tu-dresden.de";
+      model = "HP/hp-laserjet_9040-ps.ppd.gz";
+      ppdOptions = {
+        PageSize = "A4";
+        HPOption_Tray1 = "True";
+        HPOption_Duplexer = "True";
+        InstalledMemory = "128-255MB";
+        MediaType = "Plain";
+        Duplex = "DuplexNoTumble";
+        Collate = "True";
+      };
+    }
+    {
       name = "ricoh";
       location = "APB/3014";
       description = "Ricoh SP 4510DN";
@@ -48,22 +64,6 @@
         media = "A4";
         OptionTray = "1Cassette";
         RIPostScript = "Adobe";
-      };
-    }
-    {
-      name = "A4";
-      location = "APB/3014";
-      description = "HP Laserjet 9040";
-      deviceUri = "socket://a4.tcs.inf.tu-dresden.de";
-      model = "HP/hp-laserjet_9040-ps.ppd.gz";
-      ppdOptions = {
-        PageSize = "A4";
-        HPOption_Tray1 = "True";
-        HPOption_Duplexer = "True";
-        InstalledMemory = "128-255MB";
-        MediaType = "Plain";
-        Duplex = "DuplexNoTumble";
-        Collate = "True";
       };
     }
   ];
