@@ -1,5 +1,7 @@
 { config, pkgs, ...}:
-{ 
+{
+  imports = [ ./printer.nix ];
+  
   networking.hostName = "stel-xps"; # define the hostname
 
   environment.systemPackages = with pkgs; [
