@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
+{ pkgs, name, flakes, ... }:
+{ config, pkgs, ...}:
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./machine/current/hardware-configuration.nix
-      ./machine/current/default.nix
+      ((./machine + "/${name}") + /hardware-configuration.nix)
+      (./machine + "/${name}")
       ./programs/emacs
       ./programs/aspell.nix
       ./users
@@ -48,7 +48,13 @@
 
   # updates and upkeep
   nix.autoOptimiseStore = true;
-  
+
+  # flake options
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
+  nixpkgs.overlays = [ flakes.emacs-overlay.overlay ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

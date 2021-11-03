@@ -7,7 +7,7 @@
       extraModules = if args ? extraModules then args.extraModules else [ ];
       extraOverlays = if args ? extraOverlays then args.extraOverlays else [ ];
       pkgs = flakes.nixpkgs;
-      configuration = import ./configuration.flake.nix  {inherit extraOverlays system pkgs name flakes;} ;
+      configuration = import ./configuration.nix  {inherit extraOverlays system pkgs name flakes;} ;
     in
     {
       inherit name;
@@ -29,5 +29,6 @@ flakes.nixpkgs.lib.listToAttrs (map mkMachine [
   }
   {
     name = "nucturne";
+    extraOverlays = [ flakes.home-manager.nixosModules.home-manager];
   }
 ])
