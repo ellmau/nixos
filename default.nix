@@ -25,10 +25,10 @@ in
 flakes.nixpkgs.lib.listToAttrs (map mkMachine [
   {
     name = "stel-xps";
-    extraModules = [ flakes.nixos-hardware.nixosModules.dell-xps-13-7390 flakes.home-manager.nixosModules.home-manager];
+    extraModules = [ flakes.nixos-hardware.nixosModules.dell-xps-13-7390 flakes.home-manager.nixosModules.home-manager ];
   }
   {
     name = "nucturne";
-    extraOverlays = [ flakes.home-manager.nixosModules.home-manager];
+    extraModules = [ flakes.home-manager.nixosModules.home-manager ];
   }
 ])
