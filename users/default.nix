@@ -1,6 +1,6 @@
 { config, pkgs, lib,  ... }:
 {
-  imports = [ <home-manager/nixos> ];
+  #imports = [ <home-manager/nixos> ];
 
   home-manager = {
     useUserPackages = true;

@@ -13,6 +13,11 @@
 ;;  :config
 ;;  (load-theme 'vscode-dark-plus t))
 
+(use-package diminish
+  :config
+  (diminish 'auto-fill-function)
+  (diminish 'abbrev-mode))
+
 ;; Tab-width
 (setq tab-width 2)
 
@@ -303,6 +308,14 @@
   :bind (:map projectile-command-map
 	      ("s s" . 'projectile-ripgrep))
   :after projectile)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;       direnv         ;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package direnv
+  :config
+  (direnv-mode t))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;        Rust          ;;;;;;;;;;;;;;;;;

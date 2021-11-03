@@ -43,6 +43,8 @@ let
         company-quickhelp
         company-reftex
         dap-mode
+        diminish
+        direnv
         dockerfile-mode
         docker-compose-mode
         flycheck
@@ -94,9 +96,9 @@ in
   #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
   #})) ];
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-    }))
-  ];
+  #nixpkgs.overlays = [
+  #  (import (builtins.fetchTarball {
+  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+  #  }))
+  #];
 }
