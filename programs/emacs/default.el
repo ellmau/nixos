@@ -233,15 +233,67 @@
 ;; ;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'LateX-mode-hook 'turn-on-reftex)
+;(add-hook 'LateX-mode-hook 'turn-on-reftex)
 ;; auctex
-(load "auctex.el" nil t t)
+;(load "auctex.el" nil t t)
 ;(load "preview-latex.el" nil t t)
-(setq TeX-toggle-debug-warnings t)
-(setq TeX-toggle-debug-bad-boxes t)
-(setq TeX-PDF-mode t)
+;(setq TeX-toggle-debug-warnings t)
+;(setq TeX-toggle-debug-bad-boxes t)
+;(setq TeX-PDF-mode t)
 ;; reftex
-(setq reftex-plug-into-AUCTeX t)
+;(setq reftex-plug-into-AUCTeX t)
+
+(use-package auctex
+  :demand t
+  :no-require t
+  :preface (defun mm/disable-auto-fill-for-papers ()
+             (auto-fill-mode
+              (string-match "proj/tex/papers/" (buffer-file-name))))
+  :hook
+  ((LaTeX-mode . flyspell-mode)
+   (LaTeX-mode . latex-math-mode)
+   (LaTeX-mode . tex-pdf-mode)
+   (LaTeX-mode . reftex-mode)
+   (LaTeX-mode . mm/disable-auto-fill-for-papers))
+  :custom
+  (LaTeX-babel-hyphen "")
+  (LaTeX-beamer-item-overlay-flag t)
+  (LaTeX-default-style "scrartcl")
+  (LaTeX-indent-environment-list
+   '(("verbatim" current-indentation)
+     ("verbatim*" current-indentation)
+     ("array")
+     ("displaymath")
+     ("eqnarray")
+     ("eqnarray*")
+     ("equation")
+     ("equation*")
+     ("picture")
+     ("tabbing")
+     ("table")
+     ("table*")
+     ("tabular")
+     ("tabular*")
+     ("lstlisting" ignore)))
+  (LaTeX-math-list
+   '((123 "subsetneq" "" nil)
+     (125 "supsetneq" "" nil)
+     (48 "varnothing" "" nil)
+     (61 "coloneqq" "" nil)))
+  (TeX-PDF-mode t)
+  (TeX-auto-save t)
+  (TeX-auto-untabify t)
+  (TeX-byte-compile t)
+  (TeX-debug-bad-boxes t)
+  (TeX-debug-warnings t)
+  (TeX-electric-escape nil)
+  (TeX-electric-sub-and-superscript t)
+  (TeX-master 'dwim)
+  (TeX-newline-function 'reindent-then-newline-and-indent)
+  (TeX-parse-self t)
+  (TeX-source-correlate-method 'synctex)
+  (TeX-source-correlate-mode t)
+  (TeX-source-correlate-start-server t))
 
 ;; ##### Don't forget to configure
 ;; ##### Okular to use emacs in
