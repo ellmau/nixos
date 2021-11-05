@@ -225,7 +225,9 @@
  '(epg-gpg-program (executable-find "gpg2"))
  '(epg-gpgsm-program (executable-find "gpgsm"))
  '(user-full-name "Stefan Ellmauthaler")
- '(user-mail-address "stefan.ellmauthaler@tu-dresden.de"))
+ '(user-mail-address "stefan.ellmauthaler@tu-dresden.de")
+ '(global-hl-line-mode t)
+ '(global-linum-mode nil))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;        LaTeX         ;;;;;;;;;;;;;;;;;
