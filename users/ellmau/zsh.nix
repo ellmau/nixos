@@ -25,6 +25,7 @@
         llg = "exa --long --icons --grid --binary --group";
         lal = "ll --all";
         lla = "ll --all";
+        emacsc = "emacsclient -n";
       };
       plugins = [
         {
