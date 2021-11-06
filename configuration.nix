@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, name, flakes, ... }:
+{ pkgs, name, flakes, flakeOutputs, ... }:
 { config, pkgs, ...}:
 {
   imports =
@@ -54,7 +54,7 @@
     experimental-features = nix-command flakes
   '';
 
-  nixpkgs.overlays = [ flakes.emacs-overlay.overlay ];
+  nixpkgs.overlays = [ flakes.emacs-overlay.overlay flakeOutputs.overlay ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

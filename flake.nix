@@ -23,6 +23,7 @@
 
   outputs = {self, ...}@inputs: 
     let outputs = rec {
+          overlay = import ./local-overlay;
           nixosConfigurations = import self {
             flakes = inputs;
             flakeOutputs = outputs;
