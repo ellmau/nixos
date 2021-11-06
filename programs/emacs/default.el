@@ -393,6 +393,11 @@
   :custom
   (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-rust-analyzer-display-parameter-hints t)
+  (lsp-rust-analyzer-dispaly-chaining-hints t)
+  (lsp-rust-analyzer-proc-macro-enable t)
   :hook
   (rustic-mode . company-mode)
   (rustic . lsp-rust-analyzer-inlay-hints-mode)
