@@ -20,6 +20,7 @@
 
     pkgs.nixfmt
     pkgs.nixpkgs-fmt
+    pkgs.nix-prefetch-github
 
     pkgs.neofetch
     
