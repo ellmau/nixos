@@ -16,4 +16,15 @@ with epkgs; rec{
       cp -r out $out/share/emacs/site-lisp
     '';  
   };
+
+  ligatures = trivialBuild {
+    pname = "ligatures";
+    version = "unstable-2021-08-27";
+    src = pkgs.fetchFromGitHub {
+      owner = "mickeynp";
+      repo = "ligature.el";
+      rev = "d3426509cc5436a12484d91e48abd7b62429b7ef";
+      sha256 = "baFDkfQLM2MYW2QhMpPnOMSfsLlcp9fO5xfyioZzOqg=";
+    };
+  };
 }

@@ -559,6 +559,20 @@
   :commands
   (academic-phrases
    academic-phrases-by-section))
+
+(use-package ligature
+  :config
+  (ligature-set-ligatures 'prog-mode
+                          '("&&" "***" "*>" "\\\\" "||" "|>" "::"
+                            "==" "===" "==>" "=>" "=<<" "!!" ">>"
+                            ">>=" ">>>" ">>-" ">-" "->" "-<" "-<<"
+                            "<*" "<*>" "<|" "<|>" "<$>" "<>" "<-"
+                                        ; disable ++ until > emacs-27.2, since C++-mode causes a crash otherwise
+                                        ;                            "<<" "<<<" "<+>" ".." "..." "++" "+++"
+                            "<<" "<<<" "<+>" ".." "..." "+++"
+                            "/=" ":::" ">=>" "->>" "<=>" "<=<" "<->"))
+  (global-ligature-mode t))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -84,7 +84,10 @@ let
         yaml-mode
         yasnippet
         #zenburn-theme
-      ] ++ (with lpkgs; [org-roam-ui])));
+      ] ++ (with lpkgs; [
+        org-roam-ui
+        ligatures
+      ])));
 in
 {
   services.emacs = {
