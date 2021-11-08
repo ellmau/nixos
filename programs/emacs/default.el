@@ -564,7 +564,8 @@
   :config
   (ligature-set-ligatures 'prog-mode
                           '("&&" "***" "*>" "\\\\" "||" "|>" "::"
-                            "==" "===" "==>" "=>" "=<<" "!!" ">>"
+					; don't like eq-ligatures "==" "==="
+			    "==>" "=>" "=<<" "!!" ">>"
                             ">>=" ">>>" ">>-" ">-" "->" "-<" "-<<"
                             "<*" "<*>" "<|" "<|>" "<$>" "<>" "<-"
                                         ; disable ++ until > emacs-27.2, since C++-mode causes a crash otherwise
