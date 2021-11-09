@@ -39,7 +39,7 @@
   environment.systemPackages = with pkgs; [
     firefox
     alacritty
-    thunderbird-91
+    thunderbird
     okular
     texlive.combined.scheme-full
     usbutils
