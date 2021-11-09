@@ -8,7 +8,7 @@
       extraOverlays = if args ? extraOverlays then args.extraOverlays else [ ];
       type = if args ? type then args.type else [ ./layer/graphical.nix ];
       pkgs = flakes.nixpkgs;
-      configuration = if args ? configuration then args.configuration else import ./configuration.nix  {inherit extraOverlays system pkgs name type flakes flakeOutputs;} ;
+      configuration = if args ? configuration then args.configuration else import ./baseconfiguration.nix  {inherit extraOverlays system pkgs name type flakes flakeOutputs;} ;
     in
     {
       inherit name;
