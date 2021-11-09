@@ -22,6 +22,8 @@
     pkgs.nixpkgs-fmt
     pkgs.nix-prefetch-github
 
+    pkgs.gh
+
     pkgs.neofetch
     
     pkgs.jitsi-meet-electron

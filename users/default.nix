@@ -7,9 +7,4 @@
     useGlobalPkgs = true;
     users.ellmau = (import ./ellmau/home.nix);
   };
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "zoom"
-    "skypeforlinux"
-  ];
 }
