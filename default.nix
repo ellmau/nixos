@@ -1,6 +1,6 @@
 { flakes, flakeOutputs, ...}:
-  let
-    mkMachine = args:
+let
+  mkMachine = args:
     let
       name = if builtins.isString args then args else args.name;
       system = if args ? system then args.system else "x86_64-linux";
@@ -10,18 +10,18 @@
       pkgs = flakes.nixpkgs;
       configuration = if args ? configuration then args.configuration else import ./baseconfiguration.nix  {inherit extraOverlays system pkgs name type flakes flakeOutputs;} ;
     in
-    {
-      inherit name;
-      value = pkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          configuration
-          { nix.package = pkgs.legacyPackages.${system}.nixUnstable; }
-        ] ++ extraModules
-        ++ flakes.nixpkgs.lib.mapAttrsToList (_: module: module)
-          flakeOutputs.nixosModules;
+      {
+        inherit name;
+        value = pkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            configuration
+            { nix.package = pkgs.legacyPackages.${system}.nixUnstable; }
+          ] ++ extraModules
+          ++ flakes.nixpkgs.lib.mapAttrsToList (_: module: module)
+            flakeOutputs.nixosModules;
+        };
       };
-    };
 in
 flakes.nixpkgs.lib.listToAttrs (map mkMachine [
   {
@@ -33,7 +33,7 @@ flakes.nixpkgs.lib.listToAttrs (map mkMachine [
     extraModules = [ flakes.home-manager.nixosModules.home-manager ];
   }
   {
-    name = "ellmauthaler.net";
+    name = "ellmauthaler";
     extraModules = [ flakes.home-manager.nixosModules.home-manager ];
     type = [ ./layer/server.nix ];
   }
