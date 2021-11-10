@@ -91,6 +91,23 @@
           };
         };
       };
+
+       "e3027-clone" = {
+        config = {
+          eDP-1 = {
+            enable = true;
+            crtc = 0;
+            position = "0x0";
+            mode = "1920x1200";
+          };
+          DP-1 = {
+            enable = true;
+            crtc = 1;
+            position = "0x0";
+            mode = "1920x1200";
+          };
+        };
+      };
     };
     hooks.postswitch = {
       "polybar" = "systemctl --user restart polybar.service";
