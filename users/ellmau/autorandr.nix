@@ -2,7 +2,7 @@
 {
   home-manager.users.ellmau = {
     programs.autorandr = {
-      enable = true;
+      enable = config.variables.graphical;
       profiles = {
         "home" = {
           fingerprint = {

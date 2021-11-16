@@ -1,8 +1,12 @@
 { config, pkgs, ...}:
 {
   imports = [ ./printer.nix ];
-  
-  networking.hostName = "stel-xps"; # define the hostname
+
+  variables = {
+    hostName = "stel-xps";
+    graphical = true;
+  };
+  #networking.hostName = "stel-xps"; # define the hostname
 
   environment.systemPackages = with pkgs; [
     brightnessctl

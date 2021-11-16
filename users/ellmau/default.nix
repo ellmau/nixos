@@ -40,8 +40,8 @@
         notify = true;
         tray = "auto";
       };
-      blueman-applet.enable = true;
-      network-manager-applet.enable = true ;
+      blueman-applet.enable = config.variables.graphical;
+      network-manager-applet.enable = config.variables.graphical ;
       gnome-keyring = {
         enable = true;
         components = [ "pkcs11" "secrets" "ssh" ];

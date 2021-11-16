@@ -2,7 +2,7 @@
 {
   home-manager.users.ellmau = {
     services.dunst = {
-      enable = true;
+      enable = config.variables.graphical;
       iconTheme = {
         package = pkgs.numix-icon-theme;
         name = "Numix";

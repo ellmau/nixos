@@ -1,4 +1,4 @@
-{ pkgs, name, type, flakes, flakeOutputs, ...}:
+{ pkgs, name, flakes, flakeOutputs, ...}:
 { config, pkgs, lib, ...}:
 {    
   imports =
@@ -11,7 +11,11 @@
       ./programs/aspell.nix
       # home-manager entry-point
       ./users
-    ] ++ type;
+      # layers
+      ./layer
+      # options
+      ./options.nix
+    ];
   
 
   time.timeZone = "Europe/Berlin";
@@ -27,6 +31,7 @@
 
   networking = {
     useDHCP = false;
+    hostName = config.variables.hostName;
   };
 
   nix = {

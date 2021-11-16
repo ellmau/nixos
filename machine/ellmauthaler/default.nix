@@ -1,7 +1,11 @@
 { config, pkgs, ...}:
 {
-  networking ={
+
+  variables = {
     hostName = "ellmauthaler";
+  };
+  
+  networking = {
     domain = "net";
   };
 }

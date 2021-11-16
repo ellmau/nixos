@@ -1,13 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let
+  isgraphical = config.variables.graphical;
+in
 {
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = isgraphical;
 
   services = {
     xserver = {
-      enable = true;
-      displayManager.lightdm.enable = true;
+      enable = isgraphical;
+      displayManager.lightdm.enable = isgraphical;
       windowManager.i3 = {
-        enable = true;
+        enable = isgraphical;
         extraPackages = with pkgs; [
           rofi # launcher
           polybarFull # bar
@@ -27,16 +30,16 @@
     printing.enable = true;
   };
 
-  sound.enable = true;
+  sound.enable = isgraphical;
   
   hardware = {
-    pulseaudio.enable = true;
-    bluetooth.enable = true;
+    pulseaudio.enable = isgraphical;
+    bluetooth.enable = isgraphical;
   };
   
-  services.blueman.enable = true;
+  services.blueman.enable = isgraphical;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = if isgraphical then with pkgs; [
     firefox
     alacritty
     thunderbird
@@ -46,5 +49,5 @@
     keepassxc
     gnome.libsecret
     arandr
-  ];
+  ] else [ ];
 }

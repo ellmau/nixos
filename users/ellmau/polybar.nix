@@ -1,8 +1,8 @@
-{ pkgs, ...}:
+{ config, pkgs, ...}:
 {
   home-manager.users.ellmau = {
     services.polybar = {
-      enable = true;
+      enable = config.variables.graphical;
       package = pkgs.polybarFull;
       settings =
         let
