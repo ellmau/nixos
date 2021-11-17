@@ -74,7 +74,7 @@
         enable = true;
         clock24 = true;
         keyMode = "emacs";
-        shell = "\${pkgs.zsh}/bin/zsh";
+        shell = "${pkgs.zsh}/bin/zsh";
       };
     };
 
