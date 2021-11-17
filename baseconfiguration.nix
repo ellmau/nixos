@@ -36,20 +36,18 @@
 
   nix = {
     autoOptimiseStore = true;
+    # Enable flakes
+    # Free up to 50GiB whenever there is less than 10GiB left.
     extraOptions = ''
-    experimental-features = nix-command flakes
+      experimental-features = nix-command flakes
+      min-free = ${toString (10* 1024 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
     '';
     gc = {
       automatic = true;
-      persistent = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    # Free up to 50GiB whenever there is less than 10GiB left.
-    extraOptions = ''
-      min-free = ${toString (10 * 1024 * 1024 * 1024)}
-      max-free = ${toString (50 * 1024 * 1024 * 1024)}
-    '';
   };
 
   nixpkgs = {
