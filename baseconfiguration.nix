@@ -79,7 +79,6 @@
       emacs-all-the-icons-fonts
       wget
       git
-      tmux
       clang
       rnix-lsp
     ];

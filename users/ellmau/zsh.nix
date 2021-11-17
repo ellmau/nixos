@@ -69,6 +69,13 @@
         enable = true;
         enableAliases = false;
       };
+
+      tmux = {
+        enable = true;
+        clock24 = true;
+        keymode = "emacs";
+        shell = "\${pkgs.zsh}/bin/zsh";
+      };
     };
 
   };
