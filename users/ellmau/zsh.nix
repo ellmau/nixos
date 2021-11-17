@@ -73,7 +73,7 @@
       tmux = {
         enable = true;
         clock24 = true;
-        keymode = "emacs";
+        keyMode = "emacs";
         shell = "\${pkgs.zsh}/bin/zsh";
       };
     };
