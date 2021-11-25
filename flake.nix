@@ -1,5 +1,5 @@
 {
-  description = "Configuration for stuff";
+  description = "Flake to generate NixOS configurations";
 
   inputs = {
     

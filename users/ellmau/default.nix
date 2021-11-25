@@ -17,6 +17,8 @@
       pkgs.htop
       pkgs.pavucontrol
 
+      pkgs.ripgrep
+
       pkgs.jabref
       pkgs.libreoffice-fresh
 
