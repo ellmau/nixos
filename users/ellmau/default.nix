@@ -1,4 +1,14 @@
 { config, pkgs, lib, ...}:
+let
+    withAliases = hostname: aliases: cfg:
+    lib.recursiveUpdate
+      {
+        host = "${hostname} ${aliases}";
+        hostname = "${hostname}";
+        extraOptions.hostKeyAlias = "${hostname}";
+      }
+      cfg;
+in
 {
 
   imports = [
