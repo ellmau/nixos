@@ -74,5 +74,30 @@
       enable = true;
     };
 
+    programs.ssh = {
+          enable = true;
+
+          forwardAgent = true;
+          serverAliveInterval = 5;
+          hashKnownHosts = true;
+          controlMaster = "auto";
+          controlPersist = "60s";
+
+          matchBlocks = {
+            "iccl-share.inf.tu-dresden.de" =
+              withAliases "iccl-share.inf.tu-dresden.de" "iccl-share" {
+                proxyJump = "tcs.inf.tu-dresden.de";
+              };
+            "iccl.inf.tu-dresden.de" = withAliases "iccl.inf.tu-dresden.de" "" {
+              proxyJump = "tcs.inf.tu-dresden.de";
+            };
+            "wille.inf.tu-dresden.de" =
+              withAliases "wille.inf.tu-dresden.de" "wille wi" {
+                proxyJump = "tcs.inf.tu-dresden.de";
+              };
+            "tcs.inf.tu-dresden.de" =
+              withAliases "tcs.inf.tu-dresden.de" "tcs" { };
+          };
+    };
   };
 }
