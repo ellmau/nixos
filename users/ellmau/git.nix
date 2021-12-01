@@ -21,12 +21,12 @@
 
       gh = {
         enable = true;
-      };
-    };
-
-    xdg = {
-      configFile."gh/config.yml" = {
-        source = conf/gh/config.yml;
+        settings = {
+          aliases = {};
+          editor = {};
+          git_protocol = "ssh";
+          prompt = "enabled";
+        };
       };
     };
   };
