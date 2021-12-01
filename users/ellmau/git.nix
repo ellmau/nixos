@@ -23,7 +23,6 @@
         enable = true;
         settings = {
           aliases = {};
-          editor = {};
           git_protocol = "ssh";
           prompt = "enabled";
         };
