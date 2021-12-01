@@ -13,6 +13,11 @@ in
         enable = isgraphical;
         greeters.gtk.cursorTheme.size = cursorsize;
       };
+      displayManager.sessionCommands = ''
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+        Xcursor.size: 14
+        EOF
+      '';
       windowManager.i3 = {
         enable = isgraphical;
         extraPackages = with pkgs; [
