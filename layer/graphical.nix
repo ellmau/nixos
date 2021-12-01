@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   isgraphical = config.variables.graphical;
+  cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
 in
 {
   networking.networkmanager.enable = isgraphical;
@@ -8,7 +9,10 @@ in
   services = {
     xserver = {
       enable = isgraphical;
-      displayManager.lightdm.enable = isgraphical;
+      displayManager.lightdm = {
+        enable = isgraphical;
+        greeters.gtk.cursorTheme.size = cursorsize;
+      };
       windowManager.i3 = {
         enable = isgraphical;
         extraPackages = with pkgs; [
