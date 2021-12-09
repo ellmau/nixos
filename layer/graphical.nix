@@ -50,7 +50,7 @@ in
 
   environment.systemPackages = if isgraphical then with pkgs; [
     firefox
-    alacritty
+    #alacritty
     thunderbird
     okular
     texlive.combined.scheme-full

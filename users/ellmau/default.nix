@@ -12,6 +12,7 @@ in
 {
 
   imports = [
+    ./alacritty.nix
     ./autorandr.nix
     ./dunst.nix
     ./git.nix
