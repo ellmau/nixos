@@ -5,7 +5,7 @@
       enable = true;
       settings = {
         window = {
-          decorations = "none";
+          decorations = "full";
         };
         alt_send_esc = true;
       };
