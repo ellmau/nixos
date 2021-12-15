@@ -7,8 +7,7 @@
       # machine-specific configuration
       (./machine + "/${name}")
       # additional programs
-      ./programs/emacs
-      ./programs/aspell.nix
+      ./programs
       # home-manager entry-point
       ./users
       # layers
