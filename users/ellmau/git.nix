@@ -17,6 +17,7 @@
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
         };
+        lfs.enable = true;
       };
 
       gh = {
