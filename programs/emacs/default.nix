@@ -42,7 +42,7 @@ let
         company-flx
         company-quickhelp
         company-reftex
-        coverlay
+        cov
         dap-mode
         diminish
         direnv
