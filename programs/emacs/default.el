@@ -392,6 +392,7 @@
 ;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
   :custom
   (rustic-format-trigger 'on-save)
+  (rustic-rustfmt-bin "rustfmt")
   (rustic-flycheck-clippy-params "--message-format=json")
   (lsp-rust-analyzer-server-display-inlay-hints t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
