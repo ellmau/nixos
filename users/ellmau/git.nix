@@ -9,10 +9,10 @@
         userEmail = "stefan.ellmauthaler@tu-dresden.de";
         extraConfig = {
           core = { editor = "emacsclient"; };
-          gpg = {
-            format = "x509";
-            program = "gpgsm";
-          };
+          #gpg = {
+          #  format = "x509";
+          #  program = "gpgsm";
+          #};
           user = { signingKey = "0x4998BEEE"; };
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
