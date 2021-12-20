@@ -41,6 +41,7 @@ in
       
       pkgs.jitsi-meet-electron
       pkgs.skypeforlinux
+      pkgs.teams
       pkgs.zoom-us
       pkgs.element-desktop
       pkgs.signal-desktop

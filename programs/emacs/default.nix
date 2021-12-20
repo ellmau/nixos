@@ -44,6 +44,7 @@ let
         company-reftex
         cov
         dap-mode
+        dap-cpptools
         diminish
         direnv
         dockerfile-mode
