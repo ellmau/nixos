@@ -13,7 +13,7 @@
           #  format = "x509";
           #  program = "gpgsm";
           #};
-          user = { signingKey = "0x4998BEEE"; };
+          user = { signingKey = "C804A9C1B7AF8256"; };
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
         };
