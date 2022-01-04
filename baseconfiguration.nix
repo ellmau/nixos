@@ -53,7 +53,6 @@
     overlays = [ flakes.emacs-overlay.overlay flakeOutputs.overlay ];
     config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "skypeforlinux"
-      "softmaker-office"
       "teams"
       "zoom"
     ];
