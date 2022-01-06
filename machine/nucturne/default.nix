@@ -4,6 +4,14 @@
     hostName = "nucturne";
     graphical = true;
   };
+
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.v4l2loopback
+  ];
+
+  boot.kernelModules = [
+      "v4l2loopback"
+  ];
   #networking.hostName = "nucturne"; # define the hostname
 
   # users = {
