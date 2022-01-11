@@ -12,6 +12,14 @@
     brightnessctl
   ];
 
+    boot.extraModulePackages = [
+    config.boot.kernelPackages.v4l2loopback
+  ];
+
+  boot.kernelModules = [
+      "v4l2loopback"
+  ];
+
   services.autorandr.enable = true;
   services.xserver.desktopManager.wallpaper.mode = "fill";
 }
