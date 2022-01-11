@@ -17,5 +17,18 @@
       default = false;
       description = "Whether this system is a server";
     };
+    git = {
+      key = mkOption {
+        type = types.str;
+        example = "0xBEEE1234";
+        default = "C804A9C1B7AF8256";
+        description = "Signkey for git commits";
+      };
+      gpgsm = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Whether to use gpgsm for commit signatures";
+      };
+    };
   };
 }

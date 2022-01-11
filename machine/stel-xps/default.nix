@@ -5,6 +5,8 @@
   variables = {
     hostName = "stel-xps";
     graphical = true;
+    git.key = "0x4998BEEE";
+    git.gpgsm = true;
   };
   #networking.hostName = "stel-xps"; # define the hostname
 

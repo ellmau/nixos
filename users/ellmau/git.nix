@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ...}:
 {
   home-manager.users.ellmau = {
     programs= {
@@ -9,11 +9,15 @@
         userEmail = "stefan.ellmauthaler@tu-dresden.de";
         extraConfig = {
           core = { editor = "emacsclient"; };
+          gpg = lib.mkIf config.variables.git.gpgsm {
+            format = "x509";
+            program = "gpgsm";
+          };
           #gpg = {
           #  format = "x509";
           #  program = "gpgsm";
           #};
-          user = { signingKey = "C804A9C1B7AF8256"; };
+          user = { signingKey = config.variables.git.key;  };
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
         };
