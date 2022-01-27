@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, pkgs, lib, flakes, ...}:
 let
     withAliases = hostname: aliases: cfg:
     lib.recursiveUpdate
@@ -42,7 +42,7 @@ in
       pkgs.jitsi-meet-electron
       pkgs.skypeforlinux
       pkgs.teams
-      pkgs.zoom-us
+      pkgs.unstable.zoom-us
       pkgs.element-desktop
       pkgs.signal-desktop
     ];

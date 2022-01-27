@@ -1,4 +1,12 @@
-{ pkgs, name, flakes, flakeOutputs, ...}:
+{ pkgs, name, system, flakes, flakeOutputs, ...}:
+let
+  overlay-unstable = final: prev: {
+    unstable = import flakes.nixpkgs-unstable {
+      system = "${system}";
+      config.allowUnfree=true;
+    };
+  };
+in
 { config, pkgs, lib, ...}:
 {    
   imports =
@@ -48,9 +56,8 @@
       options = "--delete-older-than 30d";
     };
   };
-
   nixpkgs = {
-    overlays = [ flakes.emacs-overlay.overlay flakeOutputs.overlay ];
+    overlays = [ flakes.emacs-overlay.overlay overlay-unstable flakeOutputs.overlay ];
     config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "skypeforlinux"
       "teams"
