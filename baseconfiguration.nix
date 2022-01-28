@@ -47,6 +47,8 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+    nixPath = [ "nixpkgs=${pkgs}" ];
+    registry.nixpkgs.flake = pkgs;
   };
   nixpkgs = {
     overlays = [ flakes.emacs-overlay.overlay flakeOutputs.overlay ] ++ extraOverlays;
