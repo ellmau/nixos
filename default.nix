@@ -21,7 +21,11 @@ let
           inherit system;
           modules = [
             configuration
-            { nix.package = pkgs.legacyPackages.${system}.nixUnstable; }
+            { nix = {
+                package = pkgs.legacyPackages.${system}.nixUnstable;
+                nixPath= [ "nixpkgs=${pkgs}" ];
+                registry.nixpkgs.flake = pkgs;}
+              ;}
           ] ++ extraModules
           ++ flakes.nixpkgs.lib.mapAttrsToList (_: module: module)
             flakeOutputs.nixosModules;
