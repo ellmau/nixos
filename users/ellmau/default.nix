@@ -21,6 +21,7 @@ in
     ./nextcloud.nix
     ./polybar.nix
     ./zsh.nix
+    ./go.nix
   ];
 
   home-manager.users.ellmau = {
