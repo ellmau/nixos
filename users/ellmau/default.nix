@@ -22,6 +22,7 @@ in
     ./polybar.nix
     ./zsh.nix
     ./go.nix
+    ./sway.nix
   ];
 
   home-manager.users.ellmau = {
