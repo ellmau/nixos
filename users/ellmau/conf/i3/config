@@ -116,7 +116,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -231,7 +231,7 @@ mode "$mode_system" {
 bindsym $mod+BackSpace mode "$mode_system"
 
 # keyboard layout toggle
-bindsym Mod1+space exec --no-startup-id .config/i3/keyboard_layout_toggle.sh
+bindsym $mod+space exec --no-startup-id .config/i3/keyboard_layout_toggle.sh
 
 # autostart keepassxc
 exec --no-startup-id .config/i3/keepassxc.sh
