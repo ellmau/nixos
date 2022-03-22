@@ -2,6 +2,7 @@
 
 let
   defaultEl = ./default.el;
+  environment.systemPackages = [ pkgs.gdb ]; # use gdb for dap-mode
 
   defaultConfig = pkgs.runCommand "default.el" { } ''
      mkdir -p $out/share/emacs/site-lisp
