@@ -457,7 +457,8 @@
   :after lsp-mode
   :custom
   (dap-mode t)
-  (dap-ui-mode t))
+  (dap-ui-mode t)
+  (require 'dap-cpptools))
 
 ;; flycheck
 (use-package flycheck
