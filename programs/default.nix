@@ -4,5 +4,6 @@
     ./aspell.nix
     ./emacs
     ./obs-studio.nix
+    ./python.nix
   ];
 }
