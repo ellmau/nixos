@@ -43,6 +43,6 @@ flakes.nixpkgs.lib.listToAttrs (map mkMachine [
   }
   {
     name = "ellmauthaler";
-    extraModules = [ flakes.home-manager.nixosModules.home-manager ];
+    extraModules = [ flakes.home-manager.nixosModules.home-manager flakes.simple-nixos-mailserver.nixosModule flakes.sops-nix.nixosModules.sops ];
   }
 ])

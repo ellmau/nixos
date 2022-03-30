@@ -3,6 +3,7 @@
 
   variables = {
     hostName = "ellmauthaler";
+    server = true;
   };
   
   networking = {

@@ -19,6 +19,13 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
     };
+
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {self, ...}@inputs: 
