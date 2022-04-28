@@ -11,7 +11,7 @@
           core = { editor = "emacsclient"; };
           gpg = lib.mkIf config.variables.git.gpgsm {
             format = "x509";
-            program = "gpgsm";
+            program = "${pkgs.gpgsm}/bin/gpgsm";
           };
           #gpg = {
           #  format = "x509";
@@ -20,6 +20,7 @@
           user = { signingKey = config.variables.git.key;  };
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
+          safe.directory = [ "/etc/nixos" ];
         };
         lfs.enable = true;
       };

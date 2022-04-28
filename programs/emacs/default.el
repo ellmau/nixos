@@ -202,7 +202,7 @@
          ("<f6>" . magit-log)
          ("<f7>" . magit-status))
   :custom
-  (magit-commit-signoff t)
+  ;(magit-commit-signoff t)
   (magit-define-global-key-bindings t)
   (magit-revert-buffers 'silent t)
   (magit-use-overlays nil))
