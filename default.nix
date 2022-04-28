@@ -24,7 +24,9 @@ let
             { nix = {
                 package = pkgs.legacyPackages.${system}.nixUnstable;
                 nixPath= [ "nixpkgs=${pkgs}" ];
-                registry.nixpkgs.flake = pkgs;}
+                registry.nixpkgs.flake = pkgs;
+                registry.nixpkgs-unstable.flake = pkgs.unstable;
+              }
               ;}
           ] ++ extraModules
           ++ flakes.nixpkgs.lib.mapAttrsToList (_: module: module)
