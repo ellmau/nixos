@@ -11,7 +11,7 @@
           core = { editor = "emacsclient"; };
           gpg = lib.mkIf config.variables.git.gpgsm {
             format = "x509";
-            program = "${pkgs.gpgsm}/bin/gpgsm";
+            program = "${pkgs.gnupg}/bin/gpgsm";
           };
           #gpg = {
           #  format = "x509";

@@ -25,7 +25,7 @@ let
                 package = pkgs.legacyPackages.${system}.nixUnstable;
                 nixPath= [ "nixpkgs=${pkgs}" ];
                 registry.nixpkgs.flake = pkgs;
-                registry.nixpkgs-unstable.flake = pkgs.unstable;
+                registry.nixpkgs-unstable.flake = flakes.nixpkgs-unstable;
               }
               ;}
           ] ++ extraModules
