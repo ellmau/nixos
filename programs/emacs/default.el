@@ -248,7 +248,7 @@
   :no-require t
   :preface (defun mm/disable-auto-fill-for-papers ()
              (auto-fill-mode
-              (string-match "proj/tex/papers/" (buffer-file-name))))
+              (string-match "ellmau/repo/" (buffer-file-name))))
   :hook
   ((LaTeX-mode . flyspell-mode)
    (LaTeX-mode . latex-math-mode)
