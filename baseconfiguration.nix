@@ -75,6 +75,7 @@
       git
       clang
       rnix-lsp
+      procs
     ];
     sessionVariables = rec {
       XDG_CACHE_HOME  = "\${HOME}/.cache";
