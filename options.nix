@@ -29,6 +29,11 @@
         default = false;
         description = "Whether to use gpgsm for commit signatures";
       };
+      signDefault = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Whether to force signing commits or not";
+      };
     };
   };
 }

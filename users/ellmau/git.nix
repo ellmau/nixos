@@ -17,7 +17,10 @@
           #  format = "x509";
           #  program = "gpgsm";
           #};
-          user = { signingKey = config.variables.git.key;  };
+          user = {
+            signingKey = config.variables.git.key;
+            signByDefault = config.variables.git.signDefault;
+          };
           init = { defaultBranch = "main";};
           branch = { autosetuprebase = "always";};
           safe.directory = [ "/etc/nixos" ];

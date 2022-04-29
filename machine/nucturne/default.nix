@@ -3,6 +3,7 @@
   variables= {
     hostName = "nucturne";
     graphical = true;
+    git.signDefault = true;
   };
 
   boot.extraModulePackages = [
