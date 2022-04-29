@@ -2,6 +2,7 @@
 let
   isgraphical = config.variables.graphical;
   cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
+  xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
 in
 {
   networking.networkmanager.enable = isgraphical;
@@ -9,7 +10,7 @@ in
   services = {
     xserver = {
       enable = isgraphical;
-      dpi = 180;
+      dpi = xserverDPI;
       displayManager.lightdm = {
         enable = isgraphical;
         greeters.gtk.cursorTheme.size = cursorsize;
