@@ -9,6 +9,7 @@ in
   services = {
     xserver = {
       enable = isgraphical;
+      services.xserver.dpi = 180;
       displayManager.lightdm = {
         enable = isgraphical;
         greeters.gtk.cursorTheme.size = cursorsize;
