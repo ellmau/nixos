@@ -247,8 +247,9 @@
   :demand t
   :no-require t
   :preface (defun mm/disable-auto-fill-for-papers ()
-             (auto-fill-mode
-              (string-match "ellmau/repo/" (buffer-file-name))))
+             (if (string-match "ellmau/repo/" (buffer-file-name))
+                 (progn (turn-off-auto-fill)
+                        (setq-local yas--original-auto-fill-function nil))))
   :hook
   ((LaTeX-mode . flyspell-mode)
    (LaTeX-mode . latex-math-mode)
