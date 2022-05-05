@@ -16,9 +16,7 @@ let
       };
 
       overlay-comma = final: prev: {
-        comma = import flakes.comma {
-          system = "${system}";
-        };
+        comma = flakes.comma.packages."${system}";
       };
     in
       {
