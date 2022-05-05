@@ -5,13 +5,19 @@ let
       name = if builtins.isString args then args else args.name;
       system = if args ? system then args.system else "x86_64-linux";
       extraModules = if args ? extraModules then args.extraModules else [ ];
-      extraOverlays = if args ? extraOverlays then args.extraOverlays else [ overlay-unstable ];
+      extraOverlays = if args ? extraOverlays then args.extraOverlays else [ overlay-unstable overlay-comma ];
       pkgs = flakes.nixpkgs;
       configuration = if args ? configuration then args.configuration else import ./baseconfiguration.nix  {inherit extraOverlays system pkgs name flakes flakeOutputs;} ;
       overlay-unstable = final: prev: {
         unstable = import flakes.nixpkgs-unstable {
           system = "${system}";
           config.allowUnfree=true;
+        };
+      };
+
+      overlay-comma = final: prev: {
+        comma = import flakes.comma {
+          system = "${system}";
         };
       };
     in

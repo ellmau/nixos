@@ -76,6 +76,7 @@
       clang
       rnix-lsp
       procs
+      comma
     ];
     sessionVariables = rec {
       XDG_CACHE_HOME  = "\${HOME}/.cache";
