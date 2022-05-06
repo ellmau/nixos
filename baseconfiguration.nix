@@ -101,7 +101,7 @@
         highlighters = [ "main" "brackets" "root" "line" ];
         #styles = { cursor = "standout,underline"; };
       };
-      setOptions = [ "auto_pushd" "correct" "extendedglob" "nocaseglob" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory" ];
+      setOptions = [ "auto_pushd" "correct" "nocaseglob" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory" ];
     };
 
     mtr.enable = true;
