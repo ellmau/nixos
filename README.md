@@ -12,3 +12,14 @@
   * `nix-shell -p nixFlakes`
   * `sudo _NIXOS_REBUILD_REEXEC=1 nixos-install --no-root-passwd --flake .#hostname`
   * ~~`nixos-install --no-root-passwd --flake .#hostname`~~
+
+
+# redesign checklist
+- [ ] lorri or similar
+- [ ] whole home manager stuff
+- [ ] baseconfiguration handled
+- [ ] programs handled
+- [X] locale/fonts
+- [X] zsh
+- [ ] gnupg agent
+
