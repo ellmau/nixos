@@ -81,7 +81,7 @@ in
       '';
     };
 
-    home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+    home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
     
     programs.home-manager = {
       enable = true;
