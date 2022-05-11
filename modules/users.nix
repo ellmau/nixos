@@ -4,20 +4,6 @@ with lib; {
   options.elss.users = {
     enable = mkEnableOption "elss specific user configuration";
 
-    commonUserFile = mkOption {
-      type = types.attrsOf
-        (types.submodule{
-          options = {
-            enable = mkEnableOption "use a common file of users";
-            fileLoc = mkOption {
-              description = "path to the file of users";
-              type = types.path;
-              default = ../common/users.nix;
-            };
-          };
-        });
-    };
-
     users = mkOption {
       description = "logins of non-admin users to configure";
       type = types.listOf types.str;

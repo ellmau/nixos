@@ -3,9 +3,6 @@ with lib; {
   config = {
     elss = {
       users = {
-        enable = true;
-        admiins = [ "ellmau" ];
-        users = [ ];
         meta = {
           ellmau = {
             description = "Stefan Ellmauthaler";

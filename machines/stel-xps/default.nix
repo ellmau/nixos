@@ -1,6 +1,17 @@
 { config, pkgs, ...}:
 {
-  imports = [ ./printer.nix ];
+
+  elss = {
+    users = {
+      enable = true;
+      admins = [ "ellmau" ];
+      users = [ ];
+    };
+  };
+  imports = [
+    ../../common/users.nix
+    ./printer.nix
+  ];
 
   variables = {
     hostName = "stel-xps";
