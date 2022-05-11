@@ -1,17 +1,27 @@
 { config, pkgs, ...}:
 {
+  imports = [
+    ../../common/users.nix
+    ./printer.nix
+    ./hardware-configuration.nix
+    ./software.nix
+  ];
 
   elss = {
+    # base system
+    base.enable = true;
+    # setup locale and font settings
+    locale.enable = true;
+    # configure zsh
+    zsh.enable = true;
+    
+    # user setup
     users = {
       enable = true;
       admins = [ "ellmau" ];
       users = [ ];
     };
   };
-  imports = [
-    ../../common/users.nix
-    ./printer.nix
-  ];
 
   variables = {
     hostName = "stel-xps";
@@ -28,7 +38,7 @@
     brightnessctl
   ];
 
-    boot.extraModulePackages = [
+  boot.extraModulePackages = [
     config.boot.kernelPackages.v4l2loopback
   ];
 
