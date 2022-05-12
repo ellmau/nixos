@@ -11,4 +11,13 @@
   services = {
     autorandr.enable = true;
   };
+
+  elss = {
+    programs = {
+      aspell.enable = true;
+      emacs.enable = true;
+      obsstudio.enable = true;
+      python.enable = true;
+    };
+  };
 }
