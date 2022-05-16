@@ -92,7 +92,8 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.dwarffs.nixosModules.dwarffs
           ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
-          extraArgs = { inherit inputs homeConfigurations; };
+          specialArgs = {inherit inputs; };
+          extraArgs = { inherit homeConfigurations; };
         };
 
         hosts = discoverModules ./machines (name: {

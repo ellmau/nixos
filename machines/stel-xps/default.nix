@@ -5,6 +5,7 @@
     ./printer.nix
     ./hardware-configuration.nix
     ./software.nix
+    inputs.nixos-hardware.nixosModules.dell-xps-13-7390
   ];
 
   elss = {
