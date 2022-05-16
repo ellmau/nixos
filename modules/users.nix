@@ -34,11 +34,34 @@ with lib; {
               type = types.str;
               description = "Email address of the user";
             };
+            git = mkOption {
+              type = types.attrsOf
+                (types.submodule {
+                  options = {
+                    key = mkOption {
+                      type = types.str;
+                      example = "0xBEEE1234";
+                      default = "C804A9C1B7AF8256";
+                      description = "Signkey for git commits";
+                    };
+                    gpgsm = mkOption {
+                      type = types.bool;
+                      default = false;
+                      description = "Whether to use gpgsm for commit signatures";
+                    };
+                    signDefault = mkOption {
+                      type = types.bool;
+                      default = false;
+                      description = "Whether to force signing commits or not";
+                    };
+                  };
+                });
+            };
           };
         });
     };
   };
-
+  
   config =
     let
       cfg = config.elss.users;
