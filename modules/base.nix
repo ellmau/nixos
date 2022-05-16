@@ -25,11 +25,11 @@ with lib; {
       bintools
       clang
       elfutils
-      emacs-all-the-icon-fonts
+      emacs-all-the-icons-fonts
       gdb
       git
       procs
-      rnis-lsp
+      rnix-lsp
       sysstat
       tcpdump
       unzip
