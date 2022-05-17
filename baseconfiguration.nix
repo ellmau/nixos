@@ -62,8 +62,6 @@
       enable = true;
       packages = with pkgs; [gnome3.dconf];
     };
-
-    lorri.enable = true;
   };
 
   environment = {

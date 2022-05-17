@@ -70,7 +70,13 @@ in
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
+      nix-direnv = {
+        enable = true;
+        enableFlakes = true; # TODO(mx): can be removed once updated to 22.05
+      };
     };
+
+    
 
     xsession = {
       numlock.enable = true;
