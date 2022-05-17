@@ -65,7 +65,7 @@ with lib; {
   config =
     let
       cfg = config.elss.users;
-      inherit (elss.withConfig config) mapAdmins mapUsers mapAllUsersAndRoot;
+      inherit (elss.withConfig config) mapAdmins mapUsers mapAllUsersAndRoot mapAllUsers;
 
       getMeta = login:
         builtins.getAttr login cfg.meta;
@@ -87,6 +87,27 @@ with lib; {
             extraGroups = [ ];
             openssh.authorizedKeys.keys = meta.publicKeys;
           };
+
+      mkGitUser = login:
+        let meta = getMeta login;
+        in
+          {
+            programs.git = {
+              userEmail = meta.mailAddress;
+              userName = meta.description;
+              extraConfig ={
+                gpg = lib.mkIf meta.git.gpgsm {
+                  format = "x509";
+                  program = "${pkgs.gnupg}/bin/gpgsm";
+                };
+                user = {
+                  signingKey = meta.git.key;
+                  signByDefault = meta.git.signDefault;
+                };
+              };
+            };
+          };
+      
     in
       mkIf (cfg.enable)
         {
@@ -118,5 +139,6 @@ with lib; {
                 (mapUsers mkUser)
               ];
           };
+          home-manager.users = (mapAllUsers mkGitUser);
         };
 }
