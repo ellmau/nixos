@@ -139,6 +139,6 @@ with lib; {
                 (mapUsers mkUser)
               ];
           };
-          home-manager.users = (mapAllUsers mkGitUser);
+          home-manager.users = (mapAllUsers mkGitUser) // (mapAllUsersAndRoot (_: { config.home.stateVersion = mkDefault "21.05"; }));
         };
 }

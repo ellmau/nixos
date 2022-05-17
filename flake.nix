@@ -111,7 +111,7 @@
               inherit username;
               system = "x86_64-linux";
               homeDirectory = "/home/${username}";
-              stateVersion = "21.11";
+              stateVersion = "21.05";
             });        
       };
 }
