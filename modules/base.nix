@@ -28,7 +28,13 @@ with lib; {
       emacs-all-the-icons-fonts
       gdb
       git
+      htop
+      neofetch
+      nix-prefetch-github
+      nixfmt
+      nixpkgs-fmt
       procs
+      ripgrep
       rnix-lsp
       sysstat
       tcpdump

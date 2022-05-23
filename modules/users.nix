@@ -4,6 +4,8 @@ with lib; {
   options.elss.users = {
     enable = mkEnableOption "elss specific user configuration";
 
+    x11.enable = mkEnableOption "Activate XSession related options in user-configs";
+
     users = mkOption {
       description = "logins of non-admin users to configure";
       type = types.listOf types.str;
@@ -107,6 +109,28 @@ with lib; {
               };
             };
           };
+
+      mkX11User = login:
+        let meta = getMeta login;
+        in
+          mkIf (cfg.x11.enable)
+          {
+            xsession = {
+              numlock.enable = true;
+              profileExtra = ''
+                if [ $(hostname) = 'stel-xps' ]; then
+                  brightnessctl s 50%
+                fi
+              '';
+            };
+            home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+            
+            services = {
+              blueman-applet.enable = true;
+              network-manager-applet.enable = true;
+              dunst.enable = true;
+            };
+          };
       
     in
       mkIf (cfg.enable)
@@ -139,6 +163,6 @@ with lib; {
                 (mapUsers mkUser)
               ];
           };
-          home-manager.users = (mapAllUsers mkGitUser) // (mapAllUsersAndRoot (_: { config.home.stateVersion = mkDefault "21.05"; }));
+          home-manager.users = (mapAllUsers mkGitUser) // (mapAllUsers mkX11User) // (mapAllUsersAndRoot (_: { config.home.stateVersion = mkDefault "21.05"; }));
         };
 }
