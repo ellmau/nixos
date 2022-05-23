@@ -233,7 +233,7 @@
               #format-prefix-foreground = foreground_altcol;
               format-underline = "#0a6cf5";
 
-              label = "%{A1:${pkgs.tray-calendar}/bin/traycalendar --no-tray:}%{A} %date% %time%";
+              label = "%{A} %date% %time%";
             };
             "module/battery" = {
               type = "internal/battery";

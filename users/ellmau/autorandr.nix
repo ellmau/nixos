@@ -1,7 +1,7 @@
 { config, pkgs, lib, ...}:
 {
   programs.autorandr = {
-    enable = config.variables.graphical;
+    enable = true;
     profiles = {
       "home" = {
         fingerprint = {
