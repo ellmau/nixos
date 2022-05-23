@@ -15,11 +15,11 @@
 
 
 # redesign checklist
-- [ ] lorri or similar
-- [ ] whole home manager stuff
-- [ ] baseconfiguration handled
+- [x] lorri or similar (nix-direnv)
+- [x] whole home manager stuff
+- [x] baseconfiguration handled
 - [ ] programs handled
 - [X] locale/fonts
 - [X] zsh
-- [ ] gnupg agent
+- [x] gnupg agent
 
