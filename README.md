@@ -22,4 +22,6 @@
 - [X] locale/fonts
 - [X] zsh
 - [x] gnupg agent
+- [ ] integrate steam-run module
+- [ ] integrate texlive module
 
