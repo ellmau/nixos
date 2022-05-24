@@ -53,7 +53,7 @@ let
         free-keys
         highlight-indentation
         helm
-        helm-bbdb
+#        helm-bbdb
         helm-company
         helm-flx
         helm-descbinds
