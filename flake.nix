@@ -87,7 +87,10 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.dwarffs.nixosModules.dwarffs
           ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
-          specialArgs = {inherit inputs; };
+          specialArgs = {
+            nixos-hardware = inputs.nixos-hardware.nixosModules;
+            inherit inputs;
+          };
           extraArgs = { inherit homeConfigurations; };
         };
 

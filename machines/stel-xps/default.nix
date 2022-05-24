@@ -1,11 +1,11 @@
-{ config, pkgs, inputs, ...}:
+{ config, pkgs, inputs, nixos-hardware, ...}:
 {
   imports = [
     ../../common/users.nix
     ./printer.nix
     ./hardware-configuration.nix
     ./software.nix
-    inputs.nixos-hardware.nixosModules.dell-xps-13-7390
+    nixos-hardware.dell-xps-13-7390
   ];
 
   elss = {
