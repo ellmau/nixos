@@ -12,6 +12,10 @@ with lib; {
     programs = {
       mtr.enable = true;
       dconf.enable = true;
+      gnupg.agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
     };
 
     documentation = {
