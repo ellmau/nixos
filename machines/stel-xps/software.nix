@@ -2,6 +2,9 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
+    element-desktop
+    teams
+    zoom-us
   ];
 
   programs = {
