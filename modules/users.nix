@@ -123,7 +123,7 @@ with lib; {
                 fi
               '';
             };
-            home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+            home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
             
             services = {
               blueman-applet.enable = true;
