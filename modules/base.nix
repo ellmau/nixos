@@ -44,7 +44,7 @@ with lib; {
 
     elss = {
       locale.enable = mkDefault true;
-      zsh.enable = mkdDefault true;
+      zsh.enable = mkDefault true;
     };
 
     boot = {

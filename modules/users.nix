@@ -37,8 +37,7 @@ with lib; {
               description = "Email address of the user";
             };
             git = mkOption {
-              type = types.attrsOf
-                (types.submodule {
+              type = types.submodule {
                   options = {
                     key = mkOption {
                       type = types.str;
@@ -57,7 +56,7 @@ with lib; {
                       description = "Whether to force signing commits or not";
                     };
                   };
-                });
+                };
             };
           };
         });
@@ -163,11 +162,20 @@ with lib; {
               (mapUsers mkUser)
             ];
         };
-        home-manager.users = mapAllUsersAndRoot (login:
+        home-manager = {
+          useUserPackages = true;
+          useGlobalPkgs = true;
+          users =
           mkMerge [
-            { config.home.stateVersion = mkDefault "21.11"; }
-            (if homeConfigurations ? "${login}" then homeConfigurations."${login}" else { })
-          ]
-        );
+            (mapAllUsers mkX11User)
+            (mapAllUsers mkGitUser)
+            (mapAllUsersAndRoot (login:
+              mkMerge [
+                { config.home.stateVersion = mkDefault "21.11"; }
+                (if homeConfigurations ? "${login}" then homeConfigurations."${login}" else { })
+              ]))
+          ];
+        };
+
       };
 }
