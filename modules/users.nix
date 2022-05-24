@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, homeConfigurations, ... }:
 
 with lib; {
   options.elss.users = {
@@ -63,7 +63,7 @@ with lib; {
         });
     };
   };
-  
+
   config =
     let
       cfg = config.elss.users;
@@ -82,38 +82,38 @@ with lib; {
       mkUser = login:
         let meta = getMeta login;
         in
-          {
-            inherit (meta) description;
-            isNormalUser = true;
-            home = "/home/${login}";
-            extraGroups = [ ];
-            openssh.authorizedKeys.keys = meta.publicKeys;
-          };
+        {
+          inherit (meta) description;
+          isNormalUser = true;
+          home = "/home/${login}";
+          extraGroups = [ ];
+          openssh.authorizedKeys.keys = meta.publicKeys;
+        };
 
       mkGitUser = login:
         let meta = getMeta login;
         in
-          {
-            programs.git = {
-              userEmail = meta.mailAddress;
-              userName = meta.description;
-              extraConfig ={
-                gpg = lib.mkIf meta.git.gpgsm {
-                  format = "x509";
-                  program = "${pkgs.gnupg}/bin/gpgsm";
-                };
-                user = {
-                  signingKey = meta.git.key;
-                  signByDefault = meta.git.signDefault;
-                };
+        {
+          programs.git = {
+            userEmail = meta.mailAddress;
+            userName = meta.description;
+            extraConfig = {
+              gpg = lib.mkIf meta.git.gpgsm {
+                format = "x509";
+                program = "${pkgs.gnupg}/bin/gpgsm";
+              };
+              user = {
+                signingKey = meta.git.key;
+                signByDefault = meta.git.signDefault;
               };
             };
           };
+        };
 
       mkX11User = login:
         let meta = getMeta login;
         in
-          mkIf (cfg.x11.enable)
+        mkIf (cfg.x11.enable)
           {
             xsession = {
               numlock.enable = true;
@@ -124,45 +124,50 @@ with lib; {
               '';
             };
             home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
-            
+
             services = {
               blueman-applet.enable = true;
               network-manager-applet.enable = true;
               dunst.enable = true;
             };
           };
-      
-    in
-      mkIf (cfg.enable)
-        {
-          assertions =
-            let
-              cfg = config.elss.users;
-            in
-              [
-                {
-                  assertion = mutuallyExclusive cfg.users cfg.admins;
-                  message = "kbs.users.users and kbs.users.admins are mutually exclusive";
-                }
-                {
-                  assertion = all (hash: hash != "")
-                    (catAttrs "hashedPassword" (attrVals cfg.admins cfg.meta));
-                  message = "No admin without password";
-                }
-                {
-                  assertion = length (cfg.admins) > 0;
-                  message = "One admin needed at least";
-                }
-              ];
 
-          users = {
-            mutableUsers = false;
-            users =
-              mkMerge [
-                (mapAdmins mkAdmin)
-                (mapUsers mkUser)
-              ];
-          };
-          home-manager.users = (mapAllUsers mkGitUser) // (mapAllUsers mkX11User) // (mapAllUsersAndRoot (_: { config.home.stateVersion = mkDefault "21.05"; }));
+    in
+    mkIf (cfg.enable)
+      {
+        assertions =
+          let
+            cfg = config.elss.users;
+          in
+          [
+            {
+              assertion = mutuallyExclusive cfg.users cfg.admins;
+              message = "elss.users.users and elss.users.admins are mutually exclusive";
+            }
+            {
+              assertion = all (hash: hash != "")
+                (catAttrs "hashedPassword" (attrVals cfg.admins cfg.meta));
+              message = "No admin without password";
+            }
+            {
+              assertion = length (cfg.admins) > 0;
+              message = "One admin needed at least";
+            }
+          ];
+
+        users = {
+          mutableUsers = false;
+          users =
+            mkMerge [
+              (mapAdmins mkAdmin)
+              (mapUsers mkUser)
+            ];
         };
+        home-manager.users = mapAllUsersAndRoot (login:
+          mkMerge [
+            { config.home.stateVersion = mkDefault "21.11"; }
+            (if homeConfigurations ? "${login}" then homeConfigurations."${login}" else { })
+          ]
+        );
+      };
 }
