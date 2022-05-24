@@ -19,5 +19,8 @@
       obsstudio.enable = true;
       python.enable = true;
     };
+
+    texlive.enable = true;
+    steam-run.enable = true;
   };
 }

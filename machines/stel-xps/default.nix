@@ -15,6 +15,11 @@
     locale.enable = true;
     # configure zsh
     zsh.enable = true;
+    # enable X11 with lightdm and i3
+    graphical = {
+      enable = true;
+      # dpi = 180;
+    };
     
     # user setup
     users = {
