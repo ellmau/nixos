@@ -1,4 +1,4 @@
-{ config, lib, pkgs }:
+{ config, lib, pkgs, ... }:
 with lib; {
   options.elss.texlive = {
     enable = mkEnableOption "configure texlife on the system";
