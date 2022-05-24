@@ -18,7 +18,7 @@
     # enable X11 with lightdm and i3
     graphical = {
       enable = true;
-      # dpi = 180;
+      dpi = 180;
     };
     
     # user setup
