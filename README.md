@@ -18,10 +18,10 @@
 - [x] lorri or similar (nix-direnv)
 - [x] whole home manager stuff
 - [x] baseconfiguration handled
-- [ ] programs handled
+- [x] programs handled
 - [X] locale/fonts
 - [X] zsh
 - [x] gnupg agent
-- [ ] integrate steam-run module
-- [ ] integrate texlive module
+- [x] integrate steam-run module
+- [x] integrate texlive module
 

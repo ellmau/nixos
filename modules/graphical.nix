@@ -24,7 +24,7 @@ with lib; {
       #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
     in
       {
-        config.elss.users.x11.enable = true;
+        elss.users.x11.enable = true;
         networking.networkmanager.enable = true;
 
         services = {
