@@ -85,6 +85,7 @@
         channelName = "nixpkgs";
         modules = [
           inputs.home-manager.nixosModules.home-manager
+          inputs.sops-nix.nixosModules.sops
           inputs.dwarffs.nixosModules.dwarffs
         ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {

@@ -20,6 +20,11 @@
       enable = true;
       dpi = 180;
     };
+
+    # enable sops
+    sops = {
+      enable = true;
+    };
     
     # user setup
     users = {
