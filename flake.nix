@@ -7,7 +7,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix = {
-      url = "github:NixOS/nix";
+      url = "github:NixOS/nix?ref=latest-release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

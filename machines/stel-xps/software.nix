@@ -1,11 +1,8 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
-    element-desktop
-    signal-desktop
-    teams
-    zoom-us
+    libreoffice-fresh
   ];
 
   programs = {
@@ -19,6 +16,8 @@
   elss = {
     programs = {
       aspell.enable = true;
+      # Enable communication programs
+      communication.enable = true;
       emacs.enable = true;
       obsstudio.enable = true;
       python.enable = true;
