@@ -8,7 +8,7 @@ with lib; {
     in
     mkIf cfg.enable {
       elss.graphical.enable = true;
-      environment.systemPackages = [
+      environment.systemPackages = with pkgs; [
         element-desktop
         jitsi-meet-electron
         signal-dektop
