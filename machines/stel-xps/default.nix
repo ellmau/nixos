@@ -18,7 +18,8 @@
     # enable X11 with lightdm and i3
     graphical = {
       enable = true;
-      dpi = 180;
+      # set dpi if used in mobile applications
+#      dpi = 180;
     };
 
     # enable sops
