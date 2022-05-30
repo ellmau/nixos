@@ -45,6 +45,15 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    comma = {
+      url = "github:nix-community/comma";
+      # TODO: change to nixpkgs when updating to NixOS-22.05;
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        utils.follows = "flake-utils-plus/flake-utils";
+      };
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils-plus, ... }@inputs:
@@ -76,6 +85,7 @@
         (final: prev: {
           unstable = channels.nixpkgs-unstable;
         })
+        (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
         inputs.nix.overlay
         inputs.emacs-overlay.overlay
       ];

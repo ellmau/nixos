@@ -24,6 +24,11 @@
   xdg = {
     enable = true;
   };
+
+  home.packages = with pkgs; [
+    comma
+  ];
+  
   programs = {
     alacritty = {
       enable = true;
