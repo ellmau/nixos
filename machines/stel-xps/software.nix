@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     element-desktop
+    signal-desktop
     teams
     zoom-us
   ];
