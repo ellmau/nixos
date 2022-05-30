@@ -11,7 +11,7 @@ with lib; {
       environment.systemPackages = with pkgs; [
         element-desktop
         jitsi-meet-electron
-        signal-dektop
+        signal-desktop
         skypeforlinux
         teams
         zoom-us
