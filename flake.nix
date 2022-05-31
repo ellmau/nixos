@@ -3,7 +3,7 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix = {
@@ -17,7 +17,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.11";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,7 +27,7 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay?rev=6dadf0d6dd983d4fcb5c688e98340e1441a0a74d";
+      url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,9 +48,8 @@
 
     comma = {
       url = "github:nix-community/comma";
-      # TODO: change to nixpkgs when updating to NixOS-22.05;
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils-plus/flake-utils";
       };
     };
