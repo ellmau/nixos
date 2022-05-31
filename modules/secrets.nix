@@ -9,9 +9,6 @@ with lib; {
     mkIf cfg.enable {
       sops = {
         defaultSopsFile = ../secrets/secrets.yaml;
-        age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-        age.keyFile = "/var/lib/sops-nix/key.txt";
-        age.generateKey = true;
         gnupg.sshKeyPaths = [
           ../secrets/keys/users
           ../secrets/keys/hosts

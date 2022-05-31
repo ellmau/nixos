@@ -21,7 +21,7 @@
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/9c84f143-023d-4fcb-a49c-ca78ce69e0e0";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4824-2CFD";
+    { device = "/dev/disk/by-uuid/39E0-047B";
       fsType = "vfat";
     };
 
