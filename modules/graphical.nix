@@ -72,7 +72,7 @@ with lib; {
         texlive.combined.scheme-full
         usbutils
         keepassxc
-        gnome.libsecret
+        libsecret
         arandr
       ];
     };

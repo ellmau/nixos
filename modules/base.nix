@@ -5,7 +5,7 @@ with lib; {
     services = {
       dbus = {
         enable = true;
-        packages = with pkgs; [ gnome3.dconf ];
+        packages = with pkgs; [ dconf ];
       };
     };
 

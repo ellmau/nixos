@@ -8,7 +8,7 @@ let
      mkdir -p $out/share/emacs/site-lisp
      cp ${defaultEl} $out/share/emacs/site-lisp/default.el
   '';
-  emacsPackage = (pkgs.emacsPackagesGen pkgs.emacs).emacsWithPackages
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages
     (epkgs:
       let
         lpkgs = import ./packages.nix {
