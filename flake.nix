@@ -6,10 +6,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nix = {
-      url = "github:NixOS/nix?ref=latest-release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nix = {
+      #      url = "github:NixOS/nix?ref=latest-release";
+    #  url = "github:NixOS/nix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
@@ -41,7 +42,7 @@
     dwarffs = {
       url = "github:edolstra/dwarffs";
       inputs = {
-        nix.follows = "nix";
+        #nix.follows = "nix";
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -85,7 +86,7 @@
           unstable = channels.nixpkgs-unstable;
         })
         (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
-        inputs.nix.overlay
+        #inputs.nix.overlay
         inputs.emacs-overlay.overlay
       ];
 
