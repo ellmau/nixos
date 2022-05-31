@@ -7,7 +7,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     #nix = {
-      #      url = "github:NixOS/nix?ref=latest-release";
+    #      url = "github:NixOS/nix?ref=latest-release";
     #  url = "github:NixOS/nix";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
@@ -97,9 +97,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
           inputs.dwarffs.nixosModules.dwarffs
-        ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules)) ++ [
-          ./secrets
-        ];
+        ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {
           nixos-hardware = inputs.nixos-hardware.nixosModules;
           inherit inputs;

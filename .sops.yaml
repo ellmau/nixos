@@ -1,2 +1,7 @@
 keys:
-  - &stefan_ellmauthaler 3B39 8B08 6C41 0264 A14F  B353 B1E6 F030 30A4 AEAA
+  - &stefan_ellmauthaler 3B39 8B08 6C41 0264 A14F  3B53 B1E6 F030 30A4 AEAA
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
