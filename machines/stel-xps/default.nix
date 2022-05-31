@@ -13,6 +13,8 @@
     base.enable = true;
     # setup locale and font settings
     locale.enable = true;
+    # setup sshd
+    sshd.enable = true;
     # configure zsh
     zsh.enable = true;
     # enable X11 with lightdm and i3

@@ -7,6 +7,9 @@ with lib; {
       cfg = config.elss.sops;
     in
     mkIf cfg.enable {
-      sops.defaultSopsFile = ./secrets.yaml;
+      sops = {
+        defaultSopsFile = ./secrets.yaml;
+
+      };
     };
 }

@@ -97,7 +97,9 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
           inputs.dwarffs.nixosModules.dwarffs
-        ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
+        ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules)) ++ [
+          ./secrets
+        ];
         specialArgs = {
           nixos-hardware = inputs.nixos-hardware.nixosModules;
           inherit inputs;
