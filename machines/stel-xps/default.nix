@@ -22,6 +22,9 @@
 #      dpi = 180;
     };
 
+    # add TUD vpn
+    openvpn.enable = true;
+
     # enable sops
     sops = {
       enable = true;
