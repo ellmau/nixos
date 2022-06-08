@@ -103,7 +103,10 @@ with lib; {
               };
               user = {
                 signingKey = meta.git.key;
-                signByDefault = meta.git.signDefault;
+                #signByDefault = meta.git.signDefault;
+              };
+              commit = {
+                gpgsign = meta.git.signDefault;
               };
             };
           };
