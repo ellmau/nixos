@@ -24,7 +24,7 @@
     };
 
     # enable deamon to generate nix-index-db
-    nix-index-db-update.enable = false;
+    nix-index-db-update.enable = true;
 
     # add TUD vpn
     openvpn.enable = true;

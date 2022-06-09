@@ -23,13 +23,13 @@ with lib; {
           serviceConfig = {
             CPUSchedulingPolicy = "idle";
             IOSchedulingClass = "idle";
-            ExecStartPre = ''
-              +${pkgs.coreutils}/bin/mkdir -p /var/db/nix-index/
-              +${pkgs.coreutils}/bin/chown nobody:nobody /var/db/nix-index/
-            '';
+            ExecStartPre = [
+              "+${pkgs.coreutils}/bin/mkdir -p /var/db/nix-index/"
+              "+${pkgs.coreutils}/bin/chown nobody:nobody /var/db/nix-index/"
+            ];
             ExecStart = toString nix-index-db-update;
-            User = nobody;
-            Group = nobody;
+            User = "nobody";
+            Group = "nobody";
           };
         };
 
