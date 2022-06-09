@@ -131,5 +131,12 @@
             homeDirectory = "/home/${username}";
             stateVersion = "21.05";
           });
+      
+      outputsBuilder = channels: {
+        devShell = import ./secrets/shell.nix {
+          pkgs = channels.nixpkgs;
+          sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
+        };
+      };
     };
 }
