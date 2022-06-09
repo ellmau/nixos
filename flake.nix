@@ -32,7 +32,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
+    simple-nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
@@ -97,6 +100,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
           inputs.dwarffs.nixosModules.dwarffs
+          inputs.simple-nixos-mailserver.nixosModules.mailserver
         ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {
           nixos-hardware = inputs.nixos-hardware.nixosModules;
