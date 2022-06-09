@@ -1,8 +1,8 @@
 keys:
-  - &stefan_ellmauthaler 3B398B086C410264A14F3B53B1E6F03030A4AEAA
+  - &stefan_ellmauthaler 3B398B086C410264A14FB353B1E6F03030A4AEAA
   - &stel-xps e8dfcfbac0c3e65bbdfd62ab534ab685d882e4ca
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: secrets/secrets\.yaml
     key_groups:
       - pgp:
           - *stefan_ellmauthaler
