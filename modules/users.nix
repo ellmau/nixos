@@ -96,7 +96,6 @@ with lib; {
           programs.git = {
             userEmail = meta.mailAddress;
             userName = meta.description;
-            signing.signByDefault = meta.git.signDefault;
             extraConfig = {
               gpg = lib.mkIf meta.git.gpgsm {
                 format = "x509";
@@ -104,6 +103,9 @@ with lib; {
               };
               user = {
                 signingKey = meta.git.key;
+              };
+              commit = {
+                gpgsign = meta.git.signDefault;
               };
             };
           };
