@@ -18,18 +18,4 @@
 * Rekey the secrets with either 
 	* a master key
 	* or after a git push on another machine with enough permissions to rekey
-* the flakes dev-shell (`nix devshell`) allows to use the `sops <sops-file>` as well `sops-rekey <sops-file>` to manage the keys on the system
-   
-	
-
-# redesign checklist
-- [x] lorri or similar (nix-direnv)
-- [x] whole home manager stuff
-- [x] baseconfiguration handled
-- [x] programs handled
-- [X] locale/fonts
-- [X] zsh
-- [x] gnupg agent
-- [x] integrate steam-run module
-- [x] integrate texlive module
-
+* the flakes dev-shell (`nix devshell`) allows to use `sops <sops-file>` as well as `sops-rekey <sops-file>` to manage the keys on the system
