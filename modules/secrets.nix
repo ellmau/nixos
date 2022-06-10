@@ -9,11 +9,12 @@ with lib; {
     mkIf cfg.enable {
       sops = {
         defaultSopsFile = ../secrets/secrets.yaml;
-        gnupg.sshKeyPaths = [
-          ../secrets/keys/users
-          ../secrets/keys/hosts
-        ];
         secrets.example_key.format = "yaml";
+        
       };
+      sops.secrets = {
+          storemin.sopsFile = ../secrets/server.yaml;
+          cloudstore_user.sopsFile = ../secrets/server.yaml;
+        };
     };
 }

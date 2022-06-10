@@ -19,6 +19,9 @@ with lib;{
           };
         };
 
-        
+        sops.secrets = {
+          storemin.sopsFile = ../../secrets/server.yaml;
+          cloudstore_user.sopsFile = ../../secrets/server.yaml;
+        };
       };
 }
