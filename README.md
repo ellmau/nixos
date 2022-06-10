@@ -13,7 +13,7 @@
 ## nix-sops
 * generate on your (sshd-enabled) machine a pgp key:
   * `nix shell nixpkgs#ssh-to-pgp`
-  * `sudo ssh-to-pgp -i /etc/ssh/ssh_host_rsa_key > /etc/nixos/secrets/hosts/<hostname>.asc`
+  * `sudo ssh-to-pgp -i /etc/ssh/ssh_host_rsa_key > /etc/nixos/secrets/keys/hosts/<hostname>.asc`
 * add the fingerprint of the new key to the `/etc/nixos/.sops.yaml` file
 * Rekey the secrets with either 
 	* a master key
