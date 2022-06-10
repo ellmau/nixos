@@ -13,6 +13,7 @@ with lib; {
           ../secrets/keys/users
           ../secrets/keys/hosts
         ];
+        secrets.example_key.format = "yaml";
       };
     };
 }

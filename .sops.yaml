@@ -9,3 +9,9 @@ creation_rules:
           - *stefan_ellmauthaler
           - *stel-xps
           - *nucturne
+  - path_regec: secrets/server\.yaml
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
+          - *nucturne
+          
