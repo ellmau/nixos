@@ -1,0 +1,17 @@
+keys:
+  - &stefan_ellmauthaler 3B398B086C410264A14FB353B1E6F03030A4AEAA
+  - &stel-xps e8dfcfbac0c3e65bbdfd62ab534ab685d882e4ca
+  - &nucturne 9b6a58764eddd81d07180d6dc08e322f7bfd92b1
+creation_rules:
+  - path_regex: secrets/secrets\.yaml
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
+          - *stel-xps
+          - *nucturne
+  - path_regec: secrets/server\.yaml
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
+          - *nucturne
+          
