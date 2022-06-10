@@ -84,8 +84,7 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
+    "flake-utils": {
       "locked": {
         "lastModified": 1650374568,
         "narHash": "sha256-Z+s0J8/r907g149rllvwhb4pKi8Wam5ij0st8PwAh+E=",
@@ -95,8 +94,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
