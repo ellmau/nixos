@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, ... }:
 {
   imports = [
     ./autorandr.nix
@@ -19,8 +19,15 @@
         "ssh"
       ];
     };
+
+    udiskie = {
+      enable = true;
+      automount = true;
+      notify = true;
+      tray = "auto";
+    };
   };
-  
+
   xdg = {
     enable = true;
   };
@@ -28,7 +35,7 @@
   home.packages = with pkgs; [
     comma
   ];
-  
+
   programs = {
     alacritty = {
       enable = true;
@@ -39,7 +46,7 @@
         alt_send_esc = true;
       };
     };
-    
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -61,5 +68,5 @@
     };
 
     go.enable = true;
-  };  
+  };
 }
