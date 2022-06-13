@@ -34,8 +34,8 @@
 
     # enable server services
     server = {
-      enable = false;
-      nextcloud.enable = false;
+      enable = true;
+      nextcloud.enable = true;
     };
     
     

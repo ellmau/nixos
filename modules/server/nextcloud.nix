@@ -5,9 +5,10 @@ with lib;{
       cfg = config.elss.server.nextcloud;
     in
       mkIf cfg.enable {
-        elss.server.sql.enable = mkDefault;
+        elss.server.sql.enable = mkDefault true;
         services.nextcloud = {
           enable = true;
+          package = pkgs.nextcloud24;
           hostName = "cloudstore.ellmauthaler.net";
           https = true;
           config = {
