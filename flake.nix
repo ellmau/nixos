@@ -65,7 +65,7 @@
         (final: prev: {
           elss = (import ./lib { lib = final; }) prev;
         });
-      inherit (extended-lib.elss) discoverModules moduleNames;
+      inherit (extended-lib.elss) discoverModules moduleNames discoverMachines withModules;
     in
     flake-utils-plus.lib.mkFlake rec{
       inherit self inputs;
@@ -107,19 +107,23 @@
           inherit inputs;
         };
         extraArgs = {
-          homeConfigurations = discoverModules ./users
-            (name:
-              import (./users + "/${name}")
+          homeConfigurations = withModules ./users
+            (
+              { name, path }:
+              #import (./users + "/${name}")
+              import path
             );
         };
       };
 
-      hosts = discoverModules ./machines (name: {
-        modules = [ (./machines + "/${name}") ];
-        specialArgs = { lib = extended-lib; };
-      });
+      hosts = discoverMachines ./machines
+        {
+          specialArgs = { lib = extended-lib; };
+        };
 
-      homeConfigurations = discoverModules ./users
+      nixosModules = discoverModules ./modules;
+
+      homeConfigurations = withModules ./users
         (name:
           let
             username = extended-lib.removeSuffix ".nix" name;
@@ -131,9 +135,9 @@
             homeDirectory = "/home/${username}";
             stateVersion = "21.05";
           });
-      
+
       outputsBuilder = channels: {
-        devShell = import ./secrets/shell.nix {
+        devShells.default = import ./secrets/shell.nix {
           pkgs = channels.nixpkgs;
           sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
         };

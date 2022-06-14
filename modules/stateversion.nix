@@ -1,4 +1,4 @@
 { config, lib, pkgs, ...}:
 {
-  system.stateVersion = "21.05";
+  system.stateVersion = mkDefault "21.05";
 }

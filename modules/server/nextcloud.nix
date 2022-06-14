@@ -14,9 +14,9 @@ with lib;{
           config = {
             dbtype = "mysql";
             dbuser = "cloudstore_user";
-            dbpassFile = sops.secrets.cloudstore_user.path;
+            dbpassFile = config.sops.secrets.cloudstore_user.path;
             adminuser = "storemin";
-            adminpassFile = sops.secrets.storemin.path;
+            adminpassFile = config.sops.secrets.storemin.path;
           };
         };
 
