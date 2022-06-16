@@ -5,9 +5,14 @@ with lib;{
       cfg = config.elss.server.sql;
     in
     mkIf cfg.enable {
-      services.mysql = {
+      services.postgresql = {
         enable = true;
-        package = pkgs.mariadb;
+        package = pkgs.postgresql_14;
+        ensureDatabases = [ "nextcloud" ];
+        ensureUsers = [{
+          name = "nextcloud";
+          ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+        }];
       };
     };
 }
