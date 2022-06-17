@@ -36,6 +36,7 @@
     server = {
       enable = true;
       nextcloud.enable = true;
+      acme.staging = true;
     };
     
     

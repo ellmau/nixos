@@ -7,10 +7,11 @@ with lib; {
   options.elss.server.smailserver.enable = mkEnableOption "Set up simple mail server";
 
   imports = [
+    ./acme.nix
+    ./nextcloud.nix
     ./nginx.nix
     ./smailserver.nix
     ./sql.nix
-    ./nextcloud.nix
   ];
 
   config =
@@ -21,7 +22,8 @@ with lib; {
         elss.server = {
           nginx.enable = mkDefault true;
           sql.enable = mkDefault true;
-          smailserver.enable = mkDefault false; # TODO fix simple mail server 
+          smailserver.enable = mkDefault false; # TODO fix simple mail server
+          nextcloud.enable = mkDefault true;
         };
       };
 }
