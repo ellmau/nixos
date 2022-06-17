@@ -13,9 +13,8 @@ with lib;{
         https = true;
         config = {
           dbtype = "pgsql";
-          dbuser = "cloudstore_user";
+          dbuser = "nextcloud";
           dbname = "nextcloud";
-          dbpassFile = config.sops.secrets.cloudstore_user.path;
           adminuser = "storemin";
           adminpassFile = config.sops.secrets.storemin.path;
           dbhost = "/run/postgresql";
@@ -28,7 +27,6 @@ with lib;{
       };
       sops.secrets = {
         storemin.sopsFile = ../../secrets/server.yaml;
-        cloudstore_user.sopsFile = ../../secrets/server.yaml;
       };
     };
 }
