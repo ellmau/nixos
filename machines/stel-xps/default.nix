@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, nixos-hardware, ...}:
+{ config, pkgs, inputs, nixos-hardware, ... }:
 {
   imports = [
     ../../common/users.nix
@@ -21,7 +21,7 @@
     graphical = {
       enable = true;
       # set dpi if used in mobile applications
-#      dpi = 180;
+      #      dpi = 180;
     };
 
     # enable deamon to generate nix-index-db
@@ -34,7 +34,7 @@
     sops = {
       enable = true;
     };
-    
+
     # user setup
     users = {
       enable = true;
@@ -51,13 +51,16 @@
     };
   };
 
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.v4l2loopback
-  ];
+  boot = {
+    extraModulePackages = [
+      config.boot.kernelPackages.v4l2loopback
+    ];
 
-  boot.kernelModules = [
+    kernelModules = [
       "v4l2loopback"
-  ];
+    ];
 
+    plymouth.enable = true;
+  };
   services.xserver.desktopManager.wallpaper.mode = "fill";
 }
