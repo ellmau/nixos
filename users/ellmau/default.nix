@@ -33,7 +33,8 @@
   };
 
   home.packages = with pkgs; [
-    comma
+    # comma did not compile on 15.07.2022
+    # comma
   ];
 
   programs = {
