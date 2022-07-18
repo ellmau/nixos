@@ -9,9 +9,14 @@ creation_rules:
           - *stefan_ellmauthaler
           - *stel-xps
           - *nucturne
-  - path_regec: secrets/server\.yaml
+  - path_regex: secrets/server\.yaml
     key_groups:
       - pgp:
           - *stefan_ellmauthaler
           - *nucturne
-          
+
+  - path_regex: machines/metis/secrets/wireguard\.yaml
+    key_groups:
+      - pgp:
+        - *stefan_ellmauthaler
+        
