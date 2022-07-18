@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     libreoffice-fresh
+    onlyoffice-bin
   ];
 
   programs = {

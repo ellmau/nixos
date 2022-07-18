@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     libreoffice-fresh
+    onlyoffice-bin
     krita # drawing tool for my wacom
   ];
 
