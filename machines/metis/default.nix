@@ -35,9 +35,12 @@
     # enable server services
     server = {
       enable = true;
-      nextcloud.enable = true;
+      smailserver.enable = false;
       acme.staging = true;
     };
+
+    # enable wireguard
+    wireguard.enable = true; 
     
     
     # user setup

@@ -2,7 +2,7 @@
 with lib; {
   options.elss.server.enable = mkEnableOption "Enable Mail, Web, and DB";
   options.elss.server.nginx.enable = mkEnableOption "Set up nginx";
-  options.elss.server.sql.enable = mkEnableOption "Set up sql (mariadb)";
+  options.elss.server.sql.enable = mkEnableOption "Set up sql (postresql)";
   options.elss.server.nextcloud.enable = mkEnableOption "Set up nextcloud";
   options.elss.server.smailserver.enable = mkEnableOption "Set up simple mail server";
 

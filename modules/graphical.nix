@@ -25,7 +25,7 @@ with lib; {
     in
     mkIf cfg.enable {
       elss.users.x11.enable = true;
-      networking.networkmanager.enable = true;
+      elss.networking.useNetworkManager = true;
 
       services = {
         xserver = {

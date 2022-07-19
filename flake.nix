@@ -102,6 +102,7 @@
           inputs.sops-nix.nixosModules.sops
           inputs.dwarffs.nixosModules.dwarffs
           inputs.simple-nixos-mailserver.nixosModules.mailserver
+          ./common/wireguard.nix
         ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {
           nixos-hardware = inputs.nixos-hardware.nixosModules;
