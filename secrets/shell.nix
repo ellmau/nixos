@@ -11,5 +11,10 @@ in
 pkgs.mkShell {
   sopsPGPKeyDirs = [ ./keys/users ./keys/hosts ];
 
-  nativeBuildInputs = [ sops-nix.sops-import-keys-hook sops-nix.ssh-to-pgp sops-rekey ];
+  nativeBuildInputs = [
+    sops-nix.sops-import-keys-hook
+    sops-nix.ssh-to-pgp
+    sops-rekey
+    pkgs.wireguard-tools
+  ];
 }

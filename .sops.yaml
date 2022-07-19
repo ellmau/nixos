@@ -15,7 +15,7 @@ creation_rules:
           - *stefan_ellmauthaler
           - *nucturne
 
-  - path_regex: machines/metis/secrets/wireguard\.yaml
+  - path_regex: machines/metis/secrets/[^/]+\.yaml
     key_groups:
       - pgp:
         - *stefan_ellmauthaler

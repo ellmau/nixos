@@ -24,6 +24,10 @@ with lib; {
       dev.enable = true;
     };
 
+    networking = {
+      firewall.enable = true;
+    };
+
     environment.systemPackages = with pkgs; [
       alacritty.terminfo
       bintools

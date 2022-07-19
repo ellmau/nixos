@@ -18,4 +18,4 @@
 * Rekey the secrets with either 
 	* a master key
 	* or after a git push on another machine with enough permissions to rekey
-* the flakes dev-shell (`nix devshell`) allows to use `sops <sops-file>` as well as `sops-rekey <sops-file>` to manage the keys on the system
+* the flakes dev-shell (`nix develop`) allows to use `sops <sops-file>` as well as `sops-rekey <sops-file>` to manage the keys on the system
