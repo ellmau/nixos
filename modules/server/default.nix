@@ -12,6 +12,7 @@ with lib; {
     ./nginx.nix
     ./smailserver.nix
     ./sql.nix
+    ./unbound.nix
   ];
 
   config =
@@ -24,6 +25,7 @@ with lib; {
           sql.enable = mkDefault true;
           smailserver.enable = mkDefault false; # TODO fix simple mail server
           nextcloud.enable = mkDefault true;
+          unbound.enable = mkDefault true;
         };
       };
 }
