@@ -14,11 +14,6 @@ with lib; {
                     type = types.str;
                     description = "local IP for the interface";
                   };
-                  port = mkOption {
-                    type = types.port;
-                    description = "Port to use";
-                    default = 51820;
-                  };
 
                   publickey = mkOption {
                     type = types.str;
@@ -39,16 +34,6 @@ with lib; {
                     type = types.str;
                     description = "Wireguard public key for the peer";
                   };
-
-                  setup = mkOption {
-                    type = types.enum [
-                      "none"
-                      "key"
-                      "wg"
-                      "nm"
-                    ];
-                    description = "How to setup this peer. none does nothing, key only exports the secret, wg sets up wireguard for local cloud and nm adds a tunnel option";
-                  };
                 };
               });
             };
@@ -58,6 +43,12 @@ with lib; {
                 type = types.str;
                 description = "IPv4 prefix for wireguard address room";
               };
+            };
+
+            port = mkOption {
+              type = types.port;
+              description = "Port to use";
+              default = 51820;
             };
           };
         });
@@ -80,10 +71,33 @@ with lib; {
       mkServInterface = mkInterfaces (interface: value: builtins.hasAttr hostName value.servers);
       interfaces = mkServInterface ++ mkPeerInterface;
 
-      mkInterfacename = interface: "wg-${interface}";
+      mkInterfaceName = interface: "wg-${interface}";
       mkInterfaceSops = interface: {
         "wireguard-${interface}" = { sopsFile = secrets; };
       };
+
+      mkConfig = hostName: interface: value:
+        let
+          isServer = builtins.hasAttr hostName value.servers;
+          isPeer = builtins.hasAttr hostName value.peers;
+          curConf =
+            if isServer then
+              value.servers."${hostName}"
+            else
+              value.peers."${hostName}";
+        in
+        assert lib.asserts.assertMsg
+          ((isServer || isPeer) && !(isServer && isPeer))
+          "host must be either server or peer";
+        lib.nameValuepair (mkInterfaceName interface) (
+          {
+            privateKeyFile = sops.secrets."wireguard-${interface}".path;
+            listenPort = value.listenPort;
+          } // (if isServer then { } else if isPeer then {
+          }
+          else
+            { })
+        );
     in
     mkIf cfg.wireguard.enable {
       sops.secrets = lib.mkMerge (map mkInterfaceSops interfaces);
