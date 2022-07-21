@@ -5,8 +5,8 @@ with lib; {
   config =
     let
       connections = [
-        # "tartaros"
-        # "eduroam"
+        "tartaros"
+        "eduroam"
       ];
 
       mkSopsSecrets = connection: {
