@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 with lib; {
   config.elss.wireguard.interfaces = {
-    sellnet = {
+    ellmaunet = {
       # cough @ name
       servers = {
         metis = {
