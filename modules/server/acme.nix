@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 with lib;{
-  options.elss.server.acme.staging = mkEnableOption "Whether to use the staging or the default server for acme";
   config =
     let
       cfg = config.elss.server;

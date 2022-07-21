@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 with lib; {
-  options.elss.server.unbound.enable = mkEnableOption "Set unbound dns up";
   config =
     let
       cfg = config.elss.server.unbound;
