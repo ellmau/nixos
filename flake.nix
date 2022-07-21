@@ -53,7 +53,7 @@
     comma = {
       url = "github:nix-community/comma";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-unstable";
         utils.follows = "flake-utils-plus/flake-utils";
       };
     };

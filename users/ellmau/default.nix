@@ -34,7 +34,7 @@
 
   home.packages = with pkgs; [
     # comma did not compile on 15.07.2022
-    # comma
+    comma
   ];
 
   programs = {
