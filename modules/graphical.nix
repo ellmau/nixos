@@ -67,7 +67,7 @@ with lib; {
 
       environment.systemPackages = with pkgs; [
         firefox
-        thunderbird
+        unstable.thunderbird # TODO set to stable when v102 is backported into stable
         okular
         texlive.combined.scheme-full
         usbutils
@@ -75,5 +75,6 @@ with lib; {
         libsecret
         arandr
       ];
+
     };
 }
