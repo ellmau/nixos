@@ -67,7 +67,7 @@ with lib; {
 
       environment.systemPackages = with pkgs; [
         firefox
-        unstable.thunderbird # TODO set to stable when v102 is backported into stable
+        thunderbird # v102 has various starting time issues - so back to stable
         okular
         texlive.combined.scheme-full
         usbutils
