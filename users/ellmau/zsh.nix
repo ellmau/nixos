@@ -27,20 +27,6 @@
         lla = "ll --all";
         emacsc = "emacsclient -n";
       };
-      plugins = [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            # v0.5.0
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "4eb69b044ffab5197dfbf0f5d40e7cdb3d75e222";
-            sha256 = "IT3wpfw8zhiNQsrw59lbSWYh0NQ1CUdUtFzRzHlURH0=";
-            fetchSubmodules = true;
-          };
-        }
-      ];
     };
     
     starship = {
