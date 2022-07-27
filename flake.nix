@@ -135,7 +135,7 @@
             inherit username;
             system = "x86_64-linux";
             homeDirectory = "/home/${username}";
-            stateVersion = "21.05";
+            stateVersion = extended-lib.mkDefault "21.05";
           });
 
       outputsBuilder = channels: {
