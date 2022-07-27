@@ -63,4 +63,6 @@
     plymouth.enable = true;
   };
   services.xserver.desktopManager.wallpaper.mode = "fill";
+
+  system.stateVersion = "21.05";
 }

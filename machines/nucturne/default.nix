@@ -59,4 +59,6 @@
 
   plymouth.enable = true;
   };
+
+  system.stateVersion = "21.05";
 }
