@@ -7,17 +7,17 @@
       oh-my-zsh.enable = false;
       # remove extra stuff on the right side of the prompt
       initExtra = ''
-      unset RPS1
-      # Color man pages
-      export LESS_TERMCAP_mb=$'\E[01;32m'
-      export LESS_TERMCAP_md=$'\E[01;32m'
-      export LESS_TERMCAP_me=$'\E[0m'
-      export LESS_TERMCAP_se=$'\E[0m'
-      export LESS_TERMCAP_so=$'\E[01;47;34m'
-      export LESS_TERMCAP_ue=$'\E[0m'
-      export LESS_TERMCAP_us=$'\E[01;36m'
-      export LESS=-R
-    '';
+        unset RPS1
+        # Color man pages
+        export LESS_TERMCAP_mb=$'\E[01;32m'
+        export LESS_TERMCAP_md=$'\E[01;32m'
+        export LESS_TERMCAP_me=$'\E[0m'
+        export LESS_TERMCAP_se=$'\E[0m'
+        export LESS_TERMCAP_so=$'\E[01;47;34m'
+        export LESS_TERMCAP_ue=$'\E[0m'
+        export LESS_TERMCAP_us=$'\E[01;36m'
+        export LESS=-R
+      '';
       shellAliases = {
         cp = "cp -i";
         ls = "exa --icons --git";
@@ -28,7 +28,7 @@
         emacsc = "emacsclient -n";
       };
     };
-    
+
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -62,6 +62,16 @@
       clock24 = true;
       keyMode = "emacs";
       shell = "${pkgs.zsh}/bin/zsh";
+      plugins = with pkgs; [
+        tmuxPlugins.nord
+      ];
+      extraConfig = ''
+        # split panes using | and -
+        bind | split-window -h
+        bind - split-window -v
+        unbind '"'
+        unbind %
+      '';
     };
   };
 }
