@@ -7,7 +7,7 @@ with lib; {
         servers = {
           metis = {
             localIp = "1";
-            extraIps = [ "142" ];
+            extraIps = [ "1" "142" ];
             publicKey = "wP49t1TYXI3ucsYb8RavNGwIf+8nx5UBgDU0PM9VlnI=";
             endpoint = "metis.ellmauthaler.net:51820"; #TODO
           };
