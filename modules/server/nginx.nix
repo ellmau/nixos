@@ -6,6 +6,7 @@ with lib;{
     in
     mkIf cfg.enable {
       services.nginx.enable = true;
+      networking.firewall.allowedTCPPorts = [ 80 443 ];
       services.nginx.virtualHosts."localhost" = {
         addSSL = false;
         enableACME = false;
