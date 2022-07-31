@@ -21,6 +21,11 @@ with lib;{
         };
       };
 
+      services.nginx.virtualHosts."cloudstore.ellmauthaler.net" = {
+        enableACME = true;
+        forceSSL = true;
+      };
+
       systemd.services."nextcloud-setup" = {
         requires = [ "postgresql.service" ];
         after = [ "postrgresql.service" ];
