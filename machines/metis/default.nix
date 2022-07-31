@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, nixos-hardware, ...}:
+{ config, pkgs, inputs, nixos-hardware, ... }:
 {
   imports = [
     ../../common/users.nix
@@ -18,7 +18,7 @@
     graphical = {
       enable = false;
       # set dpi if used in mobile applications
-#      dpi = 180;
+      #      dpi = 180;
     };
 
     # enable deamon to generate nix-index-db
@@ -40,9 +40,9 @@
     };
 
     # enable wireguard
-    wireguard.enable = false; 
-    
-    
+    wireguard.enable = false;
+
+
     # user setup
     users = {
       enable = true;
@@ -55,6 +55,28 @@
         };
       };
     };
+  };
+  fileSystems."/".options = [ "noatime" ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking = {
+    interfaces.ens3 = {
+      ipv4.addresses = [{
+        address = "89.58.45.113";
+        prefixLength = 22;
+      }];
+      ipv6.addresses = [{
+        address = "fe80::94e0:6eff:fecd:d6cb";
+        prefixLength = 64;
+      }];
+    };
+    defaultGateway = "89.58.44.1";
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens3";
+    };
+
   };
   system.stateVersion = "22.05";
 }
