@@ -2,6 +2,7 @@ keys:
   - &stefan_ellmauthaler 3B398B086C410264A14FB353B1E6F03030A4AEAA
   - &stel-xps e8dfcfbac0c3e65bbdfd62ab534ab685d882e4ca
   - &nucturne 9b6a58764eddd81d07180d6dc08e322f7bfd92b1
+  - &metis 57bc6385a7fda923dc181de5f1d41bbc77986d6c
 creation_rules:
   - path_regex: secrets/secrets\.yaml
     key_groups:
@@ -9,6 +10,7 @@ creation_rules:
           - *stefan_ellmauthaler
           - *stel-xps
           - *nucturne
+          - *metis
   - path_regex: secrets/networks\.yaml
     key_groups:
       - pgp:
@@ -20,7 +22,9 @@ creation_rules:
       - pgp:
           - *stefan_ellmauthaler
           - *nucturne
+          - *metis
   - path_regex: machines/metis/secrets/[^/]+\.yaml
     key_groups:
       - pgp:
         - *stefan_ellmauthaler
+        - *metis
