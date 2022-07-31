@@ -1,18 +1,33 @@
 { config, pkgs, lib, ... }:
 with lib; {
-  config.elss.wireguard.interfaces = {
-    ellmaunet = {
-      # cough @ name
-      servers = {
-        metis = {
-          localIP = "1";
-          publicKey = "bla";
-        };
-      };
-      peers = { };
+  config.elss.wireguard = {
 
-      prefix = {
-        ipv4 = "192.168.242.";
+    interfaces = {
+      stelnet = {
+        servers = {
+          metis = {
+            localIp = "1";
+            extraIps = [ "142" ];
+            publicKey = ""; #TODO
+            endpoint = "metis.ellmauthaler.net:51820"; #TODO
+          };
+        };
+
+        peers = { # TODO
+          stel = {
+            localIp = "142";
+            publicKey = "6ZwilfrS1J/dMYRnwIMcQ3cW0KtJdLRj5VnSOjwOpn8=";
+          };
+        };
+
+        prefixes = {
+          ipv4 = [ ]; # TODO
+          ipv6 = {
+            ula = [ ]; # TODO
+            gua = [ ];
+          };
+          serial = "2022073100";
+        };
       };
     };
   };
