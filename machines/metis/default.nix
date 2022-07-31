@@ -36,7 +36,7 @@
     server = {
       enable = true;
       smailserver.enable = false;
-      acme.staging = true;
+      acme.staging = false;
     };
 
     # enable wireguard
