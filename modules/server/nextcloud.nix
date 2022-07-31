@@ -26,7 +26,11 @@ with lib;{
         after = [ "postrgresql.service" ];
       };
       sops.secrets = {
-        storemin.sopsFile = ../../secrets/server.yaml;
+        storemin = {
+          owner = "nextcloud";
+          group = "nextcloud";
+          sopsFile = ../../secrets/server.yaml;
+        };
       };
     };
 }
