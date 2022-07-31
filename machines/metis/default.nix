@@ -40,7 +40,7 @@
     };
 
     # enable wireguard
-    wireguard.enable = true; 
+    wireguard.enable = false; 
     
     
     # user setup
@@ -51,7 +51,7 @@
 
       meta = {
         ellmau.git = {
-          signDefault = true;
+          signDefault = false;
         };
       };
     };
