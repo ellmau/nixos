@@ -166,7 +166,7 @@
           ((isServer || isPeer) && !(isServer && isPeer))
           "host must be either server or peer";
         lib.nameValuePair (mkInterfaceName interface) ({
-          privateKeyFile = sops.secrets."wireguard-${interface}".path;
+          privateKeyFile = config.sops.secrets."wireguard-${interface}".path;
           ips = mkAddresses value.prefixes myConfig.localIp;
           inherit (myConfig) listenPort;
         } // (if isServer then {
