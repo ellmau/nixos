@@ -16,12 +16,12 @@ with lib; {
         peers = { # TODO
           stelphone = {
             localIp = "142";
-            publicKey = "6ZwilfrS1J/dMYRnwIMcQ3cW0KtJdLRj5VnSOjwOpn8=";
+            publicKey = "UnS5BtlKKTXfNaSsw2PY7Gbd5aLGiJVlCUY7bHosLio=";
           };
         };
 
         prefixes = {
-          ipv4 = [ ]; # TODO
+          ipv4 = [ "192.168.244" ];
           ipv6 = {
             ula = [ ]; # TODO
             gua = [ ];

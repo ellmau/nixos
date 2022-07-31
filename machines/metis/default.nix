@@ -40,7 +40,7 @@
     };
 
     # enable wireguard
-    wireguard.enable = false;
+    wireguard.enable = true;
 
 
     # user setup
@@ -75,6 +75,12 @@
     defaultGateway6 = {
       address = "fe80::1";
       interface = "ens3";
+    };
+
+    nat = {
+      enable = true;
+      externalInterface = "ens3";
+      internalInterfaces = [ "wg-stelnet" ];
     };
 
   };

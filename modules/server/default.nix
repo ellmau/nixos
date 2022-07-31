@@ -8,6 +8,7 @@ with lib; {
     nextcloud.enable = mkEnableOption "Set up nextcloud";
     smailserver.enable = mkEnableOption "Set up simple mail server";
     unbound.enable = mkEnableOption "Set unbound dns up";
+    
   };
 
   imports = [
