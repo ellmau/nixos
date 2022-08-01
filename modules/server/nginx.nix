@@ -11,6 +11,7 @@ with lib;{
         addSSL = false;
         enableACME = false;
         root = "/var/www/localhost";
+        default = true;
       };
     };
 }
