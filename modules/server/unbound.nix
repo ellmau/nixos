@@ -25,7 +25,6 @@ with lib; {
       networking = {
         nameservers = [ "127.0.0.1" "::1"];
         resolvconf.useLocalResolver = true;
-        firewall.allowedUDPPorts = [ 52 ];
       };
     };
 }
