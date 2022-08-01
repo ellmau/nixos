@@ -23,7 +23,7 @@ with lib; {
         prefixes = {
           ipv4 = [ "192.168.244" ];
           ipv6 = {
-            ula = [ ]; # TODO
+            ula = [ "fdaa:3313:9dfa:dfa3" ]; # TODO
             gua = [ ];
           };
           serial = "2022073100";

@@ -19,6 +19,7 @@ with lib; {
         unbound = {
           enable = true;
           settings.server.interface = [ "127.0.0.0" "::1" ];
+          settings.server.accesControl = [ "192.168.244.0/24" "fdaa:3313:9dfa:dfa3/64" ];
         };
         
       };
