@@ -147,6 +147,7 @@
           serverIps = name: server: mkServerAddresses prefixes server.localIp;
           dnsServers = lib.concatLists (lib.mapAttrsToList serverIps servers);
         in
+
         lib.concatStrings ([
           ''
             ${pkgs.systemd}/bin/resolvectl domain ${ifName} ${name}.${config.elss.dns.wgZone}
@@ -179,7 +180,7 @@
           peers = lib.mapAttrsToList (_: mkServerPeer value.prefixes) value.peers;
         } else if isPeer then {
           peers = lib.mapAttrsToList (_: mkPeerPeer value.prefixes value.peers) value.servers;
-          # postSetup = mkPostSetup interface value.prefixes value.servers;
+          postSetup = mkPostSetup interface value.prefixes value.servers;
         } else
           { }));
 
@@ -234,6 +235,7 @@
       };
 
       services.unbound.settings.server.interface = map mkInterfaceName serverInterfaces;
+      services.resolved.enable = lib.mkDefault true;
       systemd.services = lib.listToAttrs (map
         (interface: {
           name = "wireguard-${mkInterfaceName interface}";

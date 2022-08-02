@@ -36,7 +36,7 @@
     };
 
     # enable wireguard
-    wireguard.enable = false;
+    wireguard.enable = true;
 
     # user setup
     users = {

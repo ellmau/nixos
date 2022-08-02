@@ -1,6 +1,15 @@
-{ config, lib, pkgs, ...} :
+{ config, lib, pkgs, ... }:
 with lib; {
-  options.elss.base.enable = mkEnableOption "Set the base configuration for the system";
+  options.elss = {
+    base.enable = mkEnableOption "Set the base configuration for the system";
+    dns = {
+      wgZone = mkOption {
+        type = types.str;
+        description = "Zone for generated wireguard zones";
+        default = "wg.ellmauthaler.net";
+      };
+    };
+  };
   config = mkIf config.elss.base.enable {
     services = {
       dbus = {
