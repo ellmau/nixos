@@ -33,6 +33,9 @@
     sops = {
       enable = true;
     };
+
+    # enable wireguard
+    wireguard.enable = true;
     
     # user setup
     users = {
