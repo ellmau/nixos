@@ -59,6 +59,12 @@
                   type = types.str;
                   description = "Wireguard public key for this peer";
                 };
+
+                additionalAllowedIps = mkOption{
+                  type = types.listOf types.str;
+                  description = "Additional IPs to add to allowedIPs ";
+                  default = [ ];
+                };
               };
             });
           };
@@ -128,9 +134,9 @@
         inherit (peer) publicKey;
       };
 
-      mkPeerPeer = prefixes: peer: {
+      mkPeerPeer = prefixes: peers: peer: {
         allowedIPs = (mkAddresses prefixes peer.localIp)
-          ++ (lib.concatMap (mkAddresses prefixes) peer.extraIps);
+                     ++ (lib.concatMap (mkAddresses prefixes) peer.extraIps) ++ (if lib.hasAttr hostName peers then peers.${hostName}.additionalAllowedIps else [ ]);
         persistentKeepalive = 25;
         inherit (peer) publicKey endpoint;
       };
@@ -172,7 +178,7 @@
         } // (if isServer then {
           peers = lib.mapAttrsToList (_: mkServerPeer value.prefixes) value.peers;
         } else if isPeer then {
-          peers = lib.mapAttrsToList (_: mkPeerPeer value.prefixes) value.servers;
+          peers = lib.mapAttrsToList (_: mkPeerPeer value.prefixes value.peers) value.servers;
           postSetup = mkPostSetup interface value.prefixes value.servers;
         } else
           { }));
