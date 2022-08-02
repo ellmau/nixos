@@ -8,12 +8,13 @@ with lib;{
       mailserver = {
         enable = true;
         fqdn = "mail.ellmauthaler.net";
+        sendingFqdn = "ellmauthaler.net";
         domains = [ "ellmauthaler.net" ];
 
         loginAccounts = {
           "ellmau@ellmauthaler.net" = {
             aliases = [ "stefan@ellmauthaler.net" "postmaster@ellmauthaler.net" "abuse@ellmauthaler.net" ];
-            hashedPasswordFile = sops.secrets.ellmauMail.path;
+            hashedPasswordFile = config.sops.secrets.ellmauMail.path;
           };
         };
         
