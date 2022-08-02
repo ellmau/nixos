@@ -9,6 +9,24 @@ with lib;{
         enable = true;
         fqdn = "mail.ellmauthaler.net";
         domains = [ "ellmauthaler.net" ];
+
+        loginAccounts = {
+          "ellmau@ellmauthaler.net" = {
+            aliases = [ "stefan@ellmauthaler.net" "postmaster@ellmauthaler.net" "abuse@ellmauthaler.net" ];
+            hashedPasswordFile = sops.secrets.ellmauMail.path;
+          };
+        };
+        
+        # use ACME
+        certificateScheme = 3;
+      };
+
+      sops.secrets = {
+        ellmauMail = {
+          owner = mailserver.vmailUserName;
+          group = mailserver.vmailGroupName;
+          sopsFile = ../../secrets/server.yaml;
+        };
       };
     };
 }
