@@ -60,7 +60,7 @@
                   description = "Wireguard public key for this peer";
                 };
 
-                additionalAllowedIps = mkOption{
+                additionalAllowedIps = mkOption {
                   type = types.listOf types.str;
                   description = "Additional IPs to add to allowedIPs ";
                   default = [ ];
@@ -136,7 +136,7 @@
 
       mkPeerPeer = prefixes: peers: peer: {
         allowedIPs = (mkAddresses prefixes peer.localIp)
-                     ++ (lib.concatMap (mkAddresses prefixes) peer.extraIps) ++ (if lib.hasAttr hostName peers then peers.${hostName}.additionalAllowedIps else [ ]);
+          ++ (lib.concatMap (mkAddresses prefixes) peer.extraIps) ++ (if lib.hasAttr hostName peers then peers.${hostName}.additionalAllowedIps else [ ]);
         persistentKeepalive = 25;
         inherit (peer) publicKey endpoint;
       };
