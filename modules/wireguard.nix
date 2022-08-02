@@ -148,12 +148,8 @@
           dnsServers = lib.concatLists (lib.mapAttrsToList serverIps servers);
         in
         lib.concatStrings ([
-          # will be needed for nsd
-          # ''
-          #   ${pkgs.systemd}/bin/resolvectl domain ${ifName} ${name}.${config.elss.dns.wgZone}
-          #   ${pkgs.systemd}/bin/resolvectl default-route ${ifName} true
-          # ''
           ''
+            ${pkgs.systemd}/bin/resolvectl domain ${ifName} ${name}.${config.elss.dns.wgZone}
             ${pkgs.systemd}/bin/resolvectl default-route ${ifName} true
           ''
         ] ++ (map
@@ -183,7 +179,7 @@
           peers = lib.mapAttrsToList (_: mkServerPeer value.prefixes) value.peers;
         } else if isPeer then {
           peers = lib.mapAttrsToList (_: mkPeerPeer value.prefixes value.peers) value.servers;
-          postSetup = mkPostSetup interface value.prefixes value.servers;
+          # postSetup = mkPostSetup interface value.prefixes value.servers;
         } else
           { }));
 
