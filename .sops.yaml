@@ -28,3 +28,15 @@ creation_rules:
       - pgp:
         - *stefan_ellmauthaler
         - *metis
+
+  - path_regex: machines/stel-xps/secrets/[^/]+\.yaml
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
+          - *stel-xps
+
+  - path_regex: machines/nucturne/secrets/[^/]+\.yaml
+    key_groups:
+      - pgp:
+          - *stefan_ellmauthaler
+          - *nucturne

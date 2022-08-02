@@ -148,8 +148,12 @@
           dnsServers = lib.concatLists (lib.mapAttrsToList serverIps servers);
         in
         lib.concatStrings ([
+          # will be needed for nsd
+          # ''
+          #   ${pkgs.systemd}/bin/resolvectl domain ${ifName} ${name}.${config.elss.dns.wgZone}
+          #   ${pkgs.systemd}/bin/resolvectl default-route ${ifName} true
+          # ''
           ''
-            ${pkgs.systemd}/bin/resolvectl domain ${ifName} ${name}.${config.elss.dns.wgZone}
             ${pkgs.systemd}/bin/resolvectl default-route ${ifName} true
           ''
         ] ++ (map

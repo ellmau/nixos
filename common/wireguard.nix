@@ -7,13 +7,24 @@ with lib; {
         servers = {
           metis = {
             localIp = "1";
-            extraIps = [ "1" "142" ];
+            extraIps = [ "1" "2" "142" ];
             publicKey = "wP49t1TYXI3ucsYb8RavNGwIf+8nx5UBgDU0PM9VlnI=";
             endpoint = "metis.ellmauthaler.net:51820"; #TODO
           };
         };
 
-        peers = { # TODO
+        peers = {
+          # TODO
+          stel-xps = {
+            localIp = "2";
+            publicKey = "Wmw+gIvMdaAZ+m7Ruk60IZukW2TvMZxdT13xof9mazs=";
+          };
+
+          nucturne = {
+            localIp = "3";
+            publicKey = "DJ1U2EQLkqqapYXKZDgtS/b/xX7ACIHuFuH1sNpecnU=";
+          };
+
           stelphone = {
             localIp = "142";
             publicKey = "UnS5BtlKKTXfNaSsw2PY7Gbd5aLGiJVlCUY7bHosLio=";
