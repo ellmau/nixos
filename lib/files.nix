@@ -21,4 +21,22 @@ with prev; rec {
   discoverMachines = dir: args:
     withModules dir ({ path, name }:
       { modules = [ path ]; } // args);
+  discoverTemplates = dir: overrides:
+    pipe dir [
+      builtins.readDir
+      (filterAttrs (_name: type: type == "directory"))
+      attrNames
+      (map (template:
+        nameValuePair template (recursiveUpdate
+          {
+            path = "${dir}/${template}";
+            description = "a template for ${template} projects";
+          }
+          (if hasAttr template overrides then
+            getAttr template overrides
+          else
+            { }))))
+      listToAttrs
+    ];
+
 }

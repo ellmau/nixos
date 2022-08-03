@@ -65,7 +65,7 @@
         (final: prev: {
           elss = (import ./lib { lib = final; }) prev;
         });
-      inherit (extended-lib.elss) discoverModules moduleNames discoverMachines withModules;
+      inherit (extended-lib.elss) discoverModules moduleNames discoverMachines withModules discoverTemplates;
     in
     flake-utils-plus.lib.mkFlake rec{
       inherit self inputs;
@@ -142,6 +142,23 @@
         devShells.default = import ./secrets/shell.nix {
           pkgs = channels.nixpkgs;
           sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
+        };
+      };
+
+      templates = discoverTemplates ./templates {
+        basic_tool = {
+          description = "Basic setup of tools in nixpkgs/unstable";
+          welcomeText = "Change into the folder and add the wanted packages to the buildInputs";
+        };
+        
+        rust = {
+          description = "Rust development environment flake";
+          welcomeText =
+            "Change into the folder and follow the prompt to create an automatic rust environment in this folder";
+        };
+        jupyter = {
+          description = "Jupyter server flake";
+          welcomeText = "Use `nix run .` to run a jupyter server instance.";
         };
       };
     };
