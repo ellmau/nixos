@@ -24,6 +24,7 @@ with lib; {
         (nerdfonts.override { fonts = [ "Hasklig" ]; })
         material-icons
         weather-icons
+        xits-math
       ];
 
       fontconfig = {
