@@ -17,6 +17,8 @@ with lib;{
             hashedPasswordFile = config.sops.secrets.ellmauMail.path;
           };
         };
+
+        localDnsResolver = false;
         
         # use ACME
         certificateScheme = 3;
