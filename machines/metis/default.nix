@@ -35,7 +35,6 @@
     # enable server services
     server = {
       enable = true;
-      smailserver.enable = false;
       acme.staging = false;
     };
 
