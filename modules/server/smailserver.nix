@@ -24,8 +24,8 @@ with lib;{
 
       sops.secrets = {
         ellmauMail = {
-          owner = mailserver.vmailUserName;
-          group = mailserver.vmailGroupName;
+          owner = config.mailserver.vmailUserName;
+          group = config.mailserver.vmailGroupName;
           sopsFile = ../../secrets/server.yaml;
         };
       };
