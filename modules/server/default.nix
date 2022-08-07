@@ -28,7 +28,7 @@ with lib; {
       elss.server = {
         nginx.enable = mkDefault true;
         sql.enable = mkDefault true;
-        smailserver.enable = mkDefault false; # TODO fix simple mail server
+        smailserver.enable = mkDefault true;
         nextcloud.enable = mkDefault true;
         unbound.enable = mkDefault true;
       };
