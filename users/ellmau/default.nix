@@ -1,14 +1,16 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./autorandr.nix
+#    ./autorandr.nix
     ./dunst.nix
     ./git.nix
     ./gpg.nix
-    ./i3.nix
+#    ./i3.nix
     ./nextcloud.nix
-    ./polybar.nix
+#    ./polybar.nix
     ./zsh.nix
+
+    ./sway.nix
   ];
   services = {
     gnome-keyring = {

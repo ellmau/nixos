@@ -7,7 +7,7 @@ with lib; {
       cfg = config.elss.programs.communication;
     in
     mkIf cfg.enable {
-      elss.graphical.enable = true;
+      # elss.graphical.enable = true;
       environment.systemPackages = with pkgs; [
         element-desktop
         jitsi-meet-electron
