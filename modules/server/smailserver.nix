@@ -16,6 +16,10 @@ with lib;{
             aliases = [ "stefan@ellmauthaler.net" "postmaster@ellmauthaler.net" "abuse@ellmauthaler.net" ];
             hashedPasswordFile = config.sops.secrets.ellmauMail.path;
           };
+
+          "printer@ellmauthaler.net" = {
+            hashedPasswordFile = config.sops.secrets.printerMail.path;
+          };
         };
 
         localDnsResolver = false;
@@ -26,6 +30,11 @@ with lib;{
 
       sops.secrets = {
         ellmauMail = {
+          owner = config.mailserver.vmailUserName;
+          group = config.mailserver.vmailGroupName;
+          sopsFile = ../../secrets/server.yaml;
+        };
+        printerMail = {
           owner = config.mailserver.vmailUserName;
           group = config.mailserver.vmailGroupName;
           sopsFile = ../../secrets/server.yaml;
