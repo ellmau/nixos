@@ -30,7 +30,16 @@ with lib; {
         # enable sway window manager
         programs.sway = {
           enable = true;
-          wrapperFeatures.gtk = true;
+          extraPackages = with pkgs; [
+            rofi
+            swaylock
+            swayidle
+            waybar
+          ];
+          wrapperFeatures = {
+            base = true;
+            gtk = true;
+          };
         };
 
         # greetd login manager
@@ -44,8 +53,9 @@ with lib; {
           };
         };
 
-        environment.systemPackages = with pkgs; [
-          rofi
-        ];
+        security.pam.services.greetd = {
+          enableGnomeKeyring = true;
+          gnupg.enable = true;
+        };
       };
 }
