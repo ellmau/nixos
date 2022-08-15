@@ -57,6 +57,10 @@ with lib; {
         printing.enable = true;
       };
 
+      programs.nm-applet = {
+        enable = true;
+      };
+
       sound.enable = true;
 
       hardware = {

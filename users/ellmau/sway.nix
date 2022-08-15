@@ -18,7 +18,7 @@
           "${modifier}+Shift+q" = "kill";
           "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
           "${modifier}+Tab" = "exec ${pkgs.rofi}/bin/rofi -show window";
-          "${modifier}+BackSpace" = "mode $mode_system";
+          "${modifier}+BackSpace" = ''mode "$mode_system"'';
         };
       keycodebindings =
         let
@@ -37,8 +37,11 @@
       window = {
         titlebar = true;
       };
+
+      bars = [];
     };
     extraConfig = ''
+      set $mode_system System (l) lock, (CTRL+e) logout, (CTRL+r) reboot, (CTRL+s) shutdown
       mode "$mode_system" {
         bindsym l exec --no-startup-id $i3lockwall, mode "default"
         bindsym Ctrl+e exec --no-startup-id swaymsg exit, mode "default"

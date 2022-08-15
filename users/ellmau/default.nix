@@ -11,6 +11,7 @@
     ./zsh.nix
 
     ./sway.nix
+    ./waybar.nix
   ];
   services = {
     gnome-keyring = {
