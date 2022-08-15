@@ -2,10 +2,11 @@
 {
   imports = [
 #    ./autorandr.nix
-    ./dunst.nix
+#    ./dunst.nix
     ./git.nix
     ./gpg.nix
-#    ./i3.nix
+    ./i3.nix
+    ./mako.nix
     ./nextcloud.nix
 #    ./polybar.nix
     ./zsh.nix

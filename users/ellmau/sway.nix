@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
 {
+  services = {
+    blueman-applet.enable = true;
+    network-manager-applet.enable = true;
+  };
+  home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -28,17 +33,27 @@
 
       startup = [
         {
-          command = "--no-startup-id nm-applet";
+          command = "--no-startup-id nm-applet --indicator";
           always = true;
         }
-
+        {
+          command = "--no-startup-id blueman-applet";
+          always = true;
+        }
+        {
+          command = "--no-startup-id systemctl --user restart waybar.service";
+          always = true;
+        }
+        {
+          command = "--no-startup-id .config/i3/keepassxc.sh";
+        }
       ];
       terminal = "alacritty";
       window = {
         titlebar = true;
       };
 
-      bars = [];
+      bars = [ ];
     };
     extraConfig = ''
       set $mode_system System (l) lock, (CTRL+e) logout, (CTRL+r) reboot, (CTRL+s) shutdown
