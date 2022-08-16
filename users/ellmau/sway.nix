@@ -2,9 +2,15 @@
 {
   services = {
     blueman-applet.enable = true;
-    network-manager-applet.enable = true;
   };
-  home.file.".background-image".source = ../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+  home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+
+  gtk.enable = true;
+
+  home.packages = [
+    pkgs.gnome-icon-theme
+  ];
+  
   wayland.windowManager.sway = {
     enable = true;
     config = {
