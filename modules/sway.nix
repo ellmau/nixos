@@ -55,7 +55,7 @@ with lib; {
         package = pkgs.greetd.tuigreet;
         settings = {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway; swaymsg exit";
           };
         };
       };
@@ -68,8 +68,9 @@ with lib; {
       environment.systemPackages = with pkgs; [
         gnome3.adwaita-icon-theme
         wl-clipboard
+        networkmanagerapplet
+        pavucontrol
+        pamixer
       ];
-
-
     };
 }

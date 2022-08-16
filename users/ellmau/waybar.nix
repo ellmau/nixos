@@ -7,7 +7,7 @@
       mainBar = {
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "idle_inhibitor" "sway/language" "battery" "network#wg" "network" "clock" "tray" ];
+        modules-right = [ "idle_inhibitor" "sway/language" "battery" "pulseaudio" "clock" "tray" ];
 
         idle_inhibitor = {
           format = "{icon}";
@@ -27,24 +27,22 @@
             format-alt = "{time} {icon}";
             format-icons = [ "" "" "" "" "" ];
           };
-          network = {
-            format-wifi = "{essid} ({signalStrength}%) ";
-            format-ethernet = "{ipaddr}/{cidr} ";
-            tooltip-format = "{ifname} via {gwaddr} ";
-            format-linked = "{ifname} (No IP) ";
-            format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
-          };
-          
-          "network#wg" = {
-            interface = "wg-stelnet";
-            format-wifi = "{essid} ({signalStrength}%) ";
-            format-ethernet = "{ipaddr}/{cidr} ";
-            tooltip-format = "{ifname} via {gwaddr} ";
-            format-linked = "{ifname} (No IP) ";
-            format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
-          };
+         
+          pulseaudio = {
+		        format = "{icon} {volume:2}%";
+		        format-bluetooth = "{icon}  {volume}%";
+		        format-muted = "MUTE";
+		        format-icons = {
+			        headphones = "";
+			        default = [
+				        ""
+				        ""
+			        ];
+		        };
+		        scroll-step = 5;
+		        on-click = "${pkgs.pamixer}/bin/pamixer -t";
+		        on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol &";
+	        };
         };
       };
     };

@@ -6,6 +6,7 @@
     ./git.nix
     ./gpg.nix
     ./i3.nix
+    ./kanshi.nix
     ./mako.nix
     ./nextcloud.nix
 #    ./polybar.nix
@@ -39,6 +40,7 @@
   home.packages = with pkgs; [
     # comma did not compile on 15.07.2022
     comma
+    kanshi
   ];
 
   programs = {

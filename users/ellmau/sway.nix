@@ -2,6 +2,18 @@
 {
   services = {
     blueman-applet.enable = true;
+    swayidle = {
+      enable = true;
+      events = [
+        
+          { event = "before-sleep"; command = "swaylock -KfeFi ~/.background-image"; }
+          { event = "lock"; command = "swaylock -KfeFi ~/.background-image"; }
+        
+      ];
+      timeouts = [
+        { timeout = 60; command = "swaylock -KfeFi ~/.background-image"; }
+      ];
+    };
   };
   home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
 
@@ -9,8 +21,9 @@
 
   home.packages = [
     pkgs.gnome-icon-theme
+    pkgs.swaylock
   ];
-  
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -62,7 +75,13 @@
       bars = [ ];
     };
     extraConfig = ''
+      input "type:keyboard" {
+        xkb_layout us,de
+        xkb_variant euro,nodeadkeys
+        xkb_options grp:win_space_toggle
+      }
       set $mode_system System (l) lock, (CTRL+e) logout, (CTRL+r) reboot, (CTRL+s) shutdown
+      set $i3lockwall swaylock -KfeFi ~/.background-image
       mode "$mode_system" {
         bindsym l exec --no-startup-id $i3lockwall, mode "default"
         bindsym Ctrl+e exec --no-startup-id swaymsg exit, mode "default"
