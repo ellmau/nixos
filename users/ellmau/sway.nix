@@ -22,6 +22,7 @@
   home.packages = [
     pkgs.gnome-icon-theme
     pkgs.swaylock
+    pkgs.pulseaudioFull
   ];
 
   wayland.windowManager.sway = {
@@ -37,12 +38,19 @@
       keybindings =
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
+          bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         in
         lib.mkOptionDefault {
           "${modifier}+Shift+q" = "kill";
           "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
           "${modifier}+Tab" = "exec ${pkgs.rofi}/bin/rofi -show window";
           "${modifier}+BackSpace" = ''mode "$mode_system"'';
+          XF86MonBrightnessDown = "exec ${bctl} s 2%-";
+          XF86MonBrightnessUp = "exec ${bctl} s 2%+";
+          XF86AudioMute = "exec ${pkgs.pamixer}/bin/pamixer -t";
+          XF86AudioLowerVolume = "exec ${pkgs.pulseaudioFull}/bin/pactl set-sink-volume @DEFAULT_SINK@ -10%";
+          XF86AudioRaiseVolume = "exec ${pkgs.pulseaudioFull}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%";
+
         };
       keycodebindings =
         let
@@ -65,6 +73,10 @@
         }
         {
           command = "--no-startup-id .config/i3/keepassxc.sh";
+        }
+        {
+          command = ''--no-startup-id swaymsg output "*" bg .background-image fill'';
+          always = true;
         }
       ];
       terminal = "alacritty";
