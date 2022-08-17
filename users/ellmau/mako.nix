@@ -5,8 +5,8 @@
     enable = true;
     iconPath = "${pkgs.numix-icon-theme}";
     font = "Hasklug Nerd Font 10";
-    defaultTimeout = 50000;
-    ignoreTimeout = true;
+    defaultTimeout = 8000;
+   # ignoreTimeout = true;
     
   };
 
