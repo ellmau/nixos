@@ -1,58 +1,63 @@
-{ config, pkgs, ...}:
-{
-    services.polybar = {
-      enable = true;
-      package = pkgs.polybarFull;
-      settings =
-        let
-          # solarized theme colours ~ https://en.wikipedia.org/wiki/Solarized
+{ config, pkgs, lib, nixosConfig, ... }:
+with lib; {
+  config =
+    let
+      cfg = nixosConfig.elss.graphical.i3;
+    in
+    mkIf cfg.enable {
+      services.polybar = {
+        enable = true;
+        package = pkgs.polybarFull;
+        settings =
+          let
+            # solarized theme colours ~ https://en.wikipedia.org/wiki/Solarized
 
-          #content tones
-          Base01 = "#586e75";
-          Base00 = "#657b83";
-          Base0 = "#839496";
-          Base1 = "#93a1a1";
-          # background tones
-          Base2 = "#eee8d5";
-          Base3 = "#fdf6e3";
-          # accent tones
-          Yellow = "#b58900";
-          Orange = "#cb4b16";
-          Red = "#dc322f";
-          Magenta = "#d33682";
-          Violet = "#6c71c4";
-          Blue = "#268bd2";
-          Cyan = "#2aa198";
-          Green = "#859900";
+            #content tones
+            Base01 = "#586e75";
+            Base00 = "#657b83";
+            Base0 = "#839496";
+            Base1 = "#93a1a1";
+            # background tones
+            Base2 = "#eee8d5";
+            Base3 = "#fdf6e3";
+            # accent tones
+            Yellow = "#b58900";
+            Orange = "#cb4b16";
+            Red = "#dc322f";
+            Magenta = "#d33682";
+            Violet = "#6c71c4";
+            Blue = "#268bd2";
+            Cyan = "#2aa198";
+            Green = "#859900";
 
-          foreground_col = Base3;
-          background_col = Base01;
+            foreground_col = Base3;
+            background_col = Base01;
 
-          # old bg/fg stuff
-          #foreground_col = "#eee8d5";
-          #background_col = "#6c71c4";
-          foreground_altcol = "#66deff";
-          primary_col = "#ffb52a";
-          secondary_col = "#e60053";
-          alert_col = "#dc322f";
+            # old bg/fg stuff
+            #foreground_col = "#eee8d5";
+            #background_col = "#6c71c4";
+            foreground_altcol = "#66deff";
+            primary_col = "#ffb52a";
+            secondary_col = "#e60053";
+            alert_col = "#dc322f";
 
-          dpi = ''
-          ''${env:DPI:0}
-          '';
+            dpi = ''
+              ''${env:DPI:0}
+            '';
 
-          #polyheight = 60;
-          
-          fonts = [
-            "Hasklig:style=Regular"
-            "all-the-icons:style=Regular"
-            "Webdings:style=Regular"
-            "Noto Emoji:scale=10"
-            "Unifont:style=Regular"
-            "Material Icons:size=12;0"
-            "Weather Icons:size=12;0"
-            "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
-          ];
-        in
+            #polyheight = 60;
+
+            fonts = [
+              "Hasklig:style=Regular"
+              "all-the-icons:style=Regular"
+              "Webdings:style=Regular"
+              "Noto Emoji:scale=10"
+              "Unifont:style=Regular"
+              "Material Icons:size=12;0"
+              "Weather Icons:size=12;0"
+              "Hasklug Nerd Font,Hasklig Medium:style=Medium,Regular"
+            ];
+          in
           {
             "bar/main" = {
               font = fonts;
@@ -66,8 +71,8 @@
               foreground = foreground_col;
 
               monitor = ''
-          ''${env:MONITOR:}
-        '';
+                ''${env:MONITOR:}
+              '';
               width = "100%";
               #height = polyheight;
               padding = 0;
@@ -75,10 +80,10 @@
               radius = 14;
               module-margin = 1;
               line-size = 2;
-              
+
               dpi-x = dpi;
               dpi-y = dpi;
-              
+
               tray = {
                 position = "right";
                 padding = 2;
@@ -97,8 +102,8 @@
               foreground = foreground_col;
 
               monitor = ''
-          ''${env:MONITOR:}
-        '';
+                ''${env:MONITOR:}
+              '';
               width = "100%";
               #height = polyheight;
               radius = 14;
@@ -108,18 +113,18 @@
               dpi-x = dpi;
               dpi-y = dpi;
             };
-            
+
             "module/volume" = {
               type = "internal/pulseaudio";
               format.volume = "<ramp-volume> <label-volume>";
               label.muted.text = "🔇";
               label.muted.foreground = "#666";
-              ramp.volume = ["🔈" "🔉" "🔊"];
+              ramp.volume = [ "🔈" "🔉" "🔊" ];
               click.right = "${pkgs.pavucontrol}/bin/pavucontrol &";
               # format-volume-underline = Base2;
               # format-muted-underline = Base2;
             };
-            "module/i3" = { 
+            "module/i3" = {
               type = "internal/i3";
               format = "<label-state> <label-mode>";
               index-sort = "true";
@@ -137,7 +142,7 @@
               #;label-focused-background = ${colors.background-alt}
               #;label-focused-background = #9f78e1
               label-focused-background = foreground_col;
-              label-focused-underline= foreground_col;
+              label-focused-underline = foreground_col;
               label-focused-foreground = background_col;
               label-focused-padding = "2";
 
@@ -157,7 +162,7 @@
               label-urgent-background = alert_col;
               label-urgent-foreground = primary_col;
               label-urgent-padding = "2";
-              
+
               #; Separator in between workspaces
               #; label-separator = |
             };
@@ -211,7 +216,7 @@
               format-connected = " <label-connected>";
               format-connected-prefix-foreground = foreground_altcol;
               label-connected = "%local_ip%";
-              
+
               format-disconnected = "";
               format-disconnected-background = "#5479b7";
               #;format-disconnected = <label-disconnected>
@@ -241,12 +246,12 @@
               adapter = "ADP1";
               full-at = "98";
 
-              format-charging-background= "#689d6a";
-              format-charging-prefix = ''" "''; 
+              format-charging-background = "#689d6a";
+              format-charging-prefix = ''" "'';
               format-charging = "<label-charging>";
               format-discharging-prefix = ''" "'';
               format-discharging = "<label-discharging>";
-              format-discharging-background= "#689d6a";
+              format-discharging-background = "#689d6a";
               format-full-prefix = ''" "'';
 
               format-charging-underline = "#ffaa55";
@@ -306,7 +311,7 @@
               menu-2-1 = "cancel";
               menu-2-1-exec = "menu-open-0";
             };
-            
+
             "module/xbacklight" = {
               type = "internal/xbacklight";
 
@@ -343,13 +348,14 @@
               label = "%title%";
             };
           };
-      script = ''
-    for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-      MONITOR=$m polybar --reload main &
-    done;
-    for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep -v '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
-      MONITOR=$m polybar --reload aux &
-    done;
-    '';
+        script = ''
+          for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+            MONITOR=$m polybar --reload main &
+          done;
+          for m in $(polybar --list-monitors | ${pkgs.gnugrep}/bin/grep -v '(primary)' | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+            MONITOR=$m polybar --reload aux &
+          done;
+        '';
+      };
     };
 }

@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-#    ./autorandr.nix
-#    ./dunst.nix
+    ./autorandr.nix
+    ./dunst.nix
     ./git.nix
     ./gpg.nix
     ./i3.nix
     ./kanshi.nix
     ./mako.nix
     ./nextcloud.nix
-#    ./polybar.nix
+    ./polybar.nix
     ./zsh.nix
 
     ./sway.nix

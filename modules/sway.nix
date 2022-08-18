@@ -71,6 +71,7 @@ with lib; {
       environment.systemPackages = with pkgs; [
         gnome3.adwaita-icon-theme
         wl-clipboard
+        wl-mirror
         networkmanagerapplet
         pavucontrol
         pamixer
