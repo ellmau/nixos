@@ -43,6 +43,7 @@ with lib; {
     };
 
     environment.systemPackages = with pkgs; [
+      alejandra
       alacritty.terminfo
       bintools
       clang
