@@ -159,7 +159,7 @@
       };
 
       templates = discoverTemplates ./templates {
-        basic_tool = {
+        base = {
           description = "Basic setup of tools in nixpkgs/unstable";
           welcomeText = "Change into the folder and add the wanted packages to the buildInputs";
         };
