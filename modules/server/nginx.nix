@@ -12,10 +12,15 @@ with lib; {
       services.nginx.enable = true;
       networking.firewall.allowedTCPPorts = [80 443];
       services.nginx.virtualHosts."localhost" = {
+        addSSL = false;
+        enableACME = false;
+        root = "/var/www/localhost";
+        default = true;
+      };
+      services.nginx.virtualHosts."ellmauthaler.net" = {
         addSSL = true;
         enableACME = true;
         root = "/var/www/localhost";
-        default = true;
       };
     };
 }
