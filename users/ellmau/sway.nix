@@ -97,6 +97,13 @@ with lib; {
             titlebar = true;
           };
 
+          floating = {
+            criteria = [
+              {class = "KeePassXC";}
+              {class = "pavucontrol";}
+            ];
+          };
+
           bars = [];
         };
         extraConfig = ''

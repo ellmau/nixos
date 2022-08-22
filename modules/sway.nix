@@ -74,6 +74,7 @@ with lib; {
 
       environment.systemPackages = with pkgs; [
         gnome3.adwaita-icon-theme
+        wdisplays
         wl-clipboard
         wl-mirror
         networkmanagerapplet
