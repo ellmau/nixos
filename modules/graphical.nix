@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   options.elss.graphical = {
     enable = mkEnableOption "configure graphical layer";
@@ -18,14 +23,16 @@ with lib; {
     };
     i3.enable = mkEnableOption "enable i3";
   };
-  config =
-    let
-      cfg = config.elss.graphical;
-      #cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
-      #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
-    in
+  config = let
+    cfg = config.elss.graphical;
+    #cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
+    #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
+  in
     mkIf cfg.enable {
-      elss.users.x11.enable = if cfg.i3.enable then true else false;
+      elss.users.x11.enable =
+        if cfg.i3.enable
+        then true
+        else false;
       elss.networking.useNetworkManager = true;
 
       services = {
@@ -77,6 +84,5 @@ with lib; {
         libsecret
         arandr
       ];
-
     };
 }

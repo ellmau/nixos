@@ -1,15 +1,19 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   options.elss.zsh.enable = mkEnableOption "Setup systemwide zsh";
-  config =
-    let
-      inherit (elss.withConfig config) mapAllUsers;
-      cfg = config.elss.zsh;
-    in
+  config = let
+    inherit (elss.withConfig config) mapAllUsers;
+    cfg = config.elss.zsh;
+  in
     mkIf cfg.enable {
       environment = {
-        shells = [ pkgs.zsh ];
-        pathsToLink = [ "/share/zsh/" ];
+        shells = [pkgs.zsh];
+        pathsToLink = ["/share/zsh/"];
         sessionVariables = rec {
           XDG_CACHE_HOME = "\${HOME}/.cache";
           XDG_CONFIG_HOME = "\${HOME}/.config";
@@ -29,10 +33,10 @@ with lib; {
           autosuggestions.enable = true;
           syntaxHighlighting = {
             enable = true;
-            highlighters = [ "main" "brackets" "root" "line" ];
+            highlighters = ["main" "brackets" "root" "line"];
             #styles = { cursor = "standout,underline"; };
           };
-          setOptions = [ "auto_pushd" "correct" "nocaseglob" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory" ];
+          setOptions = ["auto_pushd" "correct" "nocaseglob" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory"];
 
           shellInit = ''
             if [[ $TERM == "dumb" ]]; then
@@ -58,8 +62,8 @@ with lib; {
         };
       };
 
-      users.users = mapAllUsers (_: { shell = pkgs.zsh; }
-
+      users.users = mapAllUsers (
+        _: {shell = pkgs.zsh;}
       );
     };
 }

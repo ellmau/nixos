@@ -1,9 +1,14 @@
-{ config, pkgs, lib, nixosConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixosConfig,
+  ...
+}:
 with lib; {
-  config =
-    let
-      cfg = nixosConfig.elss.graphical.sway;
-    in
+  config = let
+    cfg = nixosConfig.elss.graphical.sway;
+  in
     mkIf cfg.enable {
       xdg.configFile."waybar/style.css" = {
         source = conf/waybar/style.css;
@@ -13,9 +18,9 @@ with lib; {
         systemd.enable = true;
         settings = {
           mainBar = {
-            modules-left = [ "sway/workspaces" "sway/mode" ];
-            modules-center = [ "sway/window" ];
-            modules-right = [ "idle_inhibitor" "sway/language" "network#wifi" "network#base" "battery" "pulseaudio" "clock" "tray" ];
+            modules-left = ["sway/workspaces" "sway/mode"];
+            modules-center = ["sway/window"];
+            modules-right = ["idle_inhibitor" "sway/language" "network#wifi" "network#base" "battery" "pulseaudio" "clock" "tray"];
 
             "idle_inhibitor" = {
               format = "{icon}";
@@ -35,7 +40,7 @@ with lib; {
               format-charging = "{capacity}% ";
               format-plugged = "{capacity}% ";
               format-alt = "{time} {icon}";
-              format-icons = [ "" "" "" "" "" ];
+              format-icons = ["" "" "" "" ""];
             };
             "clock" = {
               format-alt = "{:%a, %d. %b  %H:%M}";
@@ -82,10 +87,8 @@ with lib; {
               on-click = "${pkgs.pamixer}/bin/pamixer -t";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol &";
             };
-
           };
         };
       };
     };
 }
-

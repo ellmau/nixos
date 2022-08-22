@@ -1,29 +1,32 @@
-{ config, pkgs, ...}:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   ppd-local = pkgs.stdenv.mkDerivation rec {
     pname = "local-ppds";
     version = "2021-07-04";
 
     src = ./ppds;
 
-    phases = [ "unpackPhase" "installPhase" ];
+    phases = ["unpackPhase" "installPhase"];
 
     installPhase = ''
-    mkdir -p $out/share/cups/model/
-    cp -R Ricoh $out/share/cups/model
-  '';
+      mkdir -p $out/share/cups/model/
+      cp -R Ricoh $out/share/cups/model
+    '';
   };
-in
-{
-  services.printing.drivers = with pkgs; [
-    foomatic-filters
-    gutenprint
-    hplip
-  ] ++ [
-    ppd-local
-  ];
-  
+in {
+  services.printing.drivers = with pkgs;
+    [
+      foomatic-filters
+      gutenprint
+      hplip
+    ]
+    ++ [
+      ppd-local
+    ];
+
   hardware.printers.ensurePrinters = [
     {
       name = "hpm605";

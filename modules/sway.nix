@@ -1,10 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   options.elss.graphical.sway.enable = mkEnableOption "Use sway";
-  config =
-    let
-      cfg = config.elss.graphical.sway;
-    in
+  config = let
+    cfg = config.elss.graphical.sway;
+  in
     mkIf cfg.enable {
       services.pipewire = {
         enable = true;

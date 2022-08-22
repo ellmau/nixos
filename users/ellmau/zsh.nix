@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs = {
     zsh = {
       enable = true;
@@ -49,7 +48,7 @@
 
     bat = {
       enable = true;
-      config = { theme = "ansi"; };
+      config = {theme = "ansi";};
     };
 
     exa = {

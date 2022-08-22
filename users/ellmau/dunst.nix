@@ -1,9 +1,14 @@
-{ config, pkgs, lib, nixosConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixosConfig,
+  ...
+}:
 with lib; {
-  config =
-    let
-      cfg = nixosConfig.elss.graphical.i3;
-    in
+  config = let
+    cfg = nixosConfig.elss.graphical.i3;
+  in
     mkIf cfg.enable {
       services.dunst = {
         iconTheme = {

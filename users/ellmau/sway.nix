@@ -1,22 +1,34 @@
-{ config, pkgs, lib, nixosConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixosConfig,
+  ...
+}:
 with lib; {
-  config =
-    let
-      cfg = nixosConfig.elss.graphical.sway;
-    in
+  config = let
+    cfg = nixosConfig.elss.graphical.sway;
+  in
     mkIf cfg.enable {
       services = {
         blueman-applet.enable = true;
         swayidle = {
           enable = true;
           events = [
-
-            { event = "before-sleep"; command = "swaylock -KfeFi ~/.background-image"; }
-            { event = "lock"; command = "swaylock -KfeFi ~/.background-image"; }
-
+            {
+              event = "before-sleep";
+              command = "swaylock -KfeFi ~/.background-image";
+            }
+            {
+              event = "lock";
+              command = "swaylock -KfeFi ~/.background-image";
+            }
           ];
           timeouts = [
-            { timeout = 60; command = "swaylock -KfeFi ~/.background-image"; }
+            {
+              timeout = 60;
+              command = "swaylock -KfeFi ~/.background-image";
+            }
           ];
         };
       };
@@ -40,11 +52,10 @@ with lib; {
 
           modifier = "Mod4";
 
-          keybindings =
-            let
-              modifier = config.wayland.windowManager.sway.config.modifier;
-              bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-            in
+          keybindings = let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+            bctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+          in
             lib.mkOptionDefault {
               "${modifier}+Shift+q" = "kill";
               "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
@@ -55,13 +66,10 @@ with lib; {
               XF86AudioMute = "exec ${pkgs.pamixer}/bin/pamixer -t";
               XF86AudioLowerVolume = "exec ${pkgs.pulseaudioFull}/bin/pactl set-sink-volume @DEFAULT_SINK@ -10%";
               XF86AudioRaiseVolume = "exec ${pkgs.pulseaudioFull}/bin/pactl set-sink-volume @DEFAULT_SINK@ +10%";
-
             };
-          keycodebindings =
-            let
-              modifier = config.wayland.windowManager.sway.config.modifier;
-            in
-            { };
+          keycodebindings = let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+          in {};
 
           startup = [
             {
@@ -89,7 +97,7 @@ with lib; {
             titlebar = true;
           };
 
-          bars = [ ];
+          bars = [];
         };
         extraConfig = ''
           input "type:keyboard" {

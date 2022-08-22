@@ -1,9 +1,13 @@
-{ config, pkgs, lib, ... }:
-with lib;{
-  config =
-    let
-      cfg = config.elss.server.nextcloud;
-    in
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; {
+  config = let
+    cfg = config.elss.server.nextcloud;
+  in
     mkIf cfg.enable {
       elss.server.sql.enable = mkDefault true;
       services.nextcloud = {
@@ -27,8 +31,8 @@ with lib;{
       };
 
       systemd.services."nextcloud-setup" = {
-        requires = [ "postgresql.service" ];
-        after = [ "postrgresql.service" ];
+        requires = ["postgresql.service"];
+        after = ["postrgresql.service"];
       };
       sops.secrets = {
         storemin = {

@@ -1,9 +1,14 @@
-{ config, pkgs, lib, nixosConfig, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixosConfig,
+  ...
+}:
 with lib; {
-  config =
-    let
-      cfg = nixosConfig.elss.graphical.sway;
-    in
+  config = let
+    cfg = nixosConfig.elss.graphical.sway;
+  in
     mkIf cfg.enable {
       services.kanshi = {
         enable = true;

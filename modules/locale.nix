@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   options.elss.locale.enable = mkEnableOption "setup default locale and font-handling";
 
@@ -21,7 +26,7 @@ with lib; {
         noto-fonts-extra
         roboto
         roboto-mono
-        (nerdfonts.override { fonts = [ "Hasklig" ]; })
+        (nerdfonts.override {fonts = ["Hasklig"];})
         material-icons
         weather-icons
         xits-math

@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   config = {
     nix = {
       useSandbox = true;
@@ -10,7 +12,7 @@
       linkInputs = true;
 
       autoOptimiseStore = true;
-      trustedUsers = [ "root" ] ++ config.elss.users.admins;
+      trustedUsers = ["root"] ++ config.elss.users.admins;
 
       # Enable flakes
       # Free up to 50 GiB whenever there is less than 10 GiB left.

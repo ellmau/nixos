@@ -1,5 +1,10 @@
-{ config, pkgs, inputs, nixos-hardware, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     ../../common/users.nix
     ./printer.nix
@@ -43,8 +48,8 @@
     # user setup
     users = {
       enable = true;
-      admins = [ "ellmau" ];
-      users = [ ];
+      admins = ["ellmau"];
+      users = [];
 
       meta = {
         ellmau.git = {
