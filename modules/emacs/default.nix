@@ -42,6 +42,7 @@ with lib; let
           alert
           all-the-icons
           all-the-icons-dired
+          apheleia
           beacon
           bln-mode
           cargo-mode
