@@ -1,12 +1,16 @@
-{ config, pkgs, inputs, nixos-hardware, ...}:
 {
+  config,
+  pkgs,
+  inputs,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     ../../common/users.nix
     ./hardware-configuration.nix
     ./software.nix
   ];
 
-  
   elss = {
     # base system
     base.enable = true;
@@ -19,8 +23,10 @@
     # enable X11 with lightdm and i3
     graphical = {
       enable = true;
+      sway.enable = true;
+      i3.enable = false;
       # set dpi if used in mobile applications
-#      dpi = 180;
+      #      dpi = 180;
     };
 
     # enable deamon to generate nix-index-db
@@ -36,12 +42,12 @@
 
     # enable wireguard
     wireguard.enable = true;
-    
+
     # user setup
     users = {
       enable = true;
-      admins = [ "ellmau" ];
-      users = [ ];
+      admins = ["ellmau"];
+      users = [];
 
       meta = {
         ellmau.git = {
@@ -52,15 +58,15 @@
   };
 
   boot = {
-  extraModulePackages = [
-    config.boot.kernelPackages.v4l2loopback
-  ];
+    extraModulePackages = [
+      config.boot.kernelPackages.v4l2loopback
+    ];
 
-  kernelModules = [
+    kernelModules = [
       "v4l2loopback"
-  ];
+    ];
 
-  plymouth.enable = true;
+    plymouth.enable = true;
   };
 
   system.stateVersion = "21.05";

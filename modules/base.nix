@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; {
   options.elss = {
     base.enable = mkEnableOption "Set the base configuration for the system";
@@ -14,7 +19,7 @@ with lib; {
     services = {
       dbus = {
         enable = true;
-        packages = with pkgs; [ dconf ];
+        packages = with pkgs; [dconf];
       };
     };
 

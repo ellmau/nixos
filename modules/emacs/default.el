@@ -577,6 +577,30 @@
                             "/=" ":::" ">=>" "->>" "<=>" "<=<" "<->"))
   (global-ligature-mode t))
 
+;; apheleia
+(use-package apheleia
+  :defer t
+  :diminish apheleia-mode
+  :custom
+  (apheleia-formatters
+   `((alejandra "alejandra")
+     (black "black" "-")
+     (brittany "brittany")
+     (clang-format "clang-format")
+     (fish-indent . ("fish_indent"))
+     (gofmt . ("gofmt"))
+     (google-java-format . ("google-java-format" "-"))
+     (isort . ("isort" "-"))
+     ;(latexindent . ("latexindent" "--logfile=/dev/null"))
+     (mix-format . ("mix" "format" "-"))
+     (nixfmt . ("nixfmt"))
+     (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout"))
+     (terraform . ("terraform" "fmt" "-"))))
+  :preface
+  (diminish 'apheleia-mode)
+  :init
+  (apheleia-global-mode t))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

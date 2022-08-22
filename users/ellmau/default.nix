@@ -1,14 +1,24 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
+    ./alacritty.nix
     ./autorandr.nix
     ./dunst.nix
     ./git.nix
     ./gpg.nix
     ./i3.nix
+    ./kanshi.nix
+    ./mako.nix
     ./nextcloud.nix
     ./polybar.nix
     ./zsh.nix
+
+    ./sway.nix
+    ./waybar.nix
   ];
   services = {
     gnome-keyring = {
@@ -35,19 +45,10 @@
   home.packages = with pkgs; [
     # comma did not compile on 15.07.2022
     comma
+    kanshi
   ];
 
   programs = {
-    alacritty = {
-      enable = true;
-      settings = {
-        window = {
-          decorations = "full";
-        };
-        alt_send_esc = true;
-      };
-    };
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;

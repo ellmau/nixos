@@ -1,5 +1,10 @@
-{ config, pkgs, inputs, nixos-hardware, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     ../../common/users.nix
     ./hardware-configuration.nix
@@ -41,12 +46,11 @@
     # enable wireguard
     wireguard.enable = true;
 
-
     # user setup
     users = {
       enable = true;
-      admins = [ "ellmau" ];
-      users = [ ];
+      admins = ["ellmau"];
+      users = [];
 
       meta = {
         ellmau.git = {
@@ -55,20 +59,24 @@
       };
     };
   };
-  fileSystems."/".options = [ "noatime" ];
+  fileSystems."/".options = ["noatime"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
     interfaces.ens3 = {
-      ipv4.addresses = [{
-        address = "89.58.45.113";
-        prefixLength = 22;
-      }];
-      ipv6.addresses = [{
-        address = "fe80::94e0:6eff:fecd:d6cb";
-        prefixLength = 64;
-      }];
+      ipv4.addresses = [
+        {
+          address = "89.58.45.113";
+          prefixLength = 22;
+        }
+      ];
+      ipv6.addresses = [
+        {
+          address = "fe80::94e0:6eff:fecd:d6cb";
+          prefixLength = 64;
+        }
+      ];
     };
     defaultGateway = "89.58.44.1";
     defaultGateway6 = {
@@ -79,9 +87,8 @@
     nat = {
       enable = true;
       externalInterface = "ens3";
-      internalInterfaces = [ "wg-stelnet" ];
+      internalInterfaces = ["wg-stelnet"];
     };
-
   };
   system.stateVersion = "22.05";
 }

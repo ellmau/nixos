@@ -1,7 +1,12 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib; {
   options.elss.graphical = {
-    enable = mkEnableOption "configure i3-based graphical layer";
+    enable = mkEnableOption "configure graphical layer";
     greeterCursorsize = mkOption {
       type = types.int;
       default = 16;
@@ -16,19 +21,22 @@ with lib; {
         DPI setting for the xserver
       '';
     };
+    i3.enable = mkEnableOption "enable i3";
   };
-  config =
-    let
-      cfg = config.elss.graphical;
-      #cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
-      #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
-    in
+  config = let
+    cfg = config.elss.graphical;
+    #cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
+    #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
+  in
     mkIf cfg.enable {
-      elss.users.x11.enable = true;
+      elss.users.x11.enable =
+        if cfg.i3.enable
+        then true
+        else false;
       elss.networking.useNetworkManager = true;
 
       services = {
-        xserver = {
+        xserver = mkIf cfg.i3.enable {
           enable = true;
           dpi = cfg.dpi;
           displayManager.lightdm = {
@@ -59,7 +67,7 @@ with lib; {
       sound.enable = true;
 
       hardware = {
-        pulseaudio.enable = true;
+        #pulseaudio.enable = true;
         bluetooth.enable = true;
       };
 
@@ -68,6 +76,7 @@ with lib; {
       environment.systemPackages = with pkgs; [
         firefox
         thunderbird # v102 has various starting time issues - so back to stable
+        ungoogled-chromium
         okular
         texlive.combined.scheme-full
         usbutils
@@ -75,6 +84,5 @@ with lib; {
         libsecret
         arandr
       ];
-
     };
 }

@@ -2,7 +2,6 @@
   description = "Flake to define configurations of 'elss' - ellmauthaler stefan's systems";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -59,30 +58,36 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils-plus, ... }@inputs:
-    let
-      extended-lib = nixpkgs.lib.extend
-        (final: prev: {
-          elss = (import ./lib { lib = final; }) prev;
-        });
-      inherit (extended-lib.elss) discoverModules moduleNames discoverMachines withModules discoverTemplates;
-    in
-    flake-utils-plus.lib.mkFlake rec{
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils-plus,
+    ...
+  } @ inputs: let
+    extended-lib =
+      nixpkgs.lib.extend
+      (final: prev: {
+        elss = (import ./lib {lib = final;}) prev;
+      });
+    inherit (extended-lib.elss) discoverModules moduleNames discoverMachines withModules discoverTemplates;
+  in
+    flake-utils-plus.lib.mkFlake rec {
       inherit self inputs;
-      supportedSystems = [ "x86_64-linux" ];
+      supportedSystems = ["x86_64-linux"];
 
       lib = extended-lib;
 
       channelsConfig = {
-        allowUnfreePredicate = pkg: builtins.elem (extended-lib.getName pkg) [
-          "slack"
-          "steam"
-          "steam-original"
-          "steam-runtime"
-          "skypeforlinux"
-          "teams"
-          "zoom"
-        ];
+        allowUnfreePredicate = pkg:
+          builtins.elem (extended-lib.getName pkg) [
+            "slack"
+            "steam"
+            "steam-original"
+            "steam-runtime"
+            "skypeforlinux"
+            "teams"
+            "zoom"
+          ];
       };
 
       channels.nixpkgs.overlaysBuilder = channels: [
@@ -97,39 +102,46 @@
       hostDefaults = {
         system = "x86_64-linux";
         channelName = "nixpkgs";
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          inputs.sops-nix.nixosModules.sops
-          inputs.dwarffs.nixosModules.dwarffs
-          inputs.simple-nixos-mailserver.nixosModules.mailserver
-          ./common/wireguard.nix
-        ] ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
+        modules =
+          [
+            inputs.home-manager.nixosModules.home-manager
+            inputs.sops-nix.nixosModules.sops
+            inputs.dwarffs.nixosModules.dwarffs
+            inputs.simple-nixos-mailserver.nixosModules.mailserver
+            ./common/wireguard.nix
+          ]
+          ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {
           nixos-hardware = inputs.nixos-hardware.nixosModules;
           inherit inputs;
         };
         extraArgs = {
-          homeConfigurations = withModules ./users
+          homeConfigurations =
+            withModules ./users
             (
-              { name, path }:
+              {
+                name,
+                path,
+              }:
               #import (./users + "/${name}")
-              import path
+                import path
             );
         };
       };
 
-      hosts = discoverMachines ./machines
+      hosts =
+        discoverMachines ./machines
         {
-          specialArgs = { lib = extended-lib; };
+          specialArgs = {lib = extended-lib;};
         };
 
       nixosModules = discoverModules ./modules;
 
-      homeConfigurations = withModules ./users
-        (name:
-          let
-            username = extended-lib.removeSuffix ".nix" name;
-          in
+      homeConfigurations =
+        withModules ./users
+        (name: let
+          username = extended-lib.removeSuffix ".nix" name;
+        in
           inputs.home-manager.lib.homeManagerConfiguration {
             configuration = import (./users + "/${name}");
             inherit username;
@@ -143,18 +155,18 @@
           pkgs = channels.nixpkgs;
           sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
         };
+        formatter = channels.nixpkgs.alejandra;
       };
 
       templates = discoverTemplates ./templates {
-        basic_tool = {
+        base = {
           description = "Basic setup of tools in nixpkgs/unstable";
           welcomeText = "Change into the folder and add the wanted packages to the buildInputs";
         };
-        
+
         rust = {
           description = "Rust development environment flake";
-          welcomeText =
-            "Change into the folder and follow the prompt to create an automatic rust environment in this folder";
+          welcomeText = "Change into the folder and follow the prompt to create an automatic rust environment in this folder";
         };
         jupyter = {
           description = "Jupyter server flake";

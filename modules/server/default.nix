@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; {
   options.elss.server = {
     acme.staging = mkEnableOption "Whether to use the staging or the default server for acme";
@@ -8,7 +13,6 @@ with lib; {
     nextcloud.enable = mkEnableOption "Set up nextcloud";
     smailserver.enable = mkEnableOption "Set up simple mail server";
     unbound.enable = mkEnableOption "Set unbound dns up";
-    
   };
 
   imports = [
@@ -20,10 +24,9 @@ with lib; {
     ./unbound.nix
   ];
 
-  config =
-    let
-      cfg = config.elss.server;
-    in
+  config = let
+    cfg = config.elss.server;
+  in
     mkIf cfg.enable {
       elss.server = {
         nginx.enable = mkDefault true;
