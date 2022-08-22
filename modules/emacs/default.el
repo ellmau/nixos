@@ -591,7 +591,7 @@
      (gofmt . ("gofmt"))
      (google-java-format . ("google-java-format" "-"))
      (isort . ("isort" "-"))
-     (latexindent . ("latexindent" "--logfile=/dev/null"))
+     ;(latexindent . ("latexindent" "--logfile=/dev/null"))
      (mix-format . ("mix" "format" "-"))
      (nixfmt . ("nixfmt"))
      (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout"))
