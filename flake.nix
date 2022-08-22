@@ -143,6 +143,7 @@
           pkgs = channels.nixpkgs;
           sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
         };
+        formatter = channels.nixpkgs.alejandra;
       };
 
       templates = discoverTemplates ./templates {
