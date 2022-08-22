@@ -594,7 +594,6 @@
      (latexindent . ("latexindent" "--logfile=/dev/null"))
      (mix-format . ("mix" "format" "-"))
      (nixfmt . ("nixfmt"))
-     (prettier . (,die-orga/executables/prettier "--stdin-filepath" filepath))
      (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout"))
      (terraform . ("terraform" "fmt" "-"))))
   :preface
