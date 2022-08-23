@@ -101,6 +101,8 @@ with lib; {
             criteria = [
               {class = "KeePassXC";}
               {class = "pavucontrol";}
+              {app_id = "org.keepassxc.KeePassXC";}
+              {app_id = "pavucontrol";}
             ];
           };
 
