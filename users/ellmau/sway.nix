@@ -26,7 +26,7 @@ with lib; {
           ];
           timeouts = [
             {
-              timeout = 60;
+              timeout = 300;
               command = "swaylock -KfeFi ~/.background-image";
             }
           ];
@@ -107,6 +107,9 @@ with lib; {
           };
 
           bars = [];
+          input."*" = {
+            xkb_numlock = "enabled";
+          };
         };
         extraConfig = ''
           input "type:keyboard" {
