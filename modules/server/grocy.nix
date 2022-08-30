@@ -11,7 +11,7 @@ with lib; {
     mkIf cfg.enable {
       services.grocy = {
         enable = true;
-        hostname = "grocy.ellmauthaler.net";
+        hostName = "grocy.ellmauthaler.net";
         settings = {
           currency = "EUR";
           culture = "de";
