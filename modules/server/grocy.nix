@@ -21,5 +21,9 @@ with lib; {
           };
         };
       };
+
+      services.nginx.virtualHosts."grocy.ellmauthaler.net" = {
+        forceSSL = true;
+      };
     };
 }
