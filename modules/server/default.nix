@@ -18,6 +18,7 @@ with lib; {
 
   imports = [
     ./acme.nix
+    ./grocy.nix
     ./nextcloud.nix
     ./nginx.nix
     ./smailserver.nix
