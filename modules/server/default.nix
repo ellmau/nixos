@@ -13,6 +13,7 @@ with lib; {
     nextcloud.enable = mkEnableOption "Set up nextcloud";
     smailserver.enable = mkEnableOption "Set up simple mail server";
     unbound.enable = mkEnableOption "Set unbound dns up";
+    grocy.enable = mkEnableOption "Set up grocy";
   };
 
   imports = [
@@ -34,6 +35,7 @@ with lib; {
         smailserver.enable = mkDefault true;
         nextcloud.enable = mkDefault true;
         unbound.enable = mkDefault true;
+        grocy.enable = mkDefault true;
       };
     };
 }
