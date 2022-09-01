@@ -17,6 +17,9 @@
     autorandr.enable = true;
   };
 
+  virtualisation.podman.enable = true;
+  boot.enableContainers = false;
+
   elss = {
     programs = {
       aspell.enable = true;
