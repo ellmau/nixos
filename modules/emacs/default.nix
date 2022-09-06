@@ -74,6 +74,7 @@ with lib; let
           lsp-mode
           lsp-ui
           magit
+          markdown-mode
           moe-theme
           multiple-cursors
           nix-mode

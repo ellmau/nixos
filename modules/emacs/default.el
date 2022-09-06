@@ -491,6 +491,12 @@
   :mode "\\.json\\'"
   :hook (json-mode-hook . yas-minor-mode))
 
+;; markdown
+(use-package markdown-mode
+  :hook (markdown-mode . lsp)
+  :config
+  (require 'lsp-marksman))
+
 ;; lsp
 (use-package lsp-mode
   :demand t
