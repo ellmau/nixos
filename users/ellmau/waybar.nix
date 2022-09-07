@@ -10,9 +10,7 @@ with lib; {
     cfg = nixosConfig.elss.graphical.sway;
   in
     mkIf cfg.enable {
-      xdg.configFile."waybar/style.css" = {
-        source = conf/waybar/style.css;
-      };
+      xdg.configFile."waybar/style.css" = {source = conf/waybar/style.css;};
       programs.waybar = {
         enable = true;
         systemd.enable = true;
@@ -20,7 +18,16 @@ with lib; {
           mainBar = {
             modules-left = ["sway/workspaces" "sway/mode"];
             modules-center = ["sway/window"];
-            modules-right = ["idle_inhibitor" "sway/language" "network#wifi" "network#base" "battery" "pulseaudio" "clock" "tray"];
+            modules-right = [
+              "idle_inhibitor"
+              "sway/language"
+              "network#wifi"
+              "network#base"
+              "battery"
+              "pulseaudio"
+              "clock"
+              "tray"
+            ];
 
             "idle_inhibitor" = {
               format = "{icon}";
@@ -42,9 +49,7 @@ with lib; {
               format-alt = "{time} {icon}";
               format-icons = ["" "" "" "" ""];
             };
-            "clock" = {
-              format-alt = "{:%a, %d. %b  %H:%M}";
-            };
+            "clock" = {format-alt = "{:%a, %d. %b  %H:%M}";};
 
             "network#wifi" = {
               interface = "wlp2s0";
@@ -61,7 +66,7 @@ with lib; {
 
             "network#base" = {
               format = "{ifname}";
-              format-wifi = "{essid} ({signalStrength}%) ";
+              format-wifi = "";
               format-ethernet = "{ipaddr}/{cidr} ";
               format-disconnected = "";
               tooltip-format = "{ifname} via {gwaddr} ";
@@ -77,11 +82,7 @@ with lib; {
               format-muted = "🔇";
               format-icons = {
                 headphones = "";
-                default = [
-                  "🔈"
-                  "🔉"
-                  "🔊"
-                ];
+                default = ["🔈" "🔉" "🔊"];
               };
               scroll-step = 5;
               on-click = "${pkgs.pamixer}/bin/pamixer -t";
