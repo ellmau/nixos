@@ -46,6 +46,7 @@ with lib; {
       alejandra
       alacritty.terminfo
       bintools
+      cacert
       clang
       elfutils
       emacs-all-the-icons-fonts
