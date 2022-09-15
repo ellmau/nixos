@@ -74,15 +74,12 @@ with lib; {
       services.blueman.enable = true;
 
       environment.systemPackages = with pkgs; [
-        firefox
-        thunderbird # v102 has various starting time issues - so back to stable
         ungoogled-chromium
         okular
         texlive.combined.scheme-full
         usbutils
         keepassxc
         libsecret
-        arandr
       ];
     };
 }

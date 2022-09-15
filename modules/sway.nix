@@ -73,6 +73,8 @@ with lib; {
       };
 
       environment.systemPackages = with pkgs; [
+        firefox-wayland
+        thunderbird-wayland
         gnome3.adwaita-icon-theme
         wdisplays
         wl-clipboard
