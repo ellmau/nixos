@@ -8,6 +8,7 @@ with lib; {
   options.elss.networking.useNetworkManager = mkEnableOption "enable networkmanager";
 
   config = let
+    hostName = config.system.name;
     connections = [
       "tartaros"
       "eduroam"
@@ -15,7 +16,7 @@ with lib; {
 
     mkSopsSecrets = connection: {
       "${connection}" = {
-        sopsFile = ../../secrets/networks.yaml;
+        sopsFile = ../../machines + builtins.toPath "/${hostName}/secrets/networks.yaml";
         path = "/run/NetworkManager/system-connections/${connection}.nmconnection";
       };
     };
