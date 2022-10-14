@@ -5,14 +5,18 @@
   ...
 }:
 with lib; {
-  options.elss.networking.useNetworkManager = mkEnableOption "enable networkmanager";
+  options.elss.networking = {
+    useNetworkManager = mkEnableOption "enable networkmanager";
+    nmConnections = mkOption {
+      type = types.listOf types.str;
+      description = "Connections to instantiate for the machine";
+      default = [];
+    };
+  };
 
   config = let
     hostName = config.system.name;
-    connections = [
-      "tartaros"
-      "eduroam"
-    ];
+    connections = config.elss.networking.nmConnections;
 
     mkSopsSecrets = connection: {
       "${connection}" = {

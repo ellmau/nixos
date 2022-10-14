@@ -35,6 +35,10 @@
     # add TUD vpn
     openvpn.enable = true;
 
+    # nm-networks
+    networking.nmConnections = [
+    ];
+
     # enable sops
     sops = {
       enable = true;

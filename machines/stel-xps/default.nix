@@ -37,6 +37,12 @@
     # add TUD vpn
     openvpn.enable = true;
 
+    # nm-networks
+    networking.nmConnections = [
+      "tartaros"
+      "eduroam"
+    ];
+
     # enable sops
     sops = {
       enable = true;
