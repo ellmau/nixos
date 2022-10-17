@@ -83,6 +83,7 @@
             "slack"
             "steam"
             "steam-original"
+            "steam-run"
             "steam-runtime"
             "skypeforlinux"
             "teams"
