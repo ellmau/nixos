@@ -7,6 +7,7 @@
     libreoffice-fresh
     onlyoffice-bin
     krita # drawing tool for my wacom
+    slack
   ];
 
   programs = {
