@@ -7,6 +7,7 @@
     brightnessctl
     libreoffice-fresh
     onlyoffice-bin
+    slack
   ];
 
   programs = {
