@@ -27,6 +27,16 @@ with lib; {
     cfg = config.elss.graphical;
     #cursorsize = if config.variables.hostName == "nucturne" then 14 else 16;
     #xserverDPI = if config.variables.hostName == "stel-xps" then 180 else null;
+
+    okular-x11 = pkgs.symlinkJoin {
+      name = "okular";
+      paths = [pkgs.okular];
+      buildInputs = [pkgs.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/okular \
+        --set QT_QPA_PLATFORM xcb
+      '';
+    };
   in
     mkIf cfg.enable {
       elss.users.x11.enable =
@@ -75,7 +85,8 @@ with lib; {
 
       environment.systemPackages = with pkgs; [
         ungoogled-chromium
-        okular
+        # force okular to use xwayland, because of https://github.com/swaywm/sway/issues/4973
+        okular-x11
         texlive.combined.scheme-full
         usbutils
         keepassxc
