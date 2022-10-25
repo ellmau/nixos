@@ -28,9 +28,11 @@ with lib; {
         domain = "git.ellmauthaler.net";
         rootUrl = "https://git.ellmauthaler.net";
         httpPort = 3001;
-        extraConfig = ''
-          DEFAULT_BRANCH = main
-        '';
+        settings = {
+          repository = {
+            DEFAULT_BRANCH = "main";
+          };
+        };
       };
     };
 }
