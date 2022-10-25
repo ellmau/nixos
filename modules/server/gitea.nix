@@ -24,6 +24,9 @@ with lib; {
           type = "postgres";
           host = "/run/posgresql";
         };
+        domain = "git.ellmauthaler.net";
+        rootUrl = "https://git.ellmauthaler.net";
+        httpPort = 3001;
       };
     };
 }
