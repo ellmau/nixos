@@ -39,6 +39,7 @@ with lib; {
         nextcloud.enable = mkDefault true;
         unbound.enable = mkDefault true;
         grocy.enable = mkDefault true;
+        gitea.enable = mkDefault true;
       };
     };
 }
