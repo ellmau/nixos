@@ -14,10 +14,12 @@ with lib; {
     smailserver.enable = mkEnableOption "Set up simple mail server";
     unbound.enable = mkEnableOption "Set unbound dns up";
     grocy.enable = mkEnableOption "Set up grocy";
+    gitea.enable = mkEnableOption "Set up gitea";
   };
 
   imports = [
     ./acme.nix
+    ./gitea.nix
     ./grocy.nix
     ./nextcloud.nix
     ./nginx.nix

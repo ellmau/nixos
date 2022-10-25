@@ -19,6 +19,12 @@ with lib; {
             ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
           }
         ];
+        authentication = ''
+          local gitea all ident map=gitea-users
+        '';
+        identMap = ''
+          gitea-users gitea gitea
+        '';
       };
     };
 }
