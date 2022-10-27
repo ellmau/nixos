@@ -34,7 +34,7 @@ with lib; {
             ];
             ExecStart = toString nix-index-db-update;
             User = "nobody";
-            Group = "nobody";
+            Group = "nogroup";
           };
         };
 
