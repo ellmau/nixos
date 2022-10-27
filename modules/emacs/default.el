@@ -455,11 +455,15 @@
 
 ;; dap
 (use-package dap-mode
+  :ensure
   :after lsp-mode
+  :requires (dap-cpptools)
+  :config
+  (dap-ui-mode)
+  (dap-ui-controls-mode 1)
   :custom
   (dap-mode t)
-  (dap-ui-mode t)
-  (require 'dap-cpptools))
+  (dap-ui-mode t))
 
 ;; flycheck
 (use-package flycheck
