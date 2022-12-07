@@ -19,7 +19,9 @@ with lib; {
 
       services.gitea = {
         enable = true;
-        disableRegistration = true;
+        settings.service = {
+          DISABLE_REGISTRATION = true;
+        };
         appName = "gitea: ellmauthaler.net gitea service";
         database = {
           type = "postgres";

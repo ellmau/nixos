@@ -31,7 +31,7 @@ with lib; {
           pkgs.xdg-desktop-portal-gtk
           pkgs.xdg-desktop-portal-wlr
         ];
-        gtkUsePortal = true;
+        # gtkUsePortal = true; depricated
       };
 
       # enable sway window manager

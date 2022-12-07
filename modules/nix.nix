@@ -5,14 +5,15 @@
 }: {
   config = {
     nix = {
-      useSandbox = true;
+      settings = {
+        sandbox = true;
+        trusted-users = ["root"] ++ config.elss.users.admins;
+        auto-optimise-store = true;
+      };
       package = pkgs.nixFlakes;
       generateRegistryFromInputs = true;
       generateNixPathFromInputs = true;
       linkInputs = true;
-
-      autoOptimiseStore = true;
-      trustedUsers = ["root"] ++ config.elss.users.admins;
 
       # Enable flakes
       # Free up to 50 GiB whenever there is less than 10 GiB left.
