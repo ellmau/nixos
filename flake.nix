@@ -13,7 +13,6 @@
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -23,7 +22,6 @@
 
     flake-utils-plus = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     emacs-overlay = {
