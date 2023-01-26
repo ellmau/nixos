@@ -12,22 +12,24 @@ with lib; {
     mkIf cfg.enable {
       services = {
         blueman-applet.enable = true;
-        swayidle = {
+        swayidle = let
+          swaylock = "${pkgs.swaylock}/bin/swaylock";
+        in {
           enable = true;
           events = [
             {
               event = "before-sleep";
-              command = "swaylock -KfeFi ~/.background-image";
+              command = "${swaylock} -KfeFi ~/.background-image";
             }
             {
               event = "lock";
-              command = "swaylock -KfeFi ~/.background-image";
+              command = "${swaylock} -KfeFi ~/.background-image";
             }
           ];
           timeouts = [
             {
               timeout = 300;
-              command = "swaylock -KfeFi ~/.background-image";
+              command = "${swaylock} -KfeFi ~/.background-image";
             }
           ];
         };
