@@ -30,6 +30,7 @@ with lib; {
       sops.secrets = {
         firefox_sync = {
           owner = "firefox-syncserver";
+          group = "firefox-syncserver";
           sopsFile = ../../secrets/server.yaml;
         };
       };
