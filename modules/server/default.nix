@@ -8,6 +8,7 @@ with lib; {
   options.elss.server = {
     acme.staging = mkEnableOption "Whether to use the staging or the default server for acme";
     enable = mkEnableOption "Enable Mail, Web, and DB";
+    firefox.enable = mkEnableOption "Enable firefox sync server";
     nginx.enable = mkEnableOption "Set up nginx";
     sql.enable = mkEnableOption "Set up sql (postresql)";
     nextcloud.enable = mkEnableOption "Set up nextcloud";
@@ -19,6 +20,7 @@ with lib; {
 
   imports = [
     ./acme.nix
+    ./firefox.nix
     ./gitea.nix
     ./grocy.nix
     ./nextcloud.nix
@@ -40,6 +42,7 @@ with lib; {
         unbound.enable = mkDefault true;
         grocy.enable = mkDefault true;
         gitea.enable = mkDefault true;
+        firefox.enable = mkDefault true;
       };
     };
 }
