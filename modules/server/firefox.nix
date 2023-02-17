@@ -24,6 +24,14 @@ with lib; {
         settings.port = port;
       };
 
+      # user is not created by firefox syncserver
+      users.users.firefox-syncserver = {
+        group = "firefox-syncserver";
+        isSystemUser = true;
+      };
+
+      users.groups.firefox-syncserver.members = ["firefox-syncserver" config.services.nginx.user];
+
       networking.firewall.allowedTCPPorts = [port];
       services.mysql.package = pkgs.mariadb;
 
