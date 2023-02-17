@@ -42,7 +42,6 @@ with lib; {
         unbound.enable = mkDefault true;
         grocy.enable = mkDefault true;
         gitea.enable = mkDefault true;
-        firefox.enable = mkDefault true;
       };
     };
 }
