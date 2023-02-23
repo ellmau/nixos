@@ -17,7 +17,8 @@ with lib; {
         jitsi-meet-electron
         signal-desktop
         skypeforlinux
-        teams
+        #remove teams as MS has removed the linux packages from their servers
+        #teams
         zoom-us
       ];
     };
