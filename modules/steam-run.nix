@@ -12,7 +12,7 @@ with lib; {
   in
     mkIf cfg.enable {
       environment.systemPackages = [
-        (pkgs.unstable.steam.override {withJava = true;}).run
+        (pkgs.unstable.steam.override {extraPkgs = pkgs: [pkgs.jdk8];}).run
       ];
     };
 }
