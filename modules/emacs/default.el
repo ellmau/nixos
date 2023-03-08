@@ -604,7 +604,7 @@
      ;(latexindent . ("latexindent" "--logfile=/dev/null"))
      (mix-format . ("mix" "format" "-"))
      (nixfmt . ("nixfmt"))
-     (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout" --version 2021))
+     (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout"))
      (terraform . ("terraform" "fmt" "-"))))
   :preface
   (diminish 'apheleia-mode)
