@@ -30,7 +30,7 @@ with lib; {
             IOSchedulingClass = "idle";
             ExecStartPre = [
               "+${pkgs.coreutils}/bin/mkdir -p /var/db/nix-index/"
-              "+${pkgs.coreutils}/bin/chown nobody:nobody /var/db/nix-index/"
+              "+${pkgs.coreutils}/bin/chown nobody:nogroup /var/db/nix-index/"
             ];
             ExecStart = toString nix-index-db-update;
             User = "nobody";
