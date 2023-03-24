@@ -467,7 +467,7 @@
 (use-package dap-cpptools
   :custom
   (dap-cpptools-debug-path elss/paths/cpptools)
-  (dap-cpptools-debug-program elss/paths/cpptools-program))
+  (dap-cpptools-debug-program `(,elss/paths/cpptools-program)))
 
 
 ;; flycheck
