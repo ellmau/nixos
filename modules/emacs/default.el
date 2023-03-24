@@ -2,6 +2,8 @@
 ;;(setq package-enable-at-startup nil)
 ;;(package-initialize)
 
+(require 'local-settings)
+
 ;; (load-theme 'spacemacs-dark t)
 ;; (load-theme 'wombat t)
 (use-package solarized-theme
@@ -463,8 +465,6 @@
   (dap-ui-controls-mode t)
   (dap-tooltip-mode t))
 (use-package dap-cpptools
-  :preface
-  (require 'f)
   :custom
   (dap-cpptools-debug-path elss/paths/cpptools)
   (dap-cpptools-debug-program elss/paths/cpptools-program))
