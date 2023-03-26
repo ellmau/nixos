@@ -85,6 +85,7 @@
             "steam-runtime"
             "skypeforlinux"
             "teams"
+            "vscode-extension-ms-vscode-cpptools"
             "zoom"
           ];
       };

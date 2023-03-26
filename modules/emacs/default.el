@@ -2,6 +2,8 @@
 ;;(setq package-enable-at-startup nil)
 ;;(package-initialize)
 
+(require 'local-settings)
+
 ;; (load-theme 'spacemacs-dark t)
 ;; (load-theme 'wombat t)
 (use-package solarized-theme
@@ -456,14 +458,17 @@
 ;; dap
 (use-package dap-mode
   :ensure
-  :after lsp-mode
-  :requires (dap-cpptools)
-  :config
-  (dap-ui-mode)
-  (dap-ui-controls-mode 1)
+  :after (lsp-mode dap-cpptools)
   :custom
   (dap-mode t)
-  (dap-ui-mode t))
+  (dap-ui-mode t)
+  (dap-ui-controls-mode t)
+  (dap-tooltip-mode t))
+(use-package dap-cpptools
+  :custom
+  (dap-cpptools-debug-path elss/paths/cpptools)
+  (dap-cpptools-debug-program `(,elss/paths/cpptools-program)))
+
 
 ;; flycheck
 (use-package flycheck
