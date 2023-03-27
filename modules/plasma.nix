@@ -19,7 +19,7 @@ with lib; {
         desktopManager.plasma5.enable = true;
       };
 
-      services.gnome3.gnome-keyring.enable = true;
+      services.gnome.gnome-keyring.enable = true;
       security.pam.services.sddm = {
         enableGnomeKeyring = true;
         gnupg.enable = true;
