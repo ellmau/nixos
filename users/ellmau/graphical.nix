@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  nixosConfig,
   ...
 }:
 with lib; {
@@ -10,9 +11,9 @@ with lib; {
   in
     mkIf cfg.enable {
       services = {
-        gtk.enable = true;
         blueman-applet.enable = true;
-        home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
       };
+      gtk.enable = true;
+      home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
     };
 }
