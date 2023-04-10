@@ -15,5 +15,6 @@ with lib; {
       };
       gtk.enable = true;
       home.file.".background-image".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
+      home.file.".background-image.png".source = ../../common/wallpaper/nix-wallpaper-nineish-dark-gray.png;
     };
 }
