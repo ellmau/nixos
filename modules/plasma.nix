@@ -10,6 +10,12 @@ with lib; {
     cfg = config.elss.graphical.plasma;
   in
     mkIf cfg.enable {
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        pulse.enable = true;
+      };
+
       services.xserver = {
         enable = true;
         displayManager = {
