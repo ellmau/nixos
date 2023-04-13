@@ -22,6 +22,7 @@ with lib; {
       '';
     };
     i3.enable = mkEnableOption "enable i3";
+    xmonad.enable = mkEnableOption "Use xmonad";
   };
   config = let
     cfg = config.elss.graphical;
@@ -40,7 +41,7 @@ with lib; {
   in
     mkIf cfg.enable {
       elss.users.x11.enable =
-        if cfg.i3.enable
+        if cfg.i3.enable || cfg.xmonad.enable
         then true
         else false;
       elss.networking.useNetworkManager = true;
@@ -73,6 +74,8 @@ with lib; {
 
         printing.enable = true;
       };
+
+      security.pam.services.lightdm.enableGnomeKeyring = true;
 
       sound.enable = true;
 

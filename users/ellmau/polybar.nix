@@ -7,7 +7,14 @@
 }:
 with lib; {
   config = let
-    cfg = nixosConfig.elss.graphical.i3;
+    cfg = nixosConfig.elss.graphical.xmonad;
+    xmonad = ''
+      [module/xmonad]
+      type = custom/script
+      exec = ${pkgs.xmonad-log}/bin/xmonad-log
+
+      tail = true
+    '';
   in
     mkIf cfg.enable {
       services.polybar = {
@@ -357,6 +364,7 @@ with lib; {
             MONITOR=$m polybar --reload aux &
           done;
         '';
+        extraConfig = xmonad;
       };
     };
 }

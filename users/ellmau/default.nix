@@ -15,6 +15,7 @@
     ./mako.nix
     ./nextcloud.nix
     ./polybar.nix
+    ./xmonad.nix
     ./zsh.nix
 
     ./sway.nix
