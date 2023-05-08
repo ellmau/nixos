@@ -392,7 +392,8 @@
 ;;  (add-to-list 'flycheck-checkers 'rustic-clippy)
   (lsp-diagnostics-flycheck-enable)
   (push 'rustic-clippy flycheck-checkers)
-;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
+  ;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
+  :mode ("\\.rs\\'" . rustic-mode)
   :custom
 ;  (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
@@ -403,8 +404,9 @@
   (lsp-rust-analyzer-proc-macro-enable t)
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
   :hook
-  (rustic-mode . company-mode)
+  ;;(rustic-mode . company-mode)
   (rustic . lsp-rust-analyzer-inlay-hints-mode)
+  (rustic . apheleia-mode)
   ;;(rustic-mode . flymake-mode)
   )
 
@@ -536,7 +538,7 @@
            python-mode
            ;; ess-mode
            ;; ruby-mode
-           rust-mode
+           rustic-mode
            sql-mode
 	   rustic
            typescript-mode
