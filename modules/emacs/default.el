@@ -401,9 +401,13 @@
 ;  (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
   (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-inlay-hint-enable t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-rust-analyzer-display-parameter-hints t)
   (lsp-rust-analyzer-display-chaining-hints t)
+  (lsp-rust-analyzer-display-closure-return-type-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-enable skip_trivial)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t)
   (lsp-rust-analyzer-proc-macro-enable t)
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
   :hook
