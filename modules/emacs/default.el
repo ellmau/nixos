@@ -386,6 +386,9 @@
 ;;(add-hook 'rustic-mode-hook 'company-mode)
 ;;(add-hook 'rustic-mode-hook 'flymake-mode)
 
+(use-package rust-mode
+  :after lsp-mode rust-mode)
+
 (use-package rustic
   :after lsp-mode
   :config
