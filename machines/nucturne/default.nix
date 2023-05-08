@@ -19,9 +19,9 @@
     # enable X11 with lightdm and i3
     graphical = {
       enable = true;
-      sway.enable = false;
+      sway.enable = true;
       i3.enable = false;
-      plasma.enable = true;
+      plasma.enable = false;
       # set dpi if used in mobile applications
       #      dpi = 180;
     };
