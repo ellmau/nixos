@@ -394,14 +394,14 @@
   (push 'rustic-clippy flycheck-checkers)
 ;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
   :custom
-  (rustic-format-trigger 'on-save)
-  (rustic-rustfmt-bin "rustfmt")
+;  (rustic-format-trigger 'on-save)
   (rustic-flycheck-clippy-params "--message-format=json")
   (lsp-rust-analyzer-server-display-inlay-hints t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-rust-analyzer-display-parameter-hints t)
   (lsp-rust-analyzer-dispaly-chaining-hints t)
   (lsp-rust-analyzer-proc-macro-enable t)
+  (lsp-rust-analyzer-experimental-proc-attr-macros t)
   :hook
   (rustic-mode . company-mode)
   (rustic . lsp-rust-analyzer-inlay-hints-mode)
@@ -558,8 +558,6 @@
   (lsp-ui-doc-border "#586e75")
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
-  (lsp-rust-analyzer-server-display-inlay-hints t)
-  (lsp-rust-analyzer-inlay-hints-mode t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-keymap-prefix "C-l"))
   ;:custom-face
