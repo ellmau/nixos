@@ -577,6 +577,25 @@
 
 (use-package lsp-ui)
 
+;; haskell
+(use-package haskell-mode
+  :diminish subword-mode
+  :hook
+  (haskell-mode . turn-on-haskell-doc)
+  (haskell-mode . subword-mode))
+(use-package haskell
+  :ensure haskell-mode)
+(use-package haskell-font-lock
+  :ensure haskell-mode)
+(use-package lsp-haskell
+  :demand t)
+(use-package shakespeare-mode)
+(use-package company-cabal
+  :defer t
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends '(company-cabal))))
+
 ;; misc
 (use-package academic-phrases
   :defer t

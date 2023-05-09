@@ -1,31 +1,36 @@
-{ config, lib, pkgs, ... }:
-with lib;
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   defaultEl = ./default.el;
-  environment.systemPackages = [ pkgs.gdb ]; # use gdb for dap-mode
+  environment.systemPackages = [pkgs.gdb]; # use gdb for dap-mode
   localsettings = pkgs.writeText "local-settings.el" ''
     (defconst elss/paths/cpptools "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools")
     (defconst elss/paths/cpptools-program "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7")
     (provide 'local-settings)
   '';
 
-  defaultConfig = pkgs.runCommand "default.el" { } ''
+  defaultConfig = pkgs.runCommand "default.el" {} ''
     mkdir -p $out/share/emacs/site-lisp
     cp ${defaultEl} $out/share/emacs/site-lisp/default.el
     cp ${localsettings} $out/share/emacs/site-lisp/local-settings.el
   '';
-  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (epkgs:
-    let
-      lpkgs = import ./packages.nix { inherit config lib pkgs epkgs; };
-      #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
-      #  aspell
-      #  emacs-all-the-icons-fonts
-      #  gnupg
-      #  nixpkgs-fmt
-      #])
-    in [ defaultConfig ]
-    ++ [ (with epkgs.elpaPackages; [ auctex org flymake ]) ]
-    ++ (with epkgs.melpaStablePackages; [ ]) ++ (with epkgs.melpaPackages;
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (epkgs: let
+    lpkgs = import ./packages.nix {inherit config lib pkgs epkgs;};
+    #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
+    #  aspell
+    #  emacs-all-the-icons-fonts
+    #  gnupg
+    #  nixpkgs-fmt
+    #])
+  in
+    [defaultConfig]
+    ++ [(with epkgs.elpaPackages; [auctex org flymake])]
+    ++ (with epkgs.melpaStablePackages; [])
+    ++ (with epkgs.melpaPackages;
       [
         ac-helm
         academic-phrases
@@ -51,6 +56,7 @@ let
         docker-compose-mode
         flycheck
         free-keys
+        haskell-mode
         highlight-indentation
         helm
         #helm-bbdb
@@ -62,6 +68,7 @@ let
         helm-rg
         json-mode
         less-css-mode
+        lsp-haskell
         lsp-mode
         lsp-ui
         magit
@@ -87,7 +94,8 @@ let
         yaml-mode
         yasnippet
         #zenburn-theme
-      ] ++ (with lpkgs; [ org-roam-ui ligatures ])));
+      ]
+      ++ (with lpkgs; [org-roam-ui ligatures])));
 in {
   options.elss.programs.emacs.enable =
     mkEnableOption "Setup emacs package and install it";
