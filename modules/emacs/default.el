@@ -412,7 +412,7 @@
   (lsp-rust-analyzer-experimental-proc-attr-macros t)
   :hook
   ;;(rustic-mode . company-mode)
-  (rustic . lsp-rust-analyzer-inlay-hints-mode)
+  ;;(rustic . lsp-rust-analyzer-inlay-hints-mode)
   (rustic . apheleia-mode)
   ;;(rustic-mode . flymake-mode)
   )

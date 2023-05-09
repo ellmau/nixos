@@ -156,6 +156,13 @@
           sops-nix = inputs.sops-nix.packages."${channels.nixpkgs.system}";
         };
         formatter = channels.nixpkgs.alejandra;
+        apps = {
+          emacs = flake-utils-plus.lib.mkApp {
+            drv =
+              self.nixosConfigurations.stel-xps.config.services.emacs.package;
+            exePath = "/bin/emacs";
+          };
+        };
       };
 
       templates = discoverTemplates ./templates {
