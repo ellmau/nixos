@@ -11,6 +11,8 @@ with lib; {
 
     x11.enable = mkEnableOption "Activate XSession related options in user-configs";
 
+    dunst.enable = mkEnableOption "Activate Dunst";
+
     users = mkOption {
       description = "logins of non-admin users to configure";
       type = types.listOf types.str;

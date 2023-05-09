@@ -7,7 +7,7 @@
 }:
 with lib; {
   config = let
-    cfg = nixosConfig.elss.graphical.i3;
+    cfg = nixosConfig.elss.users.dunst;
   in
     mkIf cfg.enable {
       services.dunst = {

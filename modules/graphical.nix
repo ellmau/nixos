@@ -22,7 +22,10 @@ with lib; {
       '';
     };
     xserver.enable = mkEnableOption "enable X server";
-    xmonad.enable = mkEnableOption "enable xmonad";
+    xmonad = {
+      enable = mkEnableOption "enable xmonad";
+      polybar.enable = mkEnableOption "enable Polybar for xmonad";
+    };
     i3.enable = mkEnableOption "enable i3";
   };
   config = let
