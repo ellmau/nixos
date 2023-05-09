@@ -7,12 +7,12 @@
 }:
 with lib; {
   config = let
-    cfg = nixosConfig.elss.graphical.xmonad;
+    cfg = nixosConfig.elss.graphical.xmonad.polybar;
   in
-    mkIf cfg.polybar.enable {
+    mkIf cfg.enable {
       services.polybar = {
         enable = true;
-        packages = pkgs.polybarFull;
+        package = pkgs.polybarFull;
         settings = let
           fonts = [
             "Hasklig:style=Regular"
