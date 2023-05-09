@@ -21,6 +21,8 @@ with lib; {
         DPI setting for the xserver
       '';
     };
+    xserver.enable = mkEnableOption "enable X server";
+    xmonad.enable = mkEnableOption "enable xmonad";
     i3.enable = mkEnableOption "enable i3";
   };
   config = let
@@ -39,21 +41,20 @@ with lib; {
     };
   in
     mkIf cfg.enable {
-      elss.users.x11.enable =
-        if cfg.i3.enable
-        then true
-        else false;
+      #      cfg.xserver.enable = cfg.i3.enable;
+      elss.users.x11.enable = cfg.xserver.enable || cfg.xmonad.enable;
+
       elss.networking.useNetworkManager = true;
 
       services = {
-        xserver = mkIf cfg.i3.enable {
+        xserver = mkIf cfg.xserver.enable {
           enable = true;
           dpi = cfg.dpi;
           displayManager.lightdm = {
             enable = true;
             greeters.gtk.cursorTheme.size = cfg.greeterCursorsize;
           };
-          windowManager.i3 = {
+          windowManager.i3 = mkIf cfg.i3.enable {
             enable = true;
             extraPackages = with pkgs; [
               rofi # launcher
@@ -80,6 +81,8 @@ with lib; {
         #pulseaudio.enable = true;
         bluetooth.enable = true;
       };
+
+      security.pam.services.lightdm.enableGnomeKeyring = true;
 
       services.blueman.enable = true;
 
