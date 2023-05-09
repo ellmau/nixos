@@ -10,8 +10,8 @@ with lib; {
   in
     mkIf cfg.enable {
       elss.graphical.xserver.enable = true;
-      elss.users.dunste.enable = true;
-      cfg.polybar.enable = true;
+      elss.users.dunst.enable = true;
+      elss.graphical.xmonad.polybar.enable = true;
       services = {
         xserver = {
           startDbusSession = true;
@@ -19,7 +19,7 @@ with lib; {
             enable = true;
             enableContribAndExtras = true;
           };
-          displaymanager.defaultSession = "none+xmonad";
+          displayManager.defaultSession = "none+xmonad";
           libinput = {
             enable = true;
             disableWhileTyping = true;
