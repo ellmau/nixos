@@ -589,7 +589,6 @@
   :ensure haskell-mode)
 (use-package lsp-haskell
   :demand t)
-(use-package shakespeare-mode)
 (use-package company-cabal
   :defer t
   :init
