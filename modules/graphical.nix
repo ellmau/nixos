@@ -21,7 +21,10 @@ with lib; {
         DPI setting for the xserver
       '';
     };
-    xserver.enable = mkEnableOption "enable X server";
+    xserver = {
+      enable = mkEnableOption "enable X server";
+      autorandr.enable = mkEnableOption "enable autorandr";
+    };
     xmonad = {
       enable = mkEnableOption "enable xmonad";
       polybar.enable = mkEnableOption "enable Polybar for xmonad";

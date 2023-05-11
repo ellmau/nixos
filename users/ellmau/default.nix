@@ -16,6 +16,7 @@
     ./nextcloud.nix
     ./polybar_i3.nix
     ./polybar_xmonad.nix
+    ./xmonad.nix
     ./zsh.nix
 
     ./sway.nix
