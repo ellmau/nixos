@@ -25,14 +25,21 @@ import           XMonad.Hooks.DynamicLog
 -- Code Action Imports
 import System.Exit
 import XMonad.Actions.PhysicalScreens
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Grid
+import XMonad.Layout.Tabbed
+import XMonad.Layout.Renamed
+import XMonad.Layout.ThreeColumns
 
 main :: IO ()
 main' :: D.Client -> IO ()
 main = mkDbusClient >>= main'
 
-layout = avoidStruts $
-  (Full ||| tall ||| Mirror tall)
+workSpaces = ["code", "web", "misc", "comm"] ++ map show ([5 .. 9] ++ [0])
+layout = smartBorders $ avoidStruts $
+  (tall ||| Mirror tall  ||| Grid ||| Full ||| simpleTabbed ||| threemid)
   where tall = Tall 1 (3/100) (1/2)
+        threemid = renamed [AppendWords "Mid"] $ ThreeColMid 1 (3/100) (1/2)
 
 main' dbus = do
   hostname <- io $ getHostName
@@ -42,11 +49,11 @@ main' dbus = do
       , layoutHook = layout
       , modMask = mod4Mask -- rebind mod to super key
       , keys = keyMap
-      , manageHook = composeAll [ manageDocks
-                                , isFullscreen --> doFullFloat
-                                , placeHook $ withGaps (32, 32, 32, 32) $ smart (0.5, 0.5)
-                                , manageHook def
-                                ]
+      , manageHook = myHookManager
+      , startupHook = do
+          startupHook def
+          spawn "autorandr -c"
+      , workspaces = workSpaces
       }
 
 mkDbusClient :: IO D.Client
@@ -97,13 +104,29 @@ keyMap c = mkKeymap c $
   [(m ++ k, windows $ f w)
   | (w, k) <- zip (XMonad.workspaces c) (map show $ [1..9] ++ [0]),
     (m, f) <- [("M-", W.greedyView), ("M-S-", W.shift)]
-  ]
-  ++
+  ] ++
+  [ layoutMap k l
+  | (k, l) <- [ ("u", "Full")
+              , ("i", "Grid")
+              , ("o", "Tall")
+              ]
+  ] ++
   [ ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
   , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
   , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
   , ("<XF86AudioMicMute>", spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle")
   ]
+
+layoutMap :: String -> String -> (String, X ())
+layoutMap k l = ("M-y M-" ++ k, sendMessage $ JumpToLayout (l :: String))
+
+myHookManager = composeAll [ manageDocks
+                           , className =? "Element" --> doShift "comm"
+                           , className =? "firefox" --> doShift "web"
+                           , isFullscreen --> doFullFloat
+                           , placeHook $ withGaps (32, 32, 32, 32) $ smart (0.5, 0.5)
+                           , manageHook def
+                           ]
    
 polybarHook :: D.Client -> PP
 polybarHook dbus =

@@ -21,6 +21,12 @@ with lib; {
         };
       };
       upower.enable = true;
+
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        pulse.enable = true;
+      };
     };
     environment.systemPackages = with pkgs; [ firefox thunderbird ];
   };

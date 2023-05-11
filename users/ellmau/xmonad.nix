@@ -14,7 +14,7 @@ with lib; {
         ];
         libFiles."ELSS.hs" = pkgs.writeText "ELSS.hs" ''
           module ELSS where
-          keyboardtoggle = "${../keyboard/keyboardtoggle.sh}"
+          keyboardtoggle = "${conf/keyboard/keyboard_layout_toggle.sh}"
         '';
         config = conf/xmonad/xmonad.hs;
       };
