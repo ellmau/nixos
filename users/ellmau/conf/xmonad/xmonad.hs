@@ -123,6 +123,7 @@ layoutMap k l = ("M-y M-" ++ k, sendMessage $ JumpToLayout (l :: String))
 myHookManager = composeAll [ manageDocks
                            , className =? "Element" --> doShift "comm"
                            , className =? "firefox" --> doShift "web"
+                           , className =? "thunderbird" --> doShift "comm"
                            , isFullscreen --> doFullFloat
                            , placeHook $ withGaps (32, 32, 32, 32) $ smart (0.5, 0.5)
                            , manageHook def
@@ -154,6 +155,7 @@ fadeHook act inact = fadeOutLogHook $ fadeAllBut exceptions act inact
                    <||> className =? "firefox"
                    <||> className =? "Chromium-browser"
                    <||> className =? "Emacs"
+                   <||> className =? "thunderbird"
 
 fadeAllBut :: Query Bool -> Rational -> Rational -> Query Rational
 fadeAllBut qry amt inact = do isInactive <- isUnfocused
