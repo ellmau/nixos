@@ -172,6 +172,7 @@ fadeHook act inact = fadeOutLogHook $ fadeAllBut exceptions act inact
                    <||> className =? "Chromium-browser"
                    <||> className =? "Emacs"
                    <||> className =? "thunderbird"
+                   <||> className =? "element"
 
 fadeAllBut :: Query Bool -> Rational -> Rational -> Query Rational
 fadeAllBut qry amt inact = do isInactive <- isUnfocused
