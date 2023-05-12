@@ -43,6 +43,7 @@ flycheck_*.el
 
 # direnv
 /.direnv/
+.direnv
 
 # network security
 /network-security.data
