@@ -37,6 +37,41 @@ main' :: D.Client -> IO ()
 main = mkDbusClient >>= main'
 
 workSpaces = ["code", "web", "misc", "comm"] ++ map show ([5 .. 9] ++ [0])
+layout :: XMonad.Layout.LayoutModifier.ModifiedLayout
+  SmartBorder
+  (XMonad.Layout.LayoutModifier.ModifiedLayout
+     AvoidStruts
+     (PerWorkspace
+        (Choose
+           (XMonad.Layout.LayoutModifier.ModifiedLayout Rename ThreeCol)
+           (Choose
+              Tall
+              (Choose
+                 (Mirror Tall)
+                 (Choose
+                    Grid
+                    (Choose
+                       Full
+                       (XMonad.Layout.LayoutModifier.ModifiedLayout
+                          (XMonad.Layout.Decoration.Decoration
+                             TabbedDecoration XMonad.Layout.Decoration.DefaultShrinker)
+                          XMonad.Layout.Simplest.Simplest))))))
+        (Choose
+           Tall
+           (Choose
+              (Mirror Tall)
+              (Choose
+                 Grid
+                 (Choose
+                    Full
+                    (Choose
+                       (XMonad.Layout.LayoutModifier.ModifiedLayout
+                          (XMonad.Layout.Decoration.Decoration
+                             TabbedDecoration XMonad.Layout.Decoration.DefaultShrinker)
+                          XMonad.Layout.Simplest.Simplest)
+                       (XMonad.Layout.LayoutModifier.ModifiedLayout
+                          Rename ThreeCol))))))))
+  Window
 layout = smartBorders $ avoidStruts $
   onWorkspace "comm" (threemid ||| tall ||| Mirror tall  ||| Grid ||| Full ||| simpleTabbed) $
   (tall ||| Mirror tall  ||| Grid ||| Full ||| simpleTabbed ||| threemid)
@@ -52,9 +87,10 @@ main' dbus = do
       , modMask = mod4Mask -- rebind mod to super key
       , keys = keyMap
       , manageHook = myHookManager
-      , startupHook = do
+      , startupHook = do -- autostart
           startupHook def
           spawn "autorandr -c"
+          spawn "keepassxc"
       , workspaces = workSpaces
       }
 
