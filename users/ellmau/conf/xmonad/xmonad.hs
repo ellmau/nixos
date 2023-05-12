@@ -98,7 +98,7 @@ keyMap c = mkKeymap c $
   , ("M-S-e"           , sendToScreen def 1)
   , ("M-S-r"           , sendToScreen def 2)
   , ("M-t"             , withFocused $ windows . W.sink)
-  , ("M-C-l"           , spawn "betterlockscreen -l --show-layout -u ~/.background-image.png")
+  , ("M-C-l"           , spawn "betterlockscreen -l")
   , ("M-S-<Tab>"       , spawn keyboardtoggle)
   ] ++
   [(m ++ k, windows $ f w)
@@ -124,10 +124,24 @@ myHookManager = composeAll [ manageDocks
                            , className =? "Element" --> doShift "comm"
                            , className =? "firefox" --> doShift "web"
                            , className =? "thunderbird" --> doShift "comm"
+                           , className =? "KeePassXC" --> doFloat
+                           , (className =? zoomClassName) <&&> shouldFloat <$> title --> doFloat
+                           , (className =? zoomClassName) <&&> shouldSink <$> title --> doSink
                            , isFullscreen --> doFullFloat
                            , placeHook $ withGaps (32, 32, 32, 32) $ smart (0.5, 0.5)
                            , manageHook def
                            ]
+                where
+                  zoomClassName = "zoom"
+                  titleTitles =
+                    [ "Zoom - Free Account" -- main window
+                    , "Zoom - Licensed Account" -- main window
+                    , "Zoom" -- meeting window
+                    , "Zoom Meeting" -- meeting window shortly after creation
+                    ]
+                  shouldFloat title = title `notElem` titleTitles
+                  shouldSink title = title `elem` titleTitles
+                  doSink = (ask >>= doF . W.sink) <+> doF W.swapDown
    
 polybarHook :: D.Client -> PP
 polybarHook dbus =
