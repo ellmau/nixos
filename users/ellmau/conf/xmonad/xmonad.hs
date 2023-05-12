@@ -30,6 +30,7 @@ import XMonad.Layout.Grid
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Renamed
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.PerWorkspace
 
 main :: IO ()
 main' :: D.Client -> IO ()
@@ -37,6 +38,7 @@ main = mkDbusClient >>= main'
 
 workSpaces = ["code", "web", "misc", "comm"] ++ map show ([5 .. 9] ++ [0])
 layout = smartBorders $ avoidStruts $
+  onWorkspace "comm" (threemid ||| tall ||| Mirror tall  ||| Grid ||| Full ||| simpleTabbed) $
   (tall ||| Mirror tall  ||| Grid ||| Full ||| simpleTabbed ||| threemid)
   where tall = Tall 1 (3/100) (1/2)
         threemid = renamed [AppendWords "Mid"] $ ThreeColMid 1 (3/100) (1/2)
