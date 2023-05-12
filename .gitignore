@@ -41,6 +41,9 @@ flycheck_*.el
 # projectiles files
 .projectile
 
+# direnv
+/.direnv/
+
 # network security
 /network-security.data
 
