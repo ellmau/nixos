@@ -121,6 +121,7 @@ keyMap c = mkKeymap c $
   , ("M-S-r"           , refresh)
   , ("M-j"             , windows W.focusUp)
   , ("M-k"             , windows W.focusDown)
+  , ("M-f"             , windows W.swapMaster)
   , ("M-S-j"           , windows W.swapUp)
   , ("M-S-k"           , windows W.swapDown)
   , ("M-;"             , viewEmptyWorkspace)
