@@ -1,11 +1,6 @@
-{
-  config,
-  pkgs,
-  inputs,
-  nixos-hardware,
-  ...
-}: {
-  imports = [../../common/users.nix ./hardware-configuration.nix ./software.nix];
+{ config, pkgs, inputs, nixos-hardware, ... }: {
+  imports =
+    [ ../../common/users.nix ./hardware-configuration.nix ./software.nix ];
 
   elss = {
     # base system
@@ -19,9 +14,10 @@
     # enable X11 with lightdm and i3
     graphical = {
       enable = true;
-      sway.enable = true;
+      sway.enable = false;
       i3.enable = false;
       plasma.enable = false;
+      xmonad.enable = true;
       # set dpi if used in mobile applications
       #      dpi = 180;
     };
@@ -33,10 +29,10 @@
     openvpn.enable = true;
 
     # nm-networks
-    networking.nmConnections = [];
+    networking.nmConnections = [ ];
 
     # enable sops
-    sops = {enable = true;};
+    sops = { enable = true; };
 
     # enable wireguard
     wireguard.enable = true;
@@ -44,17 +40,17 @@
     # user setup
     users = {
       enable = true;
-      admins = ["ellmau"];
-      users = [];
+      admins = [ "ellmau" ];
+      users = [ ];
 
-      meta = {ellmau.git = {signDefault = true;};};
+      meta = { ellmau.git = { signDefault = true; }; };
     };
   };
 
   boot = {
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
-    kernelModules = ["v4l2loopback"];
+    kernelModules = [ "v4l2loopback" ];
 
     plymouth.enable = true;
   };
