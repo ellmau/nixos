@@ -45,6 +45,12 @@ with lib; {
               type = types.str;
               description = "Email address of the user";
             };
+            extraGroups = mkOption {
+              type = types.listOf types.str;
+              description = "additional groups to add";
+              default = [];
+            };
+
             git = mkOption {
               type = types.submodule {
                 options = {
@@ -92,7 +98,7 @@ with lib; {
       inherit (meta) description;
       isNormalUser = true;
       home = "/home/${login}";
-      extraGroups = [];
+      extraGroups = meta.extraGroups;
       openssh.authorizedKeys.keys = meta.publicKeys;
     };
 

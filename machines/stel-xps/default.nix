@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, nixos-hardware, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  nixos-hardware,
+  ...
+}: {
   imports = [
     ../../common/users.nix
     ./printer.nix
@@ -34,10 +40,10 @@
     openvpn.enable = true;
 
     # nm-networks
-    networking.nmConnections = [ "tartaros" "eduroam" ];
+    networking.nmConnections = ["tartaros" "eduroam"];
 
     # enable sops
-    sops = { enable = true; };
+    sops = {enable = true;};
 
     # enable wireguard
     wireguard.enable = true;
@@ -45,23 +51,26 @@
     # user setup
     users = {
       enable = true;
-      admins = [ "ellmau" ];
-      users = [ ];
+      admins = ["ellmau"];
+      users = [];
 
       meta = {
-        ellmau.git = {
-          key = "0x4998BEEE";
-          gpgsm = true;
-          signDefault = true;
+        ellmau = {
+          git = {
+            key = "0x4998BEEE";
+            gpgsm = true;
+            signDefault = true;
+          };
+          extraGroups = ["networkmanager"];
         };
       };
     };
   };
 
   boot = {
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
 
-    kernelModules = [ "v4l2loopback" ];
+    kernelModules = ["v4l2loopback"];
 
     plymouth.enable = true;
   };
