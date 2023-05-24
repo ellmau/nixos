@@ -18,7 +18,7 @@ with lib; {
         signal-desktop
         skypeforlinux
         #remove teams as MS has removed the linux packages from their servers
-        #teams
+        teams
         zoom-us
       ];
     };
