@@ -31,6 +31,8 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.Renamed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.PerWorkspace
+import XMonad.Util.NamedScratchpad
+
 
 main :: IO ()
 main' :: D.Client -> IO ()
@@ -51,7 +53,7 @@ main' dbus = do
       , layoutHook = layout
       , modMask = mod4Mask -- rebind mod to super key
       , keys = keyMap
-      , manageHook = myHookManager
+      , manageHook = myHookManager <+> namedScratchpadManageHook scratchpads
       , startupHook = do -- autostart
           startupHook def
           spawn "autorandr -c"
@@ -104,6 +106,8 @@ keyMap c = mkKeymap c $
   , ("M-t"             , withFocused $ windows . W.sink)
   , ("M-C-l"           , spawn "betterlockscreen -l")
   , ("M-S-<Tab>"       , spawn keyboardtoggle)
+  -- scratchPad terminal
+  , ("M-C-t"           , namedScratchpadAction scratchpads "term")
   ] ++
   [(m ++ k, windows $ f w)
   | (w, k) <- zip (XMonad.workspaces c) (map show $ [1..9] ++ [0]),
@@ -186,3 +190,13 @@ fadeAllBut qry amt inact = do isInactive <- isUnfocused
                                      else return amt
 
 polybarLogHook dbus = fadeHook 0.95 0.75 <+> dynamicLogWithPP (polybarHook dbus)
+
+-- scratchPads
+scratchpads :: [NamedScratchpad]
+scratchpads =
+  [ NS
+      "term"
+      "alacritty --class AlacrittyNSP -t scratchpad"
+      (className =? "AlacrittyNSP")
+      (customFloating $ W.RationalRect (3 / 5) (4 / 6) (1 / 5) (1 / 6))
+  ]
