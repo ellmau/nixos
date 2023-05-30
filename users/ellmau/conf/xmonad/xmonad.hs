@@ -81,7 +81,7 @@ keyMap c = mkKeymap c $
   [ ("M-<Return>"      , spawn $ XMonad.terminal c)
   , ("M-d"             , spawn "rofi -show drun")
   , ("M-<Tab>"         , spawn "rofi -show window")
-  , ("S-c"           , kill)
+  , ("M-S-c"           , kill)
   , ("M-<Space>"       , sendMessage NextLayout)
   , ("M-S-r"           , refresh)
   , ("M-j"             , windows W.focusUp)
