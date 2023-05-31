@@ -198,5 +198,5 @@ scratchpads =
       "term"
       "alacritty --class AlacrittyNSP -t scratchpad"
       (className =? "AlacrittyNSP")
-      (customFloating $ W.RationalRect (3 / 5) (4 / 6) (1 / 5) (1 / 6))
+      (customFloating $ W.RationalRect (1 / 6) (1 / 6) (2 / 3) (2 / 3))
   ]
