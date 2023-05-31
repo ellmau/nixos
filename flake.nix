@@ -3,7 +3,7 @@
     "Flake to define configurations of 'elss' - ellmauthaler stefan's systems";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     #nix = {
@@ -15,7 +15,7 @@
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -79,6 +79,8 @@
             "vscode-extension-ms-vscode-cpptools"
             "zoom"
           ];
+        # testing purposes till https://github.com/NixOS/nixpkgs/issues/224505 is resolved
+        permittedInsecurePackages = [ "openssl-1.1.1t" ];
       };
 
       channels.nixpkgs.overlaysBuilder = channels: [

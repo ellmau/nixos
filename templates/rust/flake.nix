@@ -2,7 +2,7 @@
   description = "basic rust flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -18,24 +18,16 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
-    gitignoresrc,
-    rust-overlay,
-    ...
-  } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, gitignoresrc
+    , rust-overlay, ... }@inputs:
     {
       #overlay = import ./nix { inherit gitignoresrc; };
-    }
-    // (flake-utils.lib.eachDefaultSystem (
-      system: let
-        unstable = import nixpkgs-unstable {inherit system;};
+    } // (flake-utils.lib.eachDefaultSystem (system:
+      let
+        unstable = import nixpkgs-unstable { inherit system; };
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [(import rust-overlay)];
+          overlays = [ (import rust-overlay) ];
         };
       in rec {
         devShell = pkgs.mkShell {
@@ -54,6 +46,5 @@
             pkgs.kcov
           ];
         };
-      }
-    ));
+      }));
 }
