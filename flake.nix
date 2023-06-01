@@ -79,8 +79,6 @@
             "vscode-extension-ms-vscode-cpptools"
             "zoom"
           ];
-        # testing purposes till https://github.com/NixOS/nixpkgs/issues/224505 is resolved
-        permittedInsecurePackages = [ "openssl-1.1.1t" ];
       };
 
       channels.nixpkgs.overlaysBuilder = channels: [
