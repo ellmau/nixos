@@ -7,10 +7,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      window = {
-        decorations = "none";
-      };
-      alt_send_esc = true;
+      window = {decorations = "none";};
       font = {
         normal.family = "Hasklug Nerd Font";
         size = 14;
