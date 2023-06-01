@@ -632,7 +632,7 @@
      (isort . ("isort" "-"))
      ;(latexindent . ("latexindent" "--logfile=/dev/null"))
      (mix-format . ("mix" "format" "-"))
-     (nixfmt . ("nixfmt"))
+     (nixfmt . "alejandra")
      (rustfmt . ("rustfmt" "--quiet" "--emit" "stdout"))
      (terraform . ("terraform" "fmt" "-"))))
   :preface
