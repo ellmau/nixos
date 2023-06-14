@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  nixosConfig,
   ...
 }: {
   imports = [
@@ -39,6 +40,13 @@
       automount = true;
       notify = true;
       tray = "auto";
+    };
+  };
+  # tray service for udiskie
+  systemd.user.services.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = ["graphical-session-pre.target"];
     };
   };
 
