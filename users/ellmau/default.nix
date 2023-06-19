@@ -42,13 +42,6 @@
       tray = "auto";
     };
   };
-  # tray service for udiskie
-  systemd.user.services.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
-    };
-  };
 
   xdg = {
     enable = true;

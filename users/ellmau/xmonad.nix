@@ -11,6 +11,7 @@ with lib; {
   in
     mkIf cfg.enable {
       xsession = {
+        enable = true;
         windowManager.xmonad = {
           enable = true;
           enableContribAndExtras = true;
