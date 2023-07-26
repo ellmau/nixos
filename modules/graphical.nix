@@ -77,7 +77,7 @@ with lib; {
           xkbOptions = "eurosign:e";
         };
         gnome.gnome-keyring.enable = true;
-
+        udisks2.enable = true;
         printing.enable = true;
       };
 
