@@ -29,7 +29,7 @@ with lib; {
         localDnsResolver = false;
 
         # use ACME
-        certificateScheme = 3;
+        certificateScheme = "acme-nginx";
       };
 
       sops.secrets = {
