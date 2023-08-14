@@ -24,6 +24,7 @@
     ./waybar.nix
 
     ./graphical.nix
+    ./background-x.nix
   ];
   services = {
     gnome-keyring = {

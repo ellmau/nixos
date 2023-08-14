@@ -126,6 +126,7 @@ with lib; {
         };
         hooks.postswitch = {
           "polybar" = "systemctl --user restart polybar.service";
+          change-bg = "/home/ellmau/.fehbg";
         };
       };
     };
