@@ -57,7 +57,7 @@
       meta = {
         ellmau = {
           git = {
-            key = "0x4998BEEE";
+            key = "0x3031AB33";
             gpgsm = true;
             signDefault = true;
           };
