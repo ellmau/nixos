@@ -30,7 +30,7 @@
       plasma.enable = false;
       xmonad.enable = true;
       # set dpi if used in mobile applications
-      #      dpi = 180;
+      dpi = 192;
     };
 
     # enable deamon to generate nix-index-db
