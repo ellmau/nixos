@@ -95,7 +95,7 @@ with lib; let
         yasnippet
         #zenburn-theme
       ]
-      ++ (with lpkgs; [org-roam-ui ligatures])));
+      ++ (with lpkgs; [org-roam-ui ligatures] lean4-mode)));
 in {
   options.elss.programs.emacs.enable =
     mkEnableOption "Setup emacs package and install it";

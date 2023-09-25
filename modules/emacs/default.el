@@ -640,6 +640,12 @@
   :init
   (apheleia-global-mode t))
 
+;; lean4-mode
+(use-package lean4-mode
+  :defer t
+  :mode "\\.lean\\'"
+  :commands lean4-mode)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

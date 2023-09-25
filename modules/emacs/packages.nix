@@ -32,4 +32,25 @@ in
         sha256 = "baFDkfQLM2MYW2QhMpPnOMSfsLlcp9fO5xfyioZzOqg=";
       };
     };
+
+    lean4-mode = trivialBuild {
+      pname = "lean4-mode";
+      version = "unstable-2023-07-14";
+      src = pkgs.fetchFromGitHub {
+        owner = "leanprover";
+        repo = "lean4-mode";
+        rev = "d1c936409ade7d93e67107243cbc0aa55cda7fd5";
+        sha256 = "tD5Ysa24fMIS6ipFc50OjabZEUge4riSb7p4BR05ReQ=";
+      };
+      packageRequires = with epkgs.melpaPackages; [
+        dash
+        f
+        flycheck
+        lsp-mode
+        magit
+      ];
+      postInstall = ''
+        install -m=755 -D $src/data/abbreviations.json $out/share/emacs/site-lisp/data/abbreviations.json
+      '';
+    };
   }
