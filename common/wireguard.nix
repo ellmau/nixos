@@ -33,6 +33,11 @@ with lib; {
             localIp = "142";
             publicKey = "UnS5BtlKKTXfNaSsw2PY7Gbd5aLGiJVlCUY7bHosLio=";
           };
+
+          rhea = {
+            localIp = "4";
+            publicKey = "d1u1P+H+0iHm5ZfMGmHgbfgYQB2hbmiCY+1KoZrNGlA=";
+          };
         };
 
         prefixes = {
