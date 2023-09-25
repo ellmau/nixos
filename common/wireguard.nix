@@ -36,7 +36,7 @@ with lib; {
 
           rhea = {
             localIp = "4";
-            publicKey = "d1u1P+H+0iHm5ZfMGmHgbfgYQB2hbmiCY+1KoZrNGlA=";
+            publicKey = "AxihqSB+Yr333Zjrkl0BpRFl2VbCHy4E9UOGz+0PTD0=";
           };
         };
 
