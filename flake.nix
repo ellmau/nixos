@@ -68,7 +68,9 @@
       discoverMachines
       withModules
       discoverTemplates
+      discoverOverlay
       ;
+    inherit (flake-utils-plus.lib) genPkgOverlay;
   in
     flake-utils-plus.lib.mkFlake rec {
       inherit self inputs;
@@ -91,12 +93,14 @@
           ];
       };
 
-      channels.nixpkgs.overlaysBuilder = channels: [
-        (final: prev: {unstable = channels.nixpkgs-unstable;})
-        (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
-        #inputs.nix.overlay
-        inputs.emacs-overlay.overlay
-      ];
+      channels.nixpkgs.overlaysBuilder = channels:
+        [
+          (final: prev: {unstable = channels.nixpkgs-unstable;})
+          (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
+          #inputs.nix.overlay
+          inputs.emacs-overlay.overlay
+        ]
+        ++ (nixpkgs.lib.attrValues overlays);
 
       hostDefaults = {
         system = "x86_64-linux";
@@ -139,6 +143,24 @@
           homeDirectory = "/home/${username}";
           stateVersion = extended-lib.mkDefault "21.05";
         });
+
+      overlays = rec {
+        elss = discoverOverlay ./packages;
+        default = elss;
+        emacs-overlay = inputs.emacs-overlay.overlay;
+        flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
+      };
+
+      packages =
+        (flake-utils-plus.lib.exportPackages {
+            inherit
+              (overlays)
+              default
+              flake-utils-plus
+              ;
+          }
+          channels)
+        // {inherit (channels.nixpkgs) emacs;};
 
       outputsBuilder = channels: {
         devShells = let
