@@ -96,23 +96,14 @@ with lib; let
         #zenburn-theme
       ]
       ++ (with lpkgs; [org-roam-ui ligatures lean4-mode])));
-in {
-  options.elss.programs.emacs.enable =
-    mkEnableOption "Setup emacs package and install it";
-  config = mkIf config.elss.programs.emacs.enable {
-    services.emacs = {
-      enable = true;
-      defaultEditor = true;
-      package = emacsPackage;
-    };
-  };
-  #nixpkgs.overlays = [ (self: super: { emacsOrig = super.emacs; }) (import (builtins.fetchTarball {
-  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  #})) ];
+in
+  emacsPackage
+#nixpkgs.overlays = [ (self: super: { emacsOrig = super.emacs; }) (import (builtins.fetchTarball {
+#    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+#})) ];
+#nixpkgs.overlays = [
+#  (import (builtins.fetchTarball {
+#    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+#  }))
+#];
 
-  #nixpkgs.overlays = [
-  #  (import (builtins.fetchTarball {
-  #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-  #  }))
-  #];
-}
