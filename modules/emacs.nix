@@ -10,7 +10,7 @@ with lib; {
     services.emacs = {
       enable = true;
       defaultEditor = true;
-      package = pkgs.emacsPackage;
+      package = pkgs.emacs;
     };
   };
 }
