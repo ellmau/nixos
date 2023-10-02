@@ -74,7 +74,7 @@
   in
     flake-utils-plus.lib.mkFlake rec {
       inherit self inputs;
-      supportedSystems = ["x86_64-linux"];
+      supportedSystems = ["x86_64-linux" "aarch64-darwin"];
 
       lib = extended-lib;
 

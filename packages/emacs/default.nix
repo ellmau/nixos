@@ -6,11 +6,18 @@
 with lib; let
   defaultEl = ./default.el;
   #environment.systemPackages = [pkgs.gdb]; # use gdb for dap-mode
-  localsettings = pkgs.writeText "local-settings.el" ''
-    (defconst elss/paths/cpptools "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools")
-    (defconst elss/paths/cpptools-program "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7")
-    (provide 'local-settings)
-  '';
+  localsettings =
+    if pkgs.system == "x86_64-linux"
+    then
+      pkgs.writeText "local-settings.el" ''
+        (defconst elss/paths/cpptools "    ${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools")
+        (defconst elss/paths/cpptools-progr am "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7")
+         (provide 'local-settings)
+      ''
+    else
+      pkgs.writeText "local-settings.el" ''
+        (provide 'local-settings)
+      '';
 
   defaultConfig = pkgs.runCommand "default.el" {} ''
     mkdir -p $out/share/emacs/site-lisp
