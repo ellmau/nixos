@@ -151,17 +151,6 @@
         flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
       };
 
-      packages =
-        (flake-utils-plus.lib.exportPackages {
-            inherit
-              (overlays)
-              default
-              flake-utils-plus
-              ;
-          }
-          channels)
-        // {inherit (channels.nixpkgs) emacs;};
-
       outputsBuilder = channels: {
         devShells = let
           pkgs = channels.nixpkgs;
@@ -191,13 +180,16 @@
           default = sops;
         };
         formatter = channels.nixpkgs.alejandra;
-        apps = {
-          emacs = flake-utils-plus.lib.mkApp {
-            drv =
-              self.nixosConfigurations.stel-xps.config.services.emacs.package;
-            exePath = "/bin/emacs";
-          };
-        };
+        packages =
+          (flake-utils-plus.lib.exportPackages {
+              inherit
+                (overlays)
+                default
+                flake-utils-plus
+                ;
+            }
+            channels)
+          // {inherit (channels.nixpkgs) emacs;};
       };
 
       templates = discoverTemplates ./templates {

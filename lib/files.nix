@@ -27,8 +27,7 @@ with prev; rec {
   discoverOverlay = dir: final: prev: (withModules dir ({
     path,
     name,
-  }:
-    nameValuePair name (final.callPackage path {})));
+  }: (final.callPackage path {})));
 
   discoverMachines = dir: args:
     withModules dir ({
