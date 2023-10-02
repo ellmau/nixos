@@ -89,8 +89,6 @@
   :bind (:map projectile-mode-map
               ("<remap> <projectile-rg>" . helm-projectile-rg))
   :after (helm projectile))
-(use-package helm-config
-  :ensure helm)
 (use-package helm-flx)
 (use-package helm-bbdb)
 (use-package helm-descbinds)

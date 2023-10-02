@@ -17,6 +17,34 @@ with lib; let
     cp ${defaultEl} $out/share/emacs/site-lisp/default.el
     cp ${localsettings} $out/share/emacs/site-lisp/local-settings.el
   '';
+  overrides = self: super: {
+    elpaPackages =
+      super.elpaPackages
+      // {
+        seq = self.callPackage ({
+          elpaBuild,
+          fetchurl,
+          lib,
+        }:
+          elpaBuild rec {
+            pname = "seq";
+            ename = "seq";
+            version = "2.24";
+            src = fetchurl {
+              url = "https://elpa.gnu.org/packages/seq-2.24.tar";
+              sha256 = "1w2cysad3qwnzdabhq9xipbslsjm528fcxkwnslhlkh8v07karml";
+            };
+            packageRequires = [];
+            meta = {
+              homepage = "https://elpa.gnu.org/packages/seq.html";
+              license = lib.licenses.free;
+            };
+            # tests take a _long_ time to byte-compile, skip them
+            postInstall = ''rm -r $out/share/emacs/site-lisp/elpa/${pname}-${version}/tests'';
+          }) {};
+      };
+  };
+
   emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs28).emacsWithPackages (epkgs: let
     lpkgs = import ./packages.nix {inherit lib pkgs epkgs;};
     #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
@@ -27,7 +55,7 @@ with lib; let
     #])
   in
     [defaultConfig]
-    ++ [(with epkgs.elpaPackages; [auctex org flymake])]
+    ++ [(with epkgs.elpaPackages; [auctex org flymake seq])]
     ++ (with epkgs.melpaStablePackages; [])
     ++ (with epkgs.melpaPackages;
       [
@@ -58,7 +86,7 @@ with lib; let
         haskell-mode
         highlight-indentation
         helm
-        #helm-bbdb
+        helm-bbdb
         helm-company
         helm-flx
         helm-descbinds
