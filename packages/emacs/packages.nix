@@ -8,12 +8,12 @@ in
   with epkgs; rec {
     org-roam-ui = trivialBuild {
       pname = "org-roam-ui";
-      version = "2021-10-06";
+      version = "2022-10-05";
       src = pkgs.fetchFromGitHub {
         owner = "org-roam";
         repo = "org-roam-ui";
-        rev = "bae6487afd5e6eec9f04b38b235bbac24042ca62";
-        sha256 = "14dbdvxf1l0dwbhc0ap3wr3ffafy4cxmwc9b7gm0gzzmcxvszisc";
+        rev = "5ac74960231db0bf7783c2ba7a19a60f582e91ab";
+        sha256 = "dCoEQRi86eMerkMQPy3Ow/Kj9kzHxXRSrDk4cl8uLHo=";
       };
       packageRequires = [f websocket org-roam simple-httpd];
       postInstall = ''
@@ -23,12 +23,12 @@ in
 
     ligatures = trivialBuild {
       pname = "ligatures";
-      version = "unstable-2021-08-27";
+      version = "unstable-2023-09-01";
       src = pkgs.fetchFromGitHub {
         owner = "mickeynp";
         repo = "ligature.el";
-        rev = "d3426509cc5436a12484d91e48abd7b62429b7ef";
-        sha256 = "baFDkfQLM2MYW2QhMpPnOMSfsLlcp9fO5xfyioZzOqg=";
+        rev = "0e5d0a8554622bcb0ec634e364795650ff4f2457";
+        sha256 = "vmUWt7HcdaaM/lmyKJgEEPn/6xh+75TzMckl8ohCjI4=";
       };
     };
 
