@@ -11,7 +11,7 @@ with lib; let
     then
       pkgs.writeText "local-settings.el" ''
         (defconst elss/paths/cpptools "    ${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools")
-        (defconst elss/paths/cpptools-progr am "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7")
+        (defconst elss/paths/cpptools-program "${pkgs.unstable.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7")
          (provide 'local-settings)
       ''
     else
@@ -52,7 +52,7 @@ with lib; let
       };
   };
 
-  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs28).emacsWithPackages (epkgs: let
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs29).emacsWithPackages (epkgs: let
     lpkgs = import ./packages.nix {inherit lib pkgs epkgs;};
     #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
     #  aspell
