@@ -19,7 +19,7 @@ with lib; {
         skypeforlinux
         #remove teams as MS has removed the linux packages from their servers
         #teams
-        zoom-us
+        unstable.zoom-us
       ];
     };
 }
