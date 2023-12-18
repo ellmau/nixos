@@ -12,7 +12,7 @@ with lib; {
       elss.server.sql.enable = mkDefault true;
       services.nextcloud = {
         enable = true;
-        package = pkgs.nextcloud27;
+        package = pkgs.nextcloud28;
         hostName = "cloudstore.ellmauthaler.net";
         https = true;
         config = {
