@@ -19,9 +19,9 @@
       '';
       shellAliases = {
         cp = "cp -i";
-        ls = "exa --icons --git";
-        ll = "exa --long --icons --binary --group";
-        llg = "exa --long --icons --grid --binary --group";
+        ls = "eza --icons --git";
+        ll = "eza --long --icons --binary --group";
+        llg = "eza --long --icons --grid --binary --group";
         lal = "ll --all";
         lla = "ll --all";
         emacsc = "emacsclient -n";
@@ -51,7 +51,7 @@
       config = {theme = "ansi";};
     };
 
-    exa = {
+    eza = {
       enable = true;
       enableAliases = false;
     };

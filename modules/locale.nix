@@ -12,8 +12,8 @@ with lib; {
     i18n.defaultLocale = "en_GB.UTF-8";
 
     fonts = {
-      enableDefaultFonts = true;
-      fonts = with pkgs; [
+      enableDefaultPackages = true;
+      packages = with pkgs; [
         hasklig
         # corefonts # not free
         liberation_ttf

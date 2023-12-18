@@ -12,10 +12,9 @@ with lib; {
       elss.server.sql.enable = mkDefault true;
       services.nextcloud = {
         enable = true;
-        package = pkgs.nextcloud26;
+        package = pkgs.nextcloud27;
         hostName = "cloudstore.ellmauthaler.net";
         https = true;
-        enableBrokenCiphersForSSE = false;
         config = {
           dbtype = "pgsql";
           dbuser = "nextcloud";
