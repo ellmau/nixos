@@ -1,0 +1,27 @@
+From 2a6a6cc1c0af556d625bee2eae907e916fef7a37 Mon Sep 17 00:00:00 2001
+From: Maximilian Marx <mmarx@wh2.tu-dresden.de>
+Date: Sat, 21 Oct 2023 17:50:15 +0200
+Subject: [PATCH 2/3] Add skip for software inventory test
+
+---
+ t/apps/agent.t | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/t/apps/agent.t b/t/apps/agent.t
+index 18563c6f9..28a5a0878 100755
+--- a/t/apps/agent.t
++++ b/t/apps/agent.t
+@@ -84,6 +84,10 @@ SKIP: {
+         skip "No installed software seen on this system", 1
+             if @hasSoftwareOutput == 0;
+     }
++    if (defined($ENV{GLPI_SKIP_SOFTWARE_INVENTORY_TEST})) {
++        skip "skipping software inventory test", 1
++            if $ENV{GLPI_SKIP_SOFTWARE_INVENTORY_TEST};
++    }
+     ok(
+         exists $content->{REQUEST}->{CONTENT}->{SOFTWARES},
+         'inventory has software'
+-- 
+2.40.1
+

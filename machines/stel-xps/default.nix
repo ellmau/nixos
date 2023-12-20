@@ -67,6 +67,12 @@
     };
   };
 
+  kbs.glpi-inventory = {
+    enable = true;
+    tag = "10002205";
+    onCalendar = "*-*-* 12:12:12";
+  };
+
   boot = {
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
 

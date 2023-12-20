@@ -1,0 +1,26 @@
+From c28c13ef9425671b6fbf33bb2e8415704359ce79 Mon Sep 17 00:00:00 2001
+From: Maximilian Marx <mmarx@wh2.tu-dresden.de>
+Date: Thu, 16 Nov 2023 13:06:32 +0100
+Subject: [PATCH 3/3] Do not run the GC to determine what is in the nix store
+
+Signed-off-by: Maximilian Marx <mmarx@wh2.tu-dresden.de>
+---
+ lib/GLPI/Agent/Task/Inventory/Generic/Softwares/Nix.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/GLPI/Agent/Task/Inventory/Generic/Softwares/Nix.pm b/lib/GLPI/Agent/Task/Inventory/Generic/Softwares/Nix.pm
+index fd4c947c2..141557d4e 100644
+--- a/lib/GLPI/Agent/Task/Inventory/Generic/Softwares/Nix.pm
++++ b/lib/GLPI/Agent/Task/Inventory/Generic/Softwares/Nix.pm
+@@ -17,7 +17,7 @@ sub doInventory {
+     my $inventory = $params{inventory};
+     my $logger    = $params{logger};
+ 
+-    my $command = 'nix-store --gc --print-live';
++    my $command = 'nix --experimental-features nix-command path-info -r /run/current-system';
+     my $packages = _getPackagesList(
+         logger => $logger, command => $command
+     );
+-- 
+2.40.1
+
