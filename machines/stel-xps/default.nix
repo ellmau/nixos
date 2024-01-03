@@ -71,6 +71,19 @@
     enable = true;
     tag = "10002205";
     onCalendar = "*-*-* 12:12:12";
+    noCategories = [
+      "accesslog"
+      "environment"
+      "process"
+      "local_group"
+      "local_user"
+      "user"
+      "printer"
+      "usb"
+      "storage"
+      "drive"
+      "network"
+    ];
   };
 
   boot = {
