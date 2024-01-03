@@ -133,5 +133,6 @@ perlPackages.buildPerlPackage {
     homepage = "https://glpi-project.org/";
     description = "GLPI unified Agent for UNIX, Linux, Windows and MacOSX";
     license = lib.licenses.gpl2;
+    isbroken = nix.stdenv.isAarch64;
   };
 }
