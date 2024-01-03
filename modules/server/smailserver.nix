@@ -24,6 +24,10 @@ with lib; {
           "printer@ellmauthaler.net" = {
             hashedPasswordFile = config.sops.secrets.printerMail.path;
           };
+
+          "cloudstore@ellmauthaler.net" = {
+            hashedPasswordFile = config.sops.secrets.cloudstoreMail.path;
+          };
         };
 
         localDnsResolver = false;
@@ -39,6 +43,11 @@ with lib; {
           sopsFile = ../../secrets/server.yaml;
         };
         printerMail = {
+          owner = config.mailserver.vmailUserName;
+          group = config.mailserver.vmailGroupName;
+          sopsFile = ../../secrets/server.yaml;
+        };
+        cloudstoreMail = {
           owner = config.mailserver.vmailUserName;
           group = config.mailserver.vmailGroupName;
           sopsFile = ../../secrets/server.yaml;
