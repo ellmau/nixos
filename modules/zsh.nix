@@ -36,8 +36,7 @@ with lib; {
             highlighters = ["main" "brackets" "root" "line"];
             #styles = { cursor = "standout,underline"; };
           };
-          setOptions = ["auto_pushd" "correct" "nocaseglob" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory"];
-
+          setOptions = ["auto_pushd" "correct" "rcexpandparam" "numericglobsort" "nobeep" "appendhistory"];
           shellInit = ''
             if [[ $TERM == "dumb" ]]; then
               INSIDE_EMACS=1
