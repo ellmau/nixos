@@ -50,6 +50,14 @@
         utils.follows = "flake-utils-plus/flake-utils";
       };
     };
+
+    glpi-inventory = {
+      url = "github:mmarx/glpi-inventory";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils-plus";
+      };
+    };
   };
 
   outputs = {
@@ -99,6 +107,7 @@
           (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
           #inputs.nix.overlay
           inputs.emacs-overlay.overlay
+          inputs.glpi-inventory.overlays.default
         ]
         ++ (nixpkgs.lib.attrValues overlays);
 
@@ -112,6 +121,7 @@
             inputs.dwarffs.nixosModules.dwarffs
             inputs.simple-nixos-mailserver.nixosModules.mailserver
             ./common/wireguard.nix
+            inputs.glpi-inventory.nixosModules.glpi-inventory
           ]
           ++ (map (name: ./modules + "/${name}") (moduleNames ./modules));
         specialArgs = {
@@ -149,6 +159,7 @@
         default = elss;
         emacs-overlay = inputs.emacs-overlay.overlay;
         flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
+        glpi-inventory = inputs.glpi-inventory.overlays.default;
       };
 
       outputsBuilder = channels: {

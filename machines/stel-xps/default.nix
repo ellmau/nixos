@@ -67,7 +67,8 @@
     };
   };
 
-  kbs.glpi-inventory = {
+  # glpi-inventory
+  glpi-inventory = {
     enable = true;
     tag = "10002205";
     onCalendar = "*-*-* 12:12:12";
