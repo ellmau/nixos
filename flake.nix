@@ -36,7 +36,7 @@
     };
 
     dwarffs = {
-      url = "github:edolstra/dwarffs";
+      url = "github:edolstra/dwarffs/b0cea6426ca6f7b1476225410af942f11d6c70b7";
       inputs = {
         #nix.follows = "nix";
         nixpkgs.follows = "nixpkgs";
