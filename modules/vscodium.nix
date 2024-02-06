@@ -5,10 +5,10 @@
   ...
 }:
 with lib; {
-  options.elss.vscodium.enable = mkEnableOption "Configure VSCodium with needed extensions";
+  options.elss.programs.vscodium.enable = mkEnableOption "Configure VSCodium with needed extensions";
 
   config = let
-    cfg = config.elss.vscodium;
+    cfg = config.elss.programs.vscodium;
   in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [

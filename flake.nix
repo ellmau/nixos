@@ -89,6 +89,7 @@
       channelsConfig = {
         allowUnfreePredicate = pkg:
           builtins.elem (extended-lib.getName pkg) [
+            "discord"
             "slack"
             "steam"
             "steam-original"

@@ -48,9 +48,6 @@
     # enable wireguard
     wireguard.enable = true;
 
-    # vscodium
-    vscodium.enable = true;
-
     # user setup
     users = {
       enable = true;

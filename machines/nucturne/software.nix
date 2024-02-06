@@ -8,6 +8,7 @@
     onlyoffice-bin
     krita # drawing tool for my wacom
     slack
+    discord
   ];
 
   programs = {
@@ -26,6 +27,7 @@
       emacs.enable = true;
       obsstudio.enable = true;
       python.enable = true;
+      vscodium.enable = true;
     };
 
     texlive.enable = true;

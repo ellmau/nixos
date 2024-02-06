@@ -8,6 +8,7 @@
     libreoffice-fresh
     onlyoffice-bin
     slack
+    discord
   ];
 
   programs = {
@@ -29,6 +30,7 @@
       emacs.enable = true;
       obsstudio.enable = true;
       python.enable = true;
+      vscodium.enable = true;
     };
 
     texlive.enable = true;
