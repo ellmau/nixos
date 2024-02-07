@@ -54,7 +54,7 @@ with lib; {
                 position = "3840x0";
                 mode = "3840x2160";
                 #dpi = 288;
-                dpi = 192;
+                dpi = 96;
               };
               DP-2 = {
                 enable = true;
