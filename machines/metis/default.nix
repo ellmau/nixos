@@ -46,6 +46,9 @@
     # enable wireguard
     wireguard.enable = true;
 
+    # enable podman
+    container.podman.enable = true;
+
     # user setup
     users = {
       enable = true;
@@ -89,6 +92,9 @@
       externalInterface = "ens3";
       internalInterfaces = ["wg-stelnet"];
     };
+
+    # port for podman container
+    firewall.allowedTCPPorts = [8888];
   };
   system.stateVersion = "22.05";
 }
