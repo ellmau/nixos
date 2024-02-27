@@ -88,6 +88,7 @@ with lib; {
                 #dpi = 144;
                 dpi = 96;
                 position = "0x0";
+                crtc = 1;
               };
             };
           };
