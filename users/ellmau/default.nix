@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./alacritty.nix
-    ./autorandr.nix
+    #./autorandr.nix
     ./dunst.nix
     ./git.nix
     ./gpg.nix

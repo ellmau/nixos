@@ -15,10 +15,6 @@
     java.enable = true;
   };
 
-  services = {
-    autorandr.enable = false;
-  };
-
   elss = {
     programs = {
       aspell.enable = true;

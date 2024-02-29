@@ -11,7 +11,7 @@ with lib; {
     mkIf cfg.enable {
       elss.graphical.xserver = {
         enable = true;
-        autorandr.enable = true;
+        #autorandr.enable = true;
       };
       elss.users.dunst.enable = true;
       elss.graphical.xmonad.polybar.enable = true;
