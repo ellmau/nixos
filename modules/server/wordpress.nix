@@ -69,6 +69,22 @@ with lib; {
       version = "1.2.7";
       hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
     };
+    code-block-pro = fetchPlugin {
+      name = "code-block-pro";
+      version = "1.26.1";
+      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+    };
+    wp-bibtex = fetchPlugin {
+      name = "wp-bibtex";
+      version = "3.0.1";
+      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+    };
+
+    pdf-embedder = fetchPlugin {
+      name = "pdf-embedder";
+      version = "4.7.1";
+      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+    };
   in
     mkIf cfg.enable {
       services.nginx.virtualHosts."${cfg.domain}" = {
@@ -80,7 +96,7 @@ with lib; {
         webserver = "nginx";
         sites."${cfg.domain}" = {
           package = pkgs.wordpress6_4;
-          plugins = {inherit antispam-bee wordpress-seo templates-patterns-collection;};
+          plugins = {inherit antispam-bee wordpress-seo templates-patterns-collection wp-bibtex code-block-pro pdf-embedder;};
           themes = {inherit neve;};
           settings = {WP_DEFAULT_THEME = "neve";};
           virtualHost = {
