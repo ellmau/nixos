@@ -73,8 +73,8 @@ with lib; {
 
       services.wordpress = {
         webserver = "nginx";
-        package = pkgs.wordpress6_4;
         sites."${cfg.domain}" = {
+          package = pkgs.wordpress6_4;
           plugins = {inherit antispam-bee wordpress-seo;};
           themes = {inherit neve;};
           settings = {WP_DEFAULT_THEME = "neve";};
