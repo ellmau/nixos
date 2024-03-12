@@ -16,6 +16,12 @@ with lib; {
     unbound.enable = mkEnableOption "Set unbound dns up";
     grocy.enable = mkEnableOption "Set up grocy";
     gitea.enable = mkEnableOption "Set up gitea";
+    wordpress.enable = mkEnableOption "Set up wordpress";
+    wordpress.domain = mkOption {
+      type = types.str;
+      description = "domain for which it shall be set up";
+      default = "wp.ellmauthaler.net";
+    };
   };
 
   imports = [
@@ -28,6 +34,7 @@ with lib; {
     ./smailserver.nix
     ./sql.nix
     ./unbound.nix
+    ./wordpress.nix
   ];
 
   config = let
@@ -42,6 +49,7 @@ with lib; {
         unbound.enable = mkDefault true;
         grocy.enable = mkDefault true;
         gitea.enable = mkDefault true;
+        wordpress.enable = mkDefault true;
       };
     };
 }
