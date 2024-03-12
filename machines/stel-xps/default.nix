@@ -27,9 +27,9 @@
       enable = true;
       sway.enable = false;
       i3.enable = false;
-      plasma.enable = false;
-      xmonad.enable = true;
-      xserver.autorandr.enable = true;
+      plasma.enable = true;
+      xmonad.enable = false;
+      xserver.autorandr.enable = false;
       # set dpi if used in mobile applications
       dpi = 192;
     };
