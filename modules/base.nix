@@ -59,7 +59,7 @@ with lib; {
       nixpkgs-fmt
       procs
       ripgrep
-      rnix-lsp
+      #rnix-lsp # do not use due to nix 2.15.3 dependency
       sysstat
       tcpdump
       unzip
