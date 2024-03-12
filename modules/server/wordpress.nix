@@ -77,7 +77,7 @@ with lib; {
     teachpress = fetchPlugin {
       name = "teachpress";
       version = "9.0.6";
-      hash = "sha256-C2UakOTka/Tut6Y0jeA1wbBgcUnRxlVTIAu4mdnyaPA=";
+      hash = "sha256-GwH2fgopgsNBsR27V1Gp7eba9uDYi0AJqdGjQCZU4hM=";
     };
   in
     mkIf cfg.enable {
