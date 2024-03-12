@@ -56,7 +56,7 @@ with lib; {
     };
     antispam-bee = fetchPlugin {
       name = "antispam-bee";
-      version = "2.1.15";
+      version = "2.11.5";
       hash = "sha256-X3Jv2kn0FCCOPgrID0ZU8CuSjm/Ia/d+om/ShP5IBgA=";
     };
     wordpress-seo = fetchPlugin {
