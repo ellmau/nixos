@@ -52,17 +52,17 @@ with lib; {
     neve = fetchTheme {
       name = "neve";
       version = "3.8.3";
-      hash = "sha256-X3Jv2kn0FCCOPgrID0ZU8CuSjm/Ia/d+om/ShP5IBgA=";
+      hash = "sha256-JsW1dpSF7ZyZzFscK/YoLD1emgd7toYPlXzTpPhhBLY=";
     };
     antispam-bee = fetchPlugin {
       name = "antispam-bee";
       version = "2.11.5";
-      hash = "sha256-X3Jv2kn0FCCOPgrID0ZU8CuSjm/Ia/d+om/ShP5IBgA=";
+      hash = "sha256-LTF7kDGJ36JuQ7ZGWl2wRCrQBmo9uD30/OlPDpl7cd0=";
     };
     wordpress-seo = fetchPlugin {
       name = "wordpress-seo";
       version = "22.2";
-      hash = "sha256-X3Jv2kn0FCCOPgrID0ZU8CuSjm/Ia/d+om/ShP5IBgA=";
+      hash = "sha256-pqVY82MfDQp2BuawETyeORLxRzfXdEbmkUU9JESeQxA=";
     };
   in
     mkIf cfg.enable {
