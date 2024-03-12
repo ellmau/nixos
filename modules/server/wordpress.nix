@@ -67,7 +67,7 @@ with lib; {
     templates-patterns-collection = fetchPlugin {
       name = "templates-patterns-collection";
       version = "1.2.7";
-      hash = "sha256-pqVY82MfDQp2BuawETyeORLxRzfXdEbmkUU9JESeQxA=";
+      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
     };
   in
     mkIf cfg.enable {
