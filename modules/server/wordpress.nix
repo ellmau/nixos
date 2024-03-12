@@ -66,6 +66,11 @@ with lib; {
     };
   in
     mkIf cfg.enable {
+      services.nginx.virtualHosts.${cfg.domain} = {
+        enableACME = true;
+        forceSSL = true;
+      };
+
       services.wordpress = {
         webserver = "nginx";
         sites."${cfg.domain}" = {
