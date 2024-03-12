@@ -72,18 +72,18 @@ with lib; {
     code-block-pro = fetchPlugin {
       name = "code-block-pro";
       version = "1.26.1";
-      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+      hash = "sha256-Ble+LCZ68QIRbxiyg7X0Zoq9WTQxqiVnS5HWvsES+E8=";
     };
     wp-bibtex = fetchPlugin {
       name = "wp-bibtex";
       version = "3.0.1";
-      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+      hash = "sha256-41Z6y78xse0OsxVNtDs/ChCyH70y6+DyfgHLcxpKWmI=";
     };
 
     pdf-embedder = fetchPlugin {
       name = "pdf-embedder";
       version = "4.7.1";
-      hash = "sha256-r4jwy2bS5u8E+JSXn8k73qIcWJYjFy2McdV1YlbPQQk=";
+      hash = "sha256-C2UakOTka/Tut6Y0jeA1wbBgcUnRxlVTIAu4mdnyaPA=";
     };
   in
     mkIf cfg.enable {
