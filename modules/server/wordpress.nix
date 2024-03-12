@@ -80,7 +80,7 @@ with lib; {
         webserver = "nginx";
         sites."${cfg.domain}" = {
           package = pkgs.wordpress6_4;
-          plugins = {inherit antispam-bee wordpress-seo;};
+          plugins = {inherit antispam-bee wordpress-seo templates-patterns-collection;};
           themes = {inherit neve;};
           settings = {WP_DEFAULT_THEME = "neve";};
           virtualHost = {
