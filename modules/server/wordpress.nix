@@ -64,6 +64,11 @@ with lib; {
       version = "22.2";
       hash = "sha256-pqVY82MfDQp2BuawETyeORLxRzfXdEbmkUU9JESeQxA=";
     };
+    templates-patterns-collection = fetchPlugin {
+      name = "templates-patterns-collection";
+      version = "1.2.7";
+      hash = "sha256-pqVY82MfDQp2BuawETyeORLxRzfXdEbmkUU9JESeQxA=";
+    };
   in
     mkIf cfg.enable {
       services.nginx.virtualHosts."${cfg.domain}" = {
