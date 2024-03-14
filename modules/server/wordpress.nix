@@ -55,6 +55,12 @@ with lib; {
       hash = "sha256-JsW1dpSF7ZyZzFscK/YoLD1emgd7toYPlXzTpPhhBLY=";
     };
 
+    sydney = fetchTheme {
+      name = "sydney";
+      version = "2.35";
+      hash = "sha256-JsW1dpSF7ZyZzFscK/YoLD1emgd7toYPlXzTpPhhBLY=";
+    };
+
     antispam-bee = fetchPlugin {
       name = "antispam-bee";
       version = "2.11.5";
@@ -92,8 +98,8 @@ with lib; {
         sites."${cfg.domain}" = {
           package = pkgs.wordpress6_4;
           plugins = {inherit antispam-bee wordpress-seo templates-patterns-collection code-block-pro teachpress;};
-          themes = {inherit neve;};
-          settings = {WP_DEFAULT_THEME = "neve";};
+          themes = {inherit neve sydney;};
+          settings = {WP_DEFAULT_THEME = "sydney";};
           virtualHost = {
             enableACME = true;
             forceSSL = true;
