@@ -58,7 +58,7 @@ with lib; {
     sydney = fetchTheme {
       name = "sydney";
       version = "2.35";
-      hash = "sha256-JsW1dpSF7ZyZzFscK/YoLD1emgd7toYPlXzTpPhhBLY=";
+      hash = "sha256-3pGfT/i3rIrK3HtI2jq8ekAcyTfb1UjGV4o8IR263Hc=";
     };
 
     antispam-bee = fetchPlugin {
