@@ -58,8 +58,8 @@ with lib; {
     ascend = fetchTheme {
       name = "ascend";
       version = "1.4.13";
-      hash = "sha256-LTF7kDGJ36JuQ7ZGWl2wRCrQBmo9uD30/OlPDpl7cd0=";
-    }
+      hash = "sha256-goJD3d3kRsnPypzcXDqiik1d3ivvM+zAECU872Mk3as=";
+    };
     antispam-bee = fetchPlugin {
       name = "antispam-bee";
       version = "2.11.5";
