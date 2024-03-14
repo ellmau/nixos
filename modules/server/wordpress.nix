@@ -55,11 +55,6 @@ with lib; {
       hash = "sha256-JsW1dpSF7ZyZzFscK/YoLD1emgd7toYPlXzTpPhhBLY=";
     };
 
-    ascend = fetchTheme {
-      name = "ascend";
-      version = "1.4.13";
-      hash = "sha256-goJD3d3kRsnPypzcXDqiik1d3ivvM+zAECU872Mk3as=";
-    };
     antispam-bee = fetchPlugin {
       name = "antispam-bee";
       version = "2.11.5";
@@ -97,7 +92,7 @@ with lib; {
         sites."${cfg.domain}" = {
           package = pkgs.wordpress6_4;
           plugins = {inherit antispam-bee wordpress-seo templates-patterns-collection code-block-pro teachpress;};
-          themes = {inherit neve ascend;};
+          themes = {inherit neve;};
           settings = {WP_DEFAULT_THEME = "neve";};
           virtualHost = {
             enableACME = true;
