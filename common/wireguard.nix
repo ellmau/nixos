@@ -38,6 +38,11 @@ with lib; {
             localIp = "4";
             publicKey = "AxihqSB+Yr333Zjrkl0BpRFl2VbCHy4E9UOGz+0PTD0=";
           };
+
+          keres = {
+            localIp = "5";
+            publicKey = "cDX5ggZVfoLEQLRVYVE5y0Thr7f8w2DY+/udxHXxrhY=";
+          };
         };
 
         prefixes = {
