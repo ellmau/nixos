@@ -137,58 +137,60 @@
 ;;       org-roam-server-network-label-truncate-length 60
 ;;       org-roam-server-network-label-wrap-length 20)
 
-(use-package org-bullets
-  :defer t
-  :commands org-bullets-mode
-  :hook (org-mode . org-bullets-mode))
-(use-package org-roam
-  :custom
-  (org-roam-directory (file-truename "~/org-notes"))
-  :bind
-  (("C-c n l" . org-roam-buffer-toggle)
-   ("C-c n f" . org-roam-node-find)
-   ("C-c n g" . org-roam-graph)
-   ("C-c n i" . org-roam-node-insert)
-   ("C-c n c" . org-roam-capture)
-   ("C-c n j" . org-roam-dailies-capture-today)
-   ("C-c n d" . org-roam-dailies-capture-date))
+
+;; new config for org-roam, deactivated for now
+;; (use-package org-bullets
+;;   :defer t
+;;   :commands org-bullets-mode
+;;   :hook (org-mode . org-bullets-mode))
+;; (use-package org-roam
+;;   :custom
+;;   (org-roam-directory (file-truename "~/org-notes"))
+;;   :bind
+;;   (("C-c n l" . org-roam-buffer-toggle)
+;;    ("C-c n f" . org-roam-node-find)
+;;    ("C-c n g" . org-roam-graph)
+;;    ("C-c n i" . org-roam-node-insert)
+;;    ("C-c n c" . org-roam-capture)
+;;    ("C-c n j" . org-roam-dailies-capture-today)
+;;    ("C-c n d" . org-roam-dailies-capture-date))
   
-  :init
-  (setq org-roam-v2-ack t)
-  (require 'org-roam-protocol)
-  :config
-  (org-roam-db-autosync-mode))
- (use-package org-roam-ui
-   :after org-roam
-   :custom
-   (org-roam-ui-sync-theme t)
-   (org-roam-ui-follow)
-   (org-roam-ui-update-on-save t)
-   (org-roam-ui-open-on-start t))
-(define-key org-roam-mode-map [mouse-1] #'org-roam-visit-thing)
+;;   :init
+;;   (setq org-roam-v2-ack t)
+;;   (require 'org-roam-protocol)
+;;   :config
+;;   (org-roam-db-autosync-mode))
+;;  (use-package org-roam-ui
+;;    :after org-roam
+;;    :custom
+;;    (org-roam-ui-sync-theme t)
+;;    (org-roam-ui-follow)
+;;    (org-roam-ui-update-on-save t)
+;;    (org-roam-ui-open-on-start t))
+;; (define-key org-roam-mode-map [mouse-1] #'org-roam-visit-thing)
 
-;; tally-list
-(defun coffee-tally-add (n)
-  (interactive "nN: ")
-  (org-entry-put
-   nil "COFFEETALLY"
-   (format "%s" (+ n (string-to-number
-                      (or (org-entry-get nil "COFFEETALLY") "0"))))))
+;; ;; tally-list
+;; (defun coffee-tally-add (n)
+;;   (interactive "nN: ")
+;;   (org-entry-put
+;;    nil "COFFEETALLY"
+;;    (format "%s" (+ n (string-to-number
+;;                       (or (org-entry-get nil "COFFEETALLY") "0"))))))
 
-(cl-defmethod org-roam-node-directories ((node org-roam-node))
-  (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
-      (format "(%s)" (car (f-split dirs)))
-    ""))
+;; (cl-defmethod org-roam-node-directories ((node org-roam-node))
+;;   (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
+;;       (format "(%s)" (car (f-split dirs)))
+;;     ""))
 
-(cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
-  (let* ((count (caar (org-roam-db-query
-                       [:select (funcall count source)
-                                :from links
-                                :where (= dest $s1)
-                                :and (= type "id")]
-                       (org-roam-node-id node)))))
-    (format "[%d]" count)))
-(setq org-roam-node-display-template "${directories:10} ${tags:10} ${title:100} ${backlinkscount:6}")
+;; (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+;;   (let* ((count (caar (org-roam-db-query
+;;                        [:select (funcall count source)
+;;                                 :from links
+;;                                 :where (= dest $s1)
+;;                                 :and (= type "id")]
+;;                        (org-roam-node-id node)))))
+;;     (format "[%d]" count)))
+;; (setq org-roam-node-display-template "${directories:10} ${tags:10} ${title:100} ${backlinkscount:6}")
 
 
 
@@ -218,8 +220,8 @@
  '(show-paren-mode t)
  '(show-paren-style 'mixed)
  '(blink-matching-paren 'infoline)
- '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
- '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/"))
+;; '(org-agenda-files '("~/org-notes/daily/" "~/org-notes/"))
+;; '(org-angeda-files '("~/org-notes/daily/" "~/org-notes/"))
  '(size-indication-mode)
  '(line-number-mode t)
  '(epg-gpg-program (executable-find "gpg2"))
