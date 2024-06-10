@@ -19,11 +19,12 @@ with lib; {
       services = {
         xserver = {
           enable = true;
-          desktopManager.plasma5.enable = true;
         };
+
+        desktopManager.plasma6.enable = true;
         displayManager = {
           sddm.wayland.enable = true;
-          defaultSession = "plasmawayland";
+          defaultSession = "plasma";
         };
       };
 
