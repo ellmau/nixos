@@ -73,8 +73,10 @@ with lib; {
               ${pkgs.autorandr}/bin/autorandr -c
             '';
           };
-          layout = "us";
-          xkbOptions = "eurosign:e";
+          xkb = {
+            options = "eurosign:e";
+            layout = "us";
+          };
         };
         gnome.gnome-keyring.enable = true;
         udisks2.enable = true;

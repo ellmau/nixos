@@ -16,13 +16,15 @@ with lib; {
         pulse.enable = true;
       };
 
-      services.xserver = {
-        enable = true;
+      services = {
+        xserver = {
+          enable = true;
+          desktopManager.plasma5.enable = true;
+        };
         displayManager = {
           sddm.wayland.enable = true;
           defaultSession = "plasmawayland";
         };
-        desktopManager.plasma5.enable = true;
       };
 
       services.gnome.gnome-keyring.enable = true;

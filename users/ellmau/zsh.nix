@@ -53,7 +53,6 @@
 
     eza = {
       enable = true;
-      enableAliases = false;
     };
 
     tmux = {

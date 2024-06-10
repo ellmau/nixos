@@ -21,11 +21,11 @@ with lib; {
             enable = true;
             enableContribAndExtras = true;
           };
-          displayManager.defaultSession = "none+xmonad";
-          libinput = {
-            enable = true;
-            touchpad = {disableWhileTyping = true;};
-          };
+        };
+        displayManager.defaultSession = "none+xmonad";
+        libinput = {
+          enable = true;
+          touchpad = {disableWhileTyping = true;};
         };
         upower.enable = true;
 

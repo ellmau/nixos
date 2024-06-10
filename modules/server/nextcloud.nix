@@ -22,7 +22,9 @@ with lib; {
           adminuser = "storemin";
           adminpassFile = config.sops.secrets.storemin.path;
           dbhost = "/run/postgresql";
-          defaultPhoneRegion = "DE";
+        };
+        settings = {
+          default_phone_region = "DE";
         };
       };
 

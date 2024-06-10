@@ -55,7 +55,7 @@ with lib; {
       htop
       neofetch
       nix-prefetch-github
-      nixfmt
+      nixfmt-rfc-style
       nixpkgs-fmt
       procs
       ripgrep
