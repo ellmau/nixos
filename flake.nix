@@ -40,14 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dwarffs = {
-      url = "github:edolstra/dwarffs/b0cea6426ca6f7b1476225410af942f11d6c70b7";
-      inputs = {
-        #nix.follows = "nix";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     comma = {
       url = "github:nix-community/comma";
       inputs = {
@@ -124,7 +116,6 @@
           [
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
-            inputs.dwarffs.nixosModules.dwarffs
             inputs.simple-nixos-mailserver.nixosModules.mailserver
             ./common/wireguard.nix
             inputs.glpi-inventory.nixosModules.glpi-inventory
