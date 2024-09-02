@@ -21,8 +21,8 @@
       enable = true;
       sway.enable = false;
       i3.enable = false;
-      plasma.enable = false;
-      xmonad.enable = true;
+      plasma.enable = true;
+      xmonad.enable = false;
       # set dpi if used in mobile applications
       #      dpi = 180;
     };
