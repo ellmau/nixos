@@ -33,7 +33,7 @@ with lib; {
 
         "www.ellmauthaler.net" = {
           enableACME = true;
-          forceSSL = true;
+          addSSL = true;
           globalRedirect = "stefan.ellmauthaler.net";
         };
       };
