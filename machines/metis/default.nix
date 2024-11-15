@@ -46,6 +46,7 @@
     # enable wireguard
     wireguard.enable = true;
 
+
     # user setup
     users = {
       enable = true;
@@ -62,6 +63,9 @@
   fileSystems."/".options = ["noatime"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # qemu agent
+  services.qemuGuest.enable = true;
 
   networking = {
     interfaces.ens3 = {

@@ -66,6 +66,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
+  # qemu agent
+  services.qemuGuest.enable = true;
+
   networking = {
     interfaces.ens3 = {
       ipv4.addresses = [
