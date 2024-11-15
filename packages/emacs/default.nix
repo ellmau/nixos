@@ -123,7 +123,7 @@ with lib; let
         solarized-theme
         sparql-mode
         sudo-edit
-        use-package
+        #use-package
         #vscode-dark-plus-theme
         yaml-mode
         yasnippet
@@ -140,4 +140,3 @@ in
 #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
 #  }))
 #];
-

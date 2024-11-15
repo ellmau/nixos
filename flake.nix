@@ -92,6 +92,7 @@
             "steam-original"
             "steam-run"
             "steam-runtime"
+            "steam-unwrapped"
             "skypeforlinux"
             "teams"
             "vscode-extension-ms-vscode-cpptools"
