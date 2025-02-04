@@ -10,7 +10,7 @@
         trusted-users = ["root"] ++ config.elss.users.admins;
         auto-optimise-store = true;
       };
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
       generateRegistryFromInputs = true;
       generateNixPathFromInputs = true;
       linkInputs = true;

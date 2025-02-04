@@ -83,8 +83,6 @@ with lib; {
         printing.enable = true;
       };
 
-      sound.enable = true;
-
       hardware = {
         #pulseaudio.enable = true;
         bluetooth.enable = true;
