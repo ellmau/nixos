@@ -12,7 +12,7 @@ with lib; {
       services = {
         resolved = {
           enable = true;
-          dnssec = "allow-downgrade";
+          # dnssec = "allow-downgrade";
           llmnr = "true";
           fallbackDns = ["127.0.0.1" "::1"];
           extraConfig = ''
