@@ -52,7 +52,7 @@ with lib; let
       };
   };
 
-  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs29).emacsWithPackages (epkgs: let
+  emacsPackage = (pkgs.emacsPackagesFor pkgs.emacs30).emacsWithPackages (epkgs: let
     lpkgs = import ./packages.nix {inherit lib pkgs epkgs;};
     #[ (defaultConfig lpkgs) ] ++ (with pkgs; [
     #  aspell
