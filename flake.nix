@@ -12,7 +12,7 @@
     #};
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/release-2.93.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -94,7 +94,6 @@
             "steam-run"
             "steam-runtime"
             "steam-unwrapped"
-            "skypeforlinux"
             "teams"
             "vscode-extension-ms-vscode-cpptools"
             "zoom"

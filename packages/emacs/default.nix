@@ -83,7 +83,7 @@ with lib; let
         company-quickhelp
         company-reftex
         cov
-        dap-mode
+        #dap-mode
         diminish
         direnv
         dockerfile-mode
@@ -118,10 +118,10 @@ with lib; let
         pdf-tools
         projectile
         projectile-ripgrep
-        rustic
+        #rustic
         spacemacs-theme
         solarized-theme
-        sparql-mode
+        #sparql-mode
         sudo-edit
         #use-package
         #vscode-dark-plus-theme
@@ -140,3 +140,4 @@ in
 #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
 #  }))
 #];
+

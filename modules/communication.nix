@@ -16,7 +16,8 @@ with lib; {
         element-desktop
         jitsi-meet-electron
         signal-desktop
-        skypeforlinux
+        # skype is no longer existing
+        #skypeforlinux
         #remove teams as MS has removed the linux packages from their servers
         #teams
         unstable.zoom-us

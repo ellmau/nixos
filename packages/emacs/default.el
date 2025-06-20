@@ -389,32 +389,32 @@
 (use-package rust-mode
   :after lsp-mode rust-mode)
 
-(use-package rustic
-  :after lsp-mode
-  :config
-;;  (add-to-list 'flycheck-checkers 'rustic-clippy)
-  (lsp-diagnostics-flycheck-enable)
-  (push 'rustic-clippy flycheck-checkers)
-  ;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
-  :mode ("\\.rs\\'" . rustic-mode)
-  :custom
-;  (rustic-format-trigger 'on-save)
-  (rustic-flycheck-clippy-params "--message-format=json")
-  (lsp-rust-analyzer-server-display-inlay-hints t)
-  (lsp-inlay-hint-enable t)
-  (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-rust-analyzer-display-parameter-hints t)
-  (lsp-rust-analyzer-display-chaining-hints t)
-  (lsp-rust-analyzer-display-closure-return-type-hints t)
-  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t)
-  (lsp-rust-analyzer-proc-macro-enable t)
-  (lsp-rust-analyzer-experimental-proc-attr-macros t)
-  :hook
-  ;;(rustic-mode . company-mode)
-  ;;(rustic . lsp-rust-analyzer-inlay-hints-mode)
-  (rustic . apheleia-mode)
-  ;;(rustic-mode . flymake-mode)
-  )
+;; (use-package rustic
+;;   :after lsp-mode
+;;   :config
+;; ;;  (add-to-list 'flycheck-checkers 'rustic-clippy)
+;;   (lsp-diagnostics-flycheck-enable)
+;;   (push 'rustic-clippy flycheck-checkers)
+;;   ;;  (flycheck-add-next-checker 'lsp 'rustic-clippy)
+;;   :mode ("\\.rs\\'" . rustic-mode)
+;;   :custom
+;; ;  (rustic-format-trigger 'on-save)
+;;   (rustic-flycheck-clippy-params "--message-format=json")
+;;   (lsp-rust-analyzer-server-display-inlay-hints t)
+;;   (lsp-inlay-hint-enable t)
+;;   (lsp-rust-analyzer-cargo-watch-command "clippy")
+;;   (lsp-rust-analyzer-display-parameter-hints t)
+;;   (lsp-rust-analyzer-display-chaining-hints t)
+;;   (lsp-rust-analyzer-display-closure-return-type-hints t)
+;;   (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t)
+;;   (lsp-rust-analyzer-proc-macro-enable t)
+;;   (lsp-rust-analyzer-experimental-proc-attr-macros t)
+;;   :hook
+;;   ;;(rustic-mode . company-mode)
+;;   ;;(rustic . lsp-rust-analyzer-inlay-hints-mode)
+;;   (rustic . apheleia-mode)
+;;   ;;(rustic-mode . flymake-mode)
+;;   )
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;;;;;;;;;;;;;;;       beacon         ;;;;;;;;;;;;;;;;;
@@ -463,19 +463,19 @@
   :config
   (yas-global-mode t))
 
-;; dap
-(use-package dap-mode
-  :ensure
-  :after (lsp-mode dap-cpptools)
-  :custom
-  (dap-mode t)
-  (dap-ui-mode t)
-  (dap-ui-controls-mode t)
-  (dap-tooltip-mode t))
-(use-package dap-cpptools
-  :custom
-  (dap-cpptools-debug-path elss/paths/cpptools)
-  (dap-cpptools-debug-program `(,elss/paths/cpptools-program)))
+;; ;; dap
+;; (use-package dap-mode
+;;   :ensure
+;;   :after (lsp-mode dap-cpptools)
+;;   :custom
+;;   (dap-mode t)
+;;   (dap-ui-mode t)
+;;   (dap-ui-controls-mode t)
+;;   (dap-tooltip-mode t))
+;; (use-package dap-cpptools
+;;   :custom
+;;   (dap-cpptools-debug-path elss/paths/cpptools)
+;;   (dap-cpptools-debug-program `(,elss/paths/cpptools-program)))
 
 
 ;; flycheck
@@ -500,7 +500,7 @@
   ("\\.rls\\'" . pasp-mode))
 
 ;; sparql
-(use-package sparql-mode)
+;(use-package sparql-mode)
 
 ;; json
 (use-package json-mode
@@ -544,9 +544,9 @@
            python-mode
            ;; ess-mode
            ;; ruby-mode
-           rustic-mode
+           ;; rustic-mode
            sql-mode
-	   rustic
+	   ;; rustic
            typescript-mode
            vue-mode
            ;; xml-mode
