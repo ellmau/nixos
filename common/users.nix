@@ -11,7 +11,7 @@ with lib; {
         meta = {
           ellmau = {
             description = "Stefan Ellmauthaler";
-            mailAddress = "stefan.ellmauthaler@tu-dresden.de";
+            mailAddress = "stefan.ellmauthaler@gmail.com";
             hashedPassword = "$y$j9T$EUB/pNS7bH/zeIDUwgul80$JXNbeJpjNRKHtczeKxkDt.wzGfE3h1I7oFnJJpT3go8";
             publicKeys = [
               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII0XgjNGsqo8gbtPTpH8pHCdGQyGNWdKcSAmyhiLBLM3 stefan.ellmauthaler@tu-dresden.de"
