@@ -10,7 +10,7 @@ with lib; {
     cfg = nixosConfig.elss.graphical.sway;
   in
     mkIf cfg.enable {
-      programs.mako = {
+      services.mako = {
         enable = true;
         iconPath = "${pkgs.numix-icon-theme}";
         font = "Hasklug Nerd Font 10";

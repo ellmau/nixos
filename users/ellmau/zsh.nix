@@ -5,7 +5,7 @@
       defaultKeymap = "emacs";
       oh-my-zsh.enable = false;
       # remove extra stuff on the right side of the prompt
-      initExtra = ''
+      initContent = ''
         unset RPS1
         # Color man pages
         export LESS_TERMCAP_mb=$'\E[01;32m'

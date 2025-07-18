@@ -26,7 +26,7 @@ with lib; {
         noto-fonts-extra
         roboto
         roboto-mono
-        (nerdfonts.override {fonts = ["Hasklig"];})
+        nerd-fonts.hasklug
         material-icons
         weather-icons
         xits-math
