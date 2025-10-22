@@ -50,7 +50,7 @@
 
       meta = {
         ellmau = {
-          git = {signDefault = true;};
+          git = {signDefault = false;};
           extraGroups = ["networkmanager"];
         };
       };
