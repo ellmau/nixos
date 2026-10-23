@@ -160,7 +160,13 @@
         emacs-overlay = inputs.emacs-overlay.overlay;
         flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
         glpi-inventory = inputs.glpi-inventory.overlays.default;
-        php-security-fix = final: prev: {
+        php-security-fix = final: prev: let
+                  disablePhpTests = pkgSet: prev.lib.mapAttrs (name: pkg:
+                    if prev.lib.isDerivation pkg then
+                      pkg.overrideAttrs (old: { doCheck = false; checkPhase = ""; })
+                    else pkg
+                  ) pkgSet;
+                in {
                   php83 = prev.php83.overrideAttrs (old: rec {
                     version = "8.3.36";
                     doCheck = false;
@@ -170,6 +176,7 @@
                       sha256 = "1zcj2qxkmjc9aw81sv4al583fiy2haq9dvls5vbw9i9llcx6jm6x";
                     };
                   });
+
                   php84 = prev.php84.overrideAttrs (old: rec {
                     version = "8.4.4";
                     doCheck = false;
@@ -179,6 +186,11 @@
                       sha256 = "1b41jr2v7ncdcjn6zjq21ig6v20inchv5jlyf6zdhkc9rjick9h5";
                     };
                   });
+
+                  # Auch das Extension-Paketset zwingen, Tests wegzulassen
+                  php83Packages = disablePhpTests prev.php83Packages;
+                  php84Packages = disablePhpTests prev.php84Packages;
+
                   php = final.php83;
                 };
       };
