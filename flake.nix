@@ -160,16 +160,21 @@
         emacs-overlay = inputs.emacs-overlay.overlay;
         flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
         glpi-inventory = inputs.glpi-inventory.overlays.default;
-	php-security-fix = (final: prev: {
-          php = prev.php.overrideAttrs (old: {
-            # Falls du die Version erzwingen willst oder Patches injizierst,
-            # alternativ kannst du hier auch das PHP aus unstable mappen:
-          });
-          # Der sauberste Weg in einer Flake-Umgebung ist oft, PHP direkt
-          # auf die unstable-Version zu mappen, falls dort der Fix schon da ist:
-          php83 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php83;
-          php84 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php84;
-        });
+        php83 = prev.php.overrideAttrs (old: rec {
+              version = "8.3.36";
+              src = prev.fetchurl {
+                url = "https://www.php.net/distributions/php-${version}.tar.xz";
+                sha256 = "sha256-42R1V/R1j3x4s8+8xGv8H2pY0mY8dJ3Q7s6x2n8A=="
+              };
+            });
+            php84 = prev.php84.overrideAttrs (old: rec {
+              version = "8.4.4"; # oder die exakte Zielversion für 8.4
+              src = prev.fetchurl {
+                url = "https://www.php.net/distributions/php-${version}.tar.xz";
+                sha256 = "sha256-9JkL1+X3s4K5m8N2pY0mY8dJ3Q7s6x2n8A9B0C1D=";
+              };
+            });
+            php = final.php83;
       };
 
       outputsBuilder = channels: {
