@@ -165,14 +165,14 @@
                     version = "8.3.36";
                     src = prev.fetchurl {
                       url = "https://www.php.net/distributions/php-${version}.tar.xz";
-                      sha256 = "sha256-1zcj2qxkmjc9aw81sv4al583fiy2haq9dvls5vbw9i9llcx6jm6x=";
+                      sha256 = "1zcj2qxkmjc9aw81sv4al583fiy2haq9dvls5vbw9i9llcx6jm6x";
                     };
                   });
                   php84 = prev.php84.overrideAttrs (old: rec {
                     version = "8.4.4";
                     src = prev.fetchurl {
                       url = "https://www.php.net/distributions/php-${version}.tar.xz";
-                      sha256 = "sha256-1b41jr2v7ncdcjn6zjq21ig6v20inchv5jlyf6zdhkc9rjick9h5=";
+                      sha256 = "1b41jr2v7ncdcjn6zjq21ig6v20inchv5jlyf6zdhkc9rjick9h5";
                     };
                   });
                   php = final.php83;
