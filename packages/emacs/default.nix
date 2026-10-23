@@ -87,7 +87,7 @@ with lib; let
         diminish
         direnv
         dockerfile-mode
-        docker-compose-mode
+        #docker-compose-mode
         flycheck
         free-keys
         haskell-mode
@@ -140,4 +140,3 @@ in
 #    url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
 #  }))
 #];
-
