@@ -103,6 +103,7 @@
       channels.nixpkgs.overlaysBuilder = channels:
         [
           (final: prev: {unstable = channels.nixpkgs-unstable;})
+	  inputs.self.outputs.overlays.php-security-fix
           (flake-utils-plus.lib.genPkgOverlay inputs.comma "comma")
           #inputs.nix.overlay
           inputs.emacs-overlay.overlay
@@ -159,6 +160,16 @@
         emacs-overlay = inputs.emacs-overlay.overlay;
         flake-utils-plus = genPkgOverlay inputs.flake-utils-plus "fup-repl";
         glpi-inventory = inputs.glpi-inventory.overlays.default;
+	php-security-fix = (final: prev: {
+          php = prev.php.overrideAttrs (old: {
+            # Falls du die Version erzwingen willst oder Patches injizierst, 
+            # alternativ kannst du hier auch das PHP aus unstable mappen:
+          });
+          # Der sauberste Weg in einer Flake-Umgebung ist oft, PHP direkt 
+          # auf die unstable-Version zu mappen, falls dort der Fix schon da ist:
+          php83 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php83;
+          php84 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php84;
+        });
       };
 
       outputsBuilder = channels: {
