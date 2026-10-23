@@ -101,7 +101,7 @@ with lib; let
         helm-projectile
         helm-rg
         json-mode
-        less-css-mode
+        #less-css-mode
         lsp-haskell
         lsp-mode
         lsp-ui
