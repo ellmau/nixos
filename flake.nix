@@ -164,7 +164,7 @@
               version = "8.3.36";
               src = prev.fetchurl {
                 url = "https://www.php.net/distributions/php-${version}.tar.xz";
-                sha256 = "sha256-42R1V/R1j3x4s8+8xGv8H2pY0mY8dJ3Q7s6x2n8A=="
+                sha256 = "sha256-42R1V/R1j3x4s8+8xGv8H2pY0mY8dJ3Q7s6x2n8A==";
               };
             });
             php84 = prev.php84.overrideAttrs (old: rec {
