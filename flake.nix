@@ -36,7 +36,7 @@
     };
 
     sops-nix = {
-      url = "github:Mic92/sops-nix/master";
+      url = "github:Mic92/sops-nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -162,10 +162,10 @@
         glpi-inventory = inputs.glpi-inventory.overlays.default;
 	php-security-fix = (final: prev: {
           php = prev.php.overrideAttrs (old: {
-            # Falls du die Version erzwingen willst oder Patches injizierst, 
+            # Falls du die Version erzwingen willst oder Patches injizierst,
             # alternativ kannst du hier auch das PHP aus unstable mappen:
           });
-          # Der sauberste Weg in einer Flake-Umgebung ist oft, PHP direkt 
+          # Der sauberste Weg in einer Flake-Umgebung ist oft, PHP direkt
           # auf die unstable-Version zu mappen, falls dort der Fix schon da ist:
           php83 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php83;
           php84 = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.php84;
