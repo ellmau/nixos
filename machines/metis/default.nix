@@ -42,6 +42,7 @@
       enable = true;
       acme.staging = false;
       wordpress.enable = false;
+      grocy.enable = false;
     };
 
     # enable wireguard
